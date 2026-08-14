@@ -1,0 +1,1345 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AHOORA — A modern personal portfolio showcasing frontend development, UI/UX skills, creative projects, and digital experiences.">
+    <meta name="keywords" content="AHOORA, Frontend Developer, UI/UX Enthusiast, Portfolio, Web Design, JavaScript, React, Web Developer">
+    <meta name="author" content="AHOORA">
+    <meta name="theme-color" content="#11161D">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="AHOORA | Frontend Developer & UI/UX Enthusiast">
+    <meta property="og:description" content="Turning ideas into meaningful digital experiences. Explore selected projects, skills, and expertise.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ahoora.dev">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=1200">
+
+    <title>AHOORA | Frontend Developer & UI/UX Enthusiast</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Decorative Elements -->
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+    <div class="bg-grid-pattern"></div>
+
+    <!-- Header / Navigation -->
+    <header class="header" id="header">
+        <div class="container header-container">
+            <a href="#home" class="logo" aria-label="AHOORA Home">
+                AHOORA<span class="logo-dot">.</span>
+            </a>
+
+            <nav class="nav" id="nav-menu" aria-label="Main Navigation">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
+                    <li class="nav-item"><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero section" id="home">
+            <div class="container hero-container">
+                <div class="hero-content reveal-left">
+                    <span class="hero-greeting">Welcome to my world</span>
+                    <h1 class="hero-title">AHOORA</h1>
+                    <div class="hero-typewriter-container">
+                        <span class="hero-subtitle">I am a </span>
+                        <span class="typewriter-text" id="typewriter"></span>
+                        <span class="typewriter-cursor">|</span>
+                    </div>
+                    <p class="hero-tagline">"Turning ideas into meaningful digital experiences."</p>
+                    <p class="hero-description">
+                        Specializing in crafting high-performance, elegant web applications with seamless user interfaces and clean architecture.
+                    </p>
+                    <div class="hero-cta">
+                        <a href="#about" class="btn btn-primary">
+                            <span>Discover More About Me</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                    </div>
+                </div>
+
+                <div class="hero-visual reveal-right">
+                    <div class="profile-frame-wrapper">
+                        <div class="profile-geometric-ring"></div>
+                        <div class="profile-geometric-ring-2"></div>
+                        <div class="profile-image-container">
+                            <!-- Placeholder Profile Image - Replace with your own profile image URL -->
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=800" alt="AHOORA profile portrait" class="profile-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about section" id="about">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <span class="section-subtitle">Biography</span>
+                    <h2 class="section-title">About Me</h2>
+                    <div class="section-title-line"></div>
+                </div>
+
+                <div class="about-grid">
+                    <div class="about-text reveal-left">
+                        <h3 class="about-heading">Crafting Exceptional Interfaces with Detail & Precision</h3>
+                        <p class="about-paragraph">
+                            I am a dedicated Frontend Developer passionate about bridging the gap between design and technological implementation. With a strong foundation in modern web technologies including HTML5, CSS3, JavaScript, and React, I turn modern concepts into clean, functional code.
+                        </p>
+                        <p class="about-paragraph">
+                            Driven by detail, reliability, and an unwavering commitment to quality, my approach prioritizes intuitive user experience, responsive visual structures, and sustainable architecture. I thrive on solving complex frontend challenges and continuously expanding my technical mastery.
+                        </p>
+                        <div class="about-highlights">
+                            <div class="highlight-item">
+                                <i class="fa-solid fa-check highlight-icon"></i>
+                                <span>Clean & Maintainable Code</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fa-solid fa-check highlight-icon"></i>
+                                <span>Pixel-Perfect Visual Execution</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fa-solid fa-check highlight-icon"></i>
+                                <span>User-Centric UI/UX Design</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fa-solid fa-check highlight-icon"></i>
+                                <span>Responsive & Accessible Layouts</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Statistics Cards (Editable placeholder values) -->
+                    <div class="about-stats reveal-right">
+                        <div class="stat-card">
+                            <div class="stat-number" data-target="5">5+</div>
+                            <div class="stat-label">Years of Experience</div>
+                            <div class="stat-bar"></div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" data-target="20">20+</div>
+                            <div class="stat-label">Projects Completed</div>
+                            <div class="stat-bar"></div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Commitment to Quality</div>
+                            <div class="stat-bar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="skills section" id="skills">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <span class="section-subtitle">Capabilities</span>
+                    <h2 class="section-title">Skills & Expertise</h2>
+                    <div class="section-title-line"></div>
+                </div>
+
+                <div class="skills-wrapper">
+                    <!-- Technical Skills -->
+                    <div class="skills-column reveal-left">
+                        <h3 class="skills-category-title">
+                            <i class="fa-solid fa-code title-icon"></i> Technical Skills
+                        </h3>
+                        <div class="skills-list">
+                            <!-- Skill 1 -->
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">HTML5</span>
+                                    <span class="skill-percentage">95%</span>
+                                </div>
+                                <div class="skill-progress-bg">
+                                    <div class="skill-progress-fill" style="width: 0%;" data-percentage="95%"></div>
+                                </div>
+                            </div>
+                            <!-- Skill 2 -->
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">CSS3 / SCSS</span>
+                                    <span class="skill-percentage">90%</span>
+                                </div>
+                                <div class="skill-progress-bg">
+                                    <div class="skill-progress-fill" style="width: 0%;" data-percentage="90%"></div>
+                                </div>
+                            </div>
+                            <!-- Skill 3 -->
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">JavaScript (ES6+)</span>
+                                    <span class="skill-percentage">85%</span>
+                                </div>
+                                <div class="skill-progress-bg">
+                                    <div class="skill-progress-fill" style="width: 0%;" data-percentage="85%"></div>
+                                </div>
+                            </div>
+                            <!-- Skill 4 -->
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">React</span>
+                                    <span class="skill-percentage">80%</span>
+                                </div>
+                                <div class="skill-progress-bg">
+                                    <div class="skill-progress-fill" style="width: 0%;" data-percentage="80%"></div>
+                                </div>
+                            </div>
+                            <!-- Skill 5 -->
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">Responsive Design</span>
+                                    <span class="skill-percentage">95%</span>
+                                </div>
+                                <div class="skill-progress-bg">
+                                    <div class="skill-progress-fill" style="width: 0%;" data-percentage="95%"></div>
+                                </div>
+                            </div>
+                            <!-- Skill 6 -->
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">Git & GitHub</span>
+                                    <span class="skill-percentage">80%</span>
+                                </div>
+                                <div class="skill-progress-bg">
+                                    <div class="skill-progress-fill" style="width: 0%;" data-percentage="80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Soft Skills -->
+                    <div class="skills-column reveal-right">
+                        <h3 class="skills-category-title">
+                            <i class="fa-solid fa-user-gear title-icon"></i> Soft Skills
+                        </h3>
+                        <div class="soft-skills-grid">
+                            <div class="soft-skill-card">
+                                <div class="soft-skill-icon"><i class="fa-solid fa-comments"></i></div>
+                                <h4>Effective Communication</h4>
+                                <p>Articulating ideas clearly and collaborating smoothly across multidisciplinary teams.</p>
+                            </div>
+                            <div class="soft-skill-card">
+                                <div class="soft-skill-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                                <h4>Problem Solving</h4>
+                                <p>Analyzing complex logic issues and devising streamlined, efficient solutions.</p>
+                            </div>
+                            <div class="soft-skill-card">
+                                <div class="soft-skill-icon"><i class="fa-solid fa-clock"></i></div>
+                                <h4>Time Management</h4>
+                                <p>Punctual delivery with meticulous planning and effective task prioritization.</p>
+                            </div>
+                            <div class="soft-skill-card">
+                                <div class="soft-skill-icon"><i class="fa-solid fa-users"></i></div>
+                                <h4>Teamwork</h4>
+                                <p>Fostering cooperative environments and contributing positively to group objectives.</p>
+                            </div>
+                            <div class="soft-skill-card">
+                                <div class="soft-skill-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+                                <h4>Attention to Detail</h4>
+                                <p>Ensuring pixel perfection, clean code, and cohesive aesthetic execution.</p>
+                            </div>
+                            <div class="soft-skill-card">
+                                <div class="soft-skill-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                                <h4>Continuous Learning</h4>
+                                <p>Constantly staying ahead with evolving frontend technologies and best practices.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section class="portfolio section" id="portfolio">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <span class="section-subtitle">Portfolio</span>
+                    <h2 class="section-title">Selected Work</h2>
+                    <div class="section-title-line"></div>
+                </div>
+
+                <div class="portfolio-grid" id="portfolio-grid">
+                    <!-- Project Cards rendered via JS or statically fallback -->
+                    <!-- Card 1 -->
+                    <div class="project-card reveal-up" data-project-id="1">
+                        <div class="project-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" alt="Modern Business Website" class="project-img">
+                            <div class="project-overlay">
+                                <button class="btn btn-sm btn-primary view-details-btn" data-project-id="1">View Details</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <span class="project-number">01</span>
+                            <h3 class="project-title">Modern Business Website</h3>
+                            <p class="project-description">A responsive business website focused on clean design and strong user experience.</p>
+                            <div class="project-tags">
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                                <span class="tag">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="project-card reveal-up" data-project-id="2">
+                        <div class="project-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=800" alt="Creative Portfolio" class="project-img">
+                            <div class="project-overlay">
+                                <button class="btn btn-sm btn-primary view-details-btn" data-project-id="2">View Details</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <span class="project-number">02</span>
+                            <h3 class="project-title">Creative Portfolio</h3>
+                            <p class="project-description">A personal portfolio website featuring modern animations and responsive layouts.</p>
+                            <div class="project-tags">
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                                <span class="tag">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="project-card reveal-up" data-project-id="3">
+                        <div class="project-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="Dashboard UI" class="project-img">
+                            <div class="project-overlay">
+                                <button class="btn btn-sm btn-primary view-details-btn" data-project-id="3">View Details</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <span class="project-number">03</span>
+                            <h3 class="project-title">Dashboard UI</h3>
+                            <p class="project-description">A modern dashboard interface designed for usability and visual clarity.</p>
+                            <div class="project-tags">
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                                <span class="tag">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="project-card reveal-up" data-project-id="4">
+                        <div class="project-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&q=80&w=800" alt="E-Commerce Concept" class="project-img">
+                            <div class="project-overlay">
+                                <button class="btn btn-sm btn-primary view-details-btn" data-project-id="4">View Details</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <span class="project-number">04</span>
+                            <h3 class="project-title">E-Commerce Concept</h3>
+                            <p class="project-description">A responsive e-commerce interface with a premium shopping experience.</p>
+                            <div class="project-tags">
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                                <span class="tag">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact section" id="contact">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <span class="section-subtitle">Get In Touch</span>
+                    <h2 class="section-title">Let's Work Together</h2>
+                    <div class="section-title-line"></div>
+                </div>
+
+                <div class="contact-wrapper">
+                    <!-- Contact Info -->
+                    <div class="contact-info reveal-left">
+                        <h3 class="contact-heading">Contact Information</h3>
+                        <p class="contact-lead">
+                            Have a project in mind, a question, or simply want to connect? Feel free to reach out directly through any of the platforms below or send a message using the form.
+                        </p>
+
+                        <div class="info-list">
+                            <a href="mailto:contact@ahoora.dev" class="info-item">
+                                <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+                                <div class="info-details">
+                                    <span class="info-label">Email</span>
+                                    <span class="info-value">contact@ahoora.dev</span>
+                                </div>
+                            </a>
+
+                            <!-- Social Links -->
+                            <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" class="info-item">
+                                <div class="info-icon"><i class="fa-brands fa-linkedin-in"></i></div>
+                                <div class="info-details">
+                                    <span class="info-label">LinkedIn</span>
+                                    <span class="info-value">linkedin.com/in/ahoora</span>
+                                </div>
+                            </a>
+
+                            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" class="info-item">
+                                <div class="info-icon"><i class="fa-brands fa-github"></i></div>
+                                <div class="info-details">
+                                    <span class="info-label">GitHub</span>
+                                    <span class="info-value">github.com/ahoora</span>
+                                </div>
+                            </a>
+
+                            <a href="https://t.me/yourusername" target="_blank" rel="noopener noreferrer" class="info-item">
+                                <div class="info-icon"><i class="fa-brands fa-telegram"></i></div>
+                                <div class="info-details">
+                                    <span class="info-label">Telegram</span>
+                                    <span class="info-value">t.me/ahoora</span>
+                                </div>
+                            </a>
+
+                            <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" class="info-item">
+                                <div class="info-icon"><i class="fa-brands fa-whatsapp"></i></div>
+                                <div class="info-details">
+                                    <span class="info-label">WhatsApp</span>
+                                    <span class="info-value">+1 (234) 567-890</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="contact-form-container reveal-right">
+                        <form id="contact-form" class="contact-form" novalidate>
+                            <div class="form-group">
+                                <label for="form-name" class="form-label">Full Name *</label>
+                                <input type="text" id="form-name" class="form-input" placeholder="John Doe" required>
+                                <span class="form-error" id="name-error">Please enter your name.</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="form-email" class="form-label">Email Address *</label>
+                                <input type="email" id="form-email" class="form-input" placeholder="john@example.com" required>
+                                <span class="form-error" id="email-error">Please enter a valid email address.</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="form-subject" class="form-label">Subject *</label>
+                                <input type="text" id="form-subject" class="form-input" placeholder="Project Inquiry" required>
+                                <span class="form-error" id="subject-error">Please enter a subject.</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="form-message" class="form-label">Message *</label>
+                                <textarea id="form-message" class="form-input form-textarea" rows="5" placeholder="Tell me about your project or vision..." required></textarea>
+                                <span class="form-error" id="message-error">Please enter your message.</span>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary form-submit-btn" id="form-submit">
+                                <span>Send Message</span>
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+
+                            <div class="form-feedback-message" id="form-feedback" aria-live="polite"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="#home" class="footer-logo">AHOORA<span class="logo-dot">.</span></a>
+                <div class="footer-line"></div>
+                <p class="footer-tagline">Designed with passion & code.</p>
+            </div>
+
+            <div class="footer-nav">
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-socials">
+                <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://t.me/yourusername" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
+                <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+
+            <div class="footer-copyright">
+                <p>&copy; 2026 AHOORA. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Portfolio Project Modal -->
+    <div class="modal-overlay" id="portfolio-modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
+        <div class="modal-container" role="document">
+            <button class="modal-close-btn" id="modal-close" aria-label="Close project modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="modal-body" id="modal-body">
+                <!-- Content dynamically injected via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <i class="fa-solid fa-chevron-up"></i>
+    </button>
+
+    <!-- External Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
+
+<style>/* ==========================================================================
+   AHOORA — Personal Brand Portfolio Stylesheet
+   Color Palette: Deep Navy-Gray, Matte Gold, Warm White, Charcoal
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. CSS Custom Properties (Variables)
+   -------------------------------------------------------------------------- */
+:root {
+    /* Color Palette */
+    --bg-primary: #11161D;
+    --bg-secondary: #181E26;
+    --bg-tertiary: #1F2732;
+    --bg-glass: rgba(24, 30, 38, 0.75);
+    
+    --gold: #C8A96B;
+    --gold-light: #D8BD83;
+    --gold-dark: #9E8144;
+    --gold-glow: rgba(200, 169, 107, 0.25);
+    --gold-border: rgba(200, 169, 107, 0.25);
+
+    --text-primary: #F5F3EE;
+    --text-secondary: #A8ADB5;
+    --text-muted: #6C727F;
+
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-gold-glow: 0 0 20px rgba(200, 169, 107, 0.2);
+
+    /* Typography */
+    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+    /* Transitions & Animations */
+    --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-slow: 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+
+    /* Layout & Dimensions */
+    --header-height: 80px;
+    --container-max-width: 1200px;
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-full: 9999px;
+}
+
+/* --------------------------------------------------------------------------
+   2. Reset & Universal Styles
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    text-size-adjust: 100%;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Typography Selection & Scrollbar */
+::selection {
+    background-color: var(--gold);
+    color: var(--bg-primary);
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--gold-dark);
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+button, input, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    border: none;
+    outline: none;
+    background: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   3. Decorative Backgrounds & Ambient Effects
+   -------------------------------------------------------------------------- */
+.bg-glow {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(140px);
+    z-index: -2;
+    pointer-events: none;
+    opacity: 0.15;
+}
+
+.bg-glow-1 {
+    top: -10%;
+    left: -10%;
+    width: 50vw;
+    height: 50vw;
+    background: radial-gradient(circle, var(--gold) 0%, transparent 70%);
+}
+
+.bg-glow-2 {
+    bottom: -10%;
+    right: -10%;
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, #2A3647 0%, transparent 70%);
+}
+
+.bg-grid-pattern {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-image: 
+        radial-gradient(rgba(200, 169, 107, 0.05) 1px, transparent 1px);
+    background-size: 32px 32px;
+    pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   4. Layout & Reusable Utilities
+   -------------------------------------------------------------------------- */
+.container {
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.section {
+    padding: 7rem 0;
+    position: relative;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-subtitle {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--gold);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 2.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    position: relative;
+    display: inline-block;
+}
+
+.section-title-line {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 1rem auto 0 auto;
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0.9rem 2rem;
+    border-radius: var(--radius-full);
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: all var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+    color: var(--bg-primary);
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(200, 169, 107, 0.2);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(200, 169, 107, 0.4);
+    color: var(--bg-primary);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--gold-border);
+}
+
+.btn-secondary:hover {
+    background: rgba(200, 169, 107, 0.1);
+    border-color: var(--gold);
+    transform: translateY(-3px);
+    color: var(--gold-light);
+}
+
+/* --------------------------------------------------------------------------
+   5. Header & Navigation
+   -------------------------------------------------------------------------- */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    z-index: 1000;
+    transition: all var(--transition-smooth);
+    display: flex;
+    align-items: center;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header.scrolled {
+    height: 70px;
+    background: var(--bg-glass);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-subtle);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--gold-light);
+    display: flex;
+    align-items: center;
+}
+
+.nav-list {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.nav-link {
+    font-size: 0.925rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    position: relative;
+    padding: 0.25rem 0;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: var(--gold);
+    transition: width var(--transition-fast);
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--gold-light);
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+    width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   6. Hero Section
+   -------------------------------------------------------------------------- */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: calc(var(--header-height) + 2rem);
+    position: relative;
+}
+
+.hero-container {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: 4.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    background: linear-gradient(180deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.profile-image-container {
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    padding: 8px;
+    background: linear-gradient(135deg, var(--gold) 0%, rgba(200, 169, 107, 0.1) 100%);
+    box-shadow: 0 0 50px rgba(200, 169, 107, 0.2);
+    position: relative;
+    z-index: 2;
+    animation: floatAnimation 6s ease-in-out infinite;
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--bg-primary);
+}
+
+@keyframes floatAnimation {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+}
+
+/* --------------------------------------------------------------------------
+   7. Portfolio & Card Grid
+   -------------------------------------------------------------------------- */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+}
+
+.project-card {
+    background-color: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-subtle);
+    overflow: hidden;
+    transition: all var(--transition-smooth);
+}
+
+.project-card:hover {
+    border-color: var(--gold-border);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+/* --------------------------------------------------------------------------
+   8. Responsive Media Queries
+   -------------------------------------------------------------------------- */
+@media (max-width: 992px) {
+    .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+</style><script>/**
+ * AHOORA — Personal Brand Portfolio JavaScript
+ * Features: Typewriter Effect, Sticky Header, Responsive Nav, Dynamic Modal,
+ *           Scroll Reveal Observer, Form Validation & Interactive Feedback.
+ */
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    /* ==========================================================================
+       1. Portfolio Projects Data Array
+       ========================================================================== */
+    const projectsData = [
+        {
+            id: '1',
+            number: '01',
+            title: 'Modern Business Website',
+            shortDesc: 'A responsive business website focused on clean design and strong user experience.',
+            fullDesc: 'This project is an enterprise-grade corporate platform developed with a focus on brand identity, dynamic content rendering, and conversion optimization. Built to reflect modern visual trends while maintaining fast load performance.',
+            objective: 'To create a high-converting, visually striking digital portal for modern business entities.',
+            keyFeatures: [
+                'Responsive modular layout adapted for all viewports',
+                'Custom interactive hero banner and feature showcase',
+                'Integrated lead-generation call-to-action sections',
+                'Performance optimized image rendering and smooth scroll effects'
+            ],
+            technologies: ['HTML5', 'CSS3 / Grid', 'Vanilla JavaScript'],
+            image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200'
+        },
+        {
+            id: '2',
+            number: '02',
+            title: 'Creative Portfolio',
+            shortDesc: 'A personal portfolio website featuring modern animations and responsive layouts.',
+            fullDesc: 'An interactive personal showcase engineered for high aesthetic appeal. Designed specifically to present creative projects through subtle micro-interactions, smooth page transitions, and structured technical displays.',
+            objective: 'Highlight individual achievements and skill sets through an immersive user-centric web experience.',
+            keyFeatures: [
+                'Glassmorphism modal interfaces for detailed project views',
+                'Custom typewriter & scroll-reveal animations using IntersectionObserver',
+                'Accessible interactive components with full keyboard support',
+                'Minimalist luxury aesthetic with custom CSS variables'
+            ],
+            technologies: ['HTML5', 'CSS3 Variables', 'JavaScript ES6+'],
+            image: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=1200'
+        },
+        {
+            id: '3',
+            number: '03',
+            title: 'Dashboard UI',
+            shortDesc: 'A modern dashboard interface designed for usability and visual clarity.',
+            fullDesc: 'An intuitive, data-dense analytics control panel engineered for maximum readability. It displays real-time statistics, modular widgets, and customizable dark-theme visual structures.',
+            objective: 'Simplify complex data visualization for improved administrative decision making.',
+            keyFeatures: [
+                'Dynamic visual stat counters and progress indicators',
+                'Clean card grid with responsive auto-fit placement',
+                'Structured dark-theme color taxonomy',
+                'Filterable data tables and status indicators'
+            ],
+            technologies: ['HTML5', 'CSS Flexbox/Grid', 'JavaScript ES6+'],
+            image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200'
+        },
+        {
+            id: '4',
+            number: '04',
+            title: 'E-Commerce Concept',
+            shortDesc: 'A responsive e-commerce interface with a premium shopping experience.',
+            fullDesc: 'A high-end retail interface tailored for modern online shopping. Features clean grid layouts, seamless product preview modals, interactive cart states, and responsive navigation.',
+            objective: 'Deliver an elegant digital storefront that enhances product appeal and reduces checkout friction.',
+            keyFeatures: [
+                'Interactive product card gallery with overlay actions',
+                'Structured layout for item descriptions, tags, and pricing',
+                'Clean typography system focused on readability',
+                'Mobile-first responsive shopping flow'
+            ],
+            technologies: ['HTML5', 'CSS3', 'JavaScript'],
+            image: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&q=80&w=1200'
+        }
+    ];
+
+    /* ==========================================================================
+       2. Header Scroll Effect & Dynamic Link Highlighting
+       ========================================================================== */
+    const header = document.getElementById('header');
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    const handleHeaderScroll = () => {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+
+        const scrollY = window.pageYOffset;
+        sections.forEach(current => {
+            const sectionHeight = current.offsetHeight;
+            const sectionTop = current.offsetTop - 100;
+            const sectionId = current.getAttribute('id');
+            const correspondingLink = document.querySelector(`.nav-link[href*="${sectionId}"]`);
+
+            if (correspondingLink) {
+                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    correspondingLink.classList.add('active');
+                } else {
+                    correspondingLink.classList.remove('active');
+                }
+            }
+        });
+    };
+
+    window.addEventListener('scroll', handleHeaderScroll, { passive: true });
+
+    /* ==========================================================================
+       3. Mobile Hamburger Navigation
+       ========================================================================== */
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+
+    const toggleMenu = () => {
+        const isOpen = navMenu.classList.contains('open');
+        navMenu.classList.toggle('open');
+        navToggle.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', !isOpen);
+    };
+
+    if (navToggle) {
+        navToggle.addEventListener('click', toggleMenu);
+    }
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (navMenu.classList.contains('open')) {
+                toggleMenu();
+            }
+        });
+    });
+
+    /* ==========================================================================
+       4. Typewriter Animation Effect
+       ========================================================================== */
+    const typewriterElement = document.getElementById('typewriter');
+    const phrases = [
+        'Frontend Developer',
+        'UI/UX Enthusiast',
+        'Creative Problem Solver',
+        'Web Experience Designer'
+    ];
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typewriterSpeed = 100;
+
+    const type = () => {
+        const currentPhrase = phrases[phraseIndex];
+
+        if (isDeleting) {
+            typewriterElement.textContent = currentPhrase.substring(0, charIndex - 1);
+            charIndex--;
+            typewriterSpeed = 50;
+        } else {
+            typewriterElement.textContent = currentPhrase.substring(0, charIndex + 1);
+            charIndex++;
+            typewriterSpeed = 100;
+        }
+
+        if (!isDeleting && charIndex === currentPhrase.length) {
+            isDeleting = true;
+            typewriterSpeed = 2000;
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+            typewriterSpeed = 500;
+        }
+
+        setTimeout(type, typewriterSpeed);
+    };
+
+    if (typewriterElement) {
+        setTimeout(type, 1000);
+    }
+
+    /* ==========================================================================
+       5. Scroll Reveal & Skill Progress Fill Observer
+       ========================================================================== */
+    const revealElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
+    const skillProgressFills = document.querySelectorAll('.skill-progress-fill');
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('reveal-active');
+
+                if (entry.target.classList.contains('skills') || entry.target.querySelector('.skill-progress-fill')) {
+                    skillProgressFills.forEach(fill => {
+                        const targetWidth = fill.getAttribute('data-percentage');
+                        fill.style.width = targetWidth;
+                    });
+                }
+
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        root: null,
+        threshold: 0.15
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    const skillsSection = document.getElementById('skills');
+    if (skillsSection) {
+        const skillsObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                skillProgressFills.forEach(fill => {
+                    const targetWidth = fill.getAttribute('data-percentage');
+                    fill.style.width = targetWidth;
+                });
+            }
+        }, { threshold: 0.2 });
+        skillsObserver.observe(skillsSection);
+    }
+
+    /* ==========================================================================
+       6. Portfolio Modal Logic
+       ========================================================================== */
+    const modal = document.getElementById('portfolio-modal');
+    const modalBody = document.getElementById('modal-body');
+    const modalCloseBtn = document.getElementById('modal-close');
+    const viewDetailsButtons = document.querySelectorAll('.view-details-btn, .project-card');
+
+    const openModal = (projectId) => {
+        const project = projectsData.find(p => p.id === projectId);
+        if (!project) return;
+
+        modalBody.innerHTML = `
+            <img src="${project.image}" alt="${project.title}" class="modal-image">
+            <span class="project-number">${project.number}</span>
+            <h3 class="modal-title" id="modal-title">${project.title}</h3>
+            <div class="modal-meta-tags">
+                ${project.technologies.map(tech => `<span class="tag">${tech}</span>`).join('')}
+            </div>
+            <p class="modal-text">${project.fullDesc}</p>
+            
+            <h4 class="modal-section-heading">Project Objective</h4>
+            <p class="modal-text">${project.objective}</p>
+            
+            <h4 class="modal-section-heading">Key Features</h4>
+            <ul class="modal-features-list">
+                ${project.keyFeatures.map(feature => `<li>${feature}</li>`).join('')}
+            </ul>
+        `;
+
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    };
+
+    const closeModal = () => {
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    };
+
+    viewDetailsButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const projectId = btn.getAttribute('data-project-id');
+            openModal(projectId);
+        });
+    });
+
+    if (modalCloseBtn) {
+        modalCloseBtn.addEventListener('click', closeModal);
+    }
+
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    /* ==========================================================================
+       7. Contact Form Validation & Submission Feedback
+       ========================================================================== */
+    const contactForm = document.getElementById('contact-form');
+    const nameInput = document.getElementById('form-name');
+    const emailInput = document.getElementById('form-email');
+    const subjectInput = document.getElementById('form-subject');
+    const messageInput = document.getElementById('form-message');
+    const feedbackMsg = document.getElementById('form-feedback');
+    const submitBtn = document.getElementById('form-submit');
+
+    const validateEmail = (email) => {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    };
+
+    const setError = (inputElement, isError) => {
+        const parent = inputElement.parentElement;
+        if (isError) {
+            parent.classList.add('error');
+        } else {
+            parent.classList.remove('error');
+        }
+    };
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            let isValid = true;
+
+            if (nameInput.value.trim() === '') {
+                setError(nameInput, true);
+                isValid = false;
+            } else {
+                setError(nameInput, false);
+            }
+
+            if (!validateEmail(emailInput.value.trim())) {
+                setError(emailInput, true);
+                isValid = false;
+            } else {
+                setError(emailInput, false);
+            }
+
+            if (subjectInput.value.trim() === '') {
+                setError(subjectInput, true);
+                isValid = false;
+            } else {
+                setError(subjectInput, false);
+            }
+
+            if (messageInput.value.trim() === '') {
+                setError(messageInput, true);
+                isValid = false;
+            } else {
+                setError(messageInput, false);
+            }
+
+            if (isValid) {
+                submitBtn.disabled = true;
+                const originalBtnText = submitBtn.innerHTML;
+                submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> <span>Sending...</span>`;
+
+                setTimeout(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnText;
+
+                    feedbackMsg.textContent = 'Thank you! Your message has been received. I will get back to you shortly.';
+                    feedbackMsg.className = 'form-feedback-message success';
+
+                    contactForm.reset();
+
+                    setTimeout(() => {
+                        feedbackMsg.className = 'form-feedback-message';
+                    }, 6000);
+                }, 1200);
+            }
+        });
+    }
+
+    /* ==========================================================================
+       8. Back to Top Button Logic
+       ========================================================================== */
+    const backToTopBtn = document.getElementById('back-to-top');
+
+    const handleBackToTopVisibility = () => {
+        if (window.scrollY > 400) {
+            backToTopBtn.classList.add('visible');
+        } else {
+            backToTopBtn.classList.remove('visible');
+        }
+    };
+
+    window.addEventListener('scroll', handleBackToTopVisibility, { passive: true });
+
+    if (backToTopBtn) {
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+});
+
+</script>
