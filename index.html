@@ -951,6 +951,36 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
         grid-template-columns: 1fr;
     }
 }
+/* Scroll Cards Styling */
+.pack {
+    width: 500px;
+    height: 300px;
+    border: 2px solid #ffffff;
+    position: fixed;
+    transition: 2s;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    background-color: #121212;
+    color: #fff;
+    z-index: 1000;
+}
+
+.top {
+    top: -1000px;
+}
+
+.bottom {
+    top: 1000px;
+}
+
+.show {
+    top: 50%;
+    transition: 2s !important;
+}
 
 </style><script>/**
  * AHOORA — Personal Brand Portfolio JavaScript
