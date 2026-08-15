@@ -1,374 +1,833 @@
-<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AHOORA — A modern personal portfolio showcasing frontend development, UI/UX skills, creative projects, and digital experiences.">
-    <meta name="keywords" content="AHOORA, Frontend Developer, UI/UX Enthusiast, Portfolio, Web Design, JavaScript, React, Web Developer">
-    <meta name="author" content="AHOORA">
-    <meta name="theme-color" content="#11161D">
+    <title>AHOORA — NASA Sci-Fi HUD Portfolio</title>
 
-    <!-- Open Graph / Social Media -->
-    <meta property="og:title" content="AHOORA | Frontend Developer & UI/UX Enthusiast">
-    <meta property="og:description" content="Turning ideas into meaningful digital experiences. Explore selected projects, skills, and expertise.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ahoora.dev">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=1200">
-
-    <title>AHOORA | Frontend Developer & UI/UX Enthusiast</title>
+    <!-- Font Awesome CDN (Fixes missing icon box issue) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Vazirmatn:wght@300;400;600;800&family=Space+Grotesk:wght@300;400;600&display=swap" rel="stylesheet">
 
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* ==========================================================================
+           1. NASA Sci-Fi HUD CSS Variables & Reset
+           ========================================================================== */
+        :root {
+            --bg-space: #030712;
+            --panel-hud: rgba(10, 15, 29, 0.85);
+            --panel-border: rgba(0, 240, 255, 0.25);
+            --accent-cyan: #00f0ff;
+            --accent-glow: rgba(0, 240, 255, 0.4);
+            --accent-red: #e03c31;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --font-en: 'Space Grotesk', sans-serif;
+            --font-hud: 'Orbitron', monospace;
+            --font-fa: 'Vazirmatn', sans-serif;
+        }
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-space);
+            color: var(--text-main);
+            font-family: var(--font-en);
+            overflow-x: hidden;
+            background-image: 
+                linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        html[dir="rtl"] body {
+            font-family: var(--font-fa);
+        }
+
+        /* HUD Sharp Rectangular Rule (No rounded corners) */
+        .hud-sharp, .btn, .nav-menu, .project-card, .skill-card, .stat-card, .modal-content, .tag, input, textarea {
+            border-radius: 0px !important;
+        }
+
+        /* Canvas Background */
+        #starfield-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Typography & Layout Utility */
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* ==========================================================================
+           2. Header & Navigation
+           ========================================================================== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: all 0.3s ease;
+            background: rgba(3, 7, 18, 0.6);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+        }
+
+        header.scrolled {
+            padding: 12px 0;
+            background: rgba(3, 7, 18, 0.95);
+            border-bottom: 1px solid var(--accent-cyan);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-hud);
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--accent-cyan);
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span { color: var(--accent-red); }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-link {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--accent-cyan);
+            text-shadow: 0 0 8px var(--accent-glow);
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            padding: 6px 14px;
+            cursor: pointer;
+            font-family: var(--font-hud);
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .lang-btn:hover {
+            background: var(--accent-cyan);
+            color: var(--bg-space);
+            box-shadow: 0 0 12px var(--accent-glow);
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--accent-cyan);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* ==========================================================================
+           3. Hero Section
+           ========================================================================== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+            position: relative;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hud-tag {
+            font-family: var(--font-hud);
+            font-size: 0.85rem;
+            color: var(--accent-cyan);
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            display: inline-block;
+            border: 1px solid var(--panel-border);
+            padding: 4px 10px;
+            background: rgba(0, 240, 255, 0.05);
+        }
+
+        .hero-title {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .typewriter-text {
+            color: var(--accent-cyan);
+            border-right: 2px solid var(--accent-cyan);
+            animation: blink 0.75s step-end infinite;
+        }
+
+        @keyframes blink { 50% { border-color: transparent; } }
+
+        .hero-desc {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 35px;
+            max-width: 600px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            font-family: var(--font-hud);
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: var(--accent-cyan);
+            color: var(--bg-space);
+            border: 1px solid var(--accent-cyan);
+            font-weight: 700;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 20px var(--accent-glow);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--accent-cyan);
+            border: 1px solid var(--panel-border);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent-cyan);
+            background: rgba(0, 240, 255, 0.1);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .hero-avatar-box {
+            position: relative;
+            border: 1px solid var(--panel-border);
+            padding: 15px;
+            background: var(--panel-hud);
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.1);
+        }
+
+        .hero-avatar-box img {
+            width: 100%;
+            display: block;
+            filter: grayscale(20%) contrast(110%);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+        }
+
+        /* HUD Scanner Line Overlay */
+        .hero-avatar-box::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: var(--accent-cyan);
+            box-shadow: 0 0 10px var(--accent-cyan);
+            animation: scan 4s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { top: 0%; }
+            100% { top: 100%; }
+        }
+
+        /* ==========================================================================
+           4. Section Titles & General Components
+           ========================================================================== */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-family: var(--font-hud);
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--panel-border), transparent);
+        }
+
+        /* ==========================================================================
+           5. About & Telemetry Stats
+           ========================================================================== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .stat-card {
+            background: var(--panel-hud);
+            border: 1px solid var(--panel-border);
+            padding: 30px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .stat-card:hover {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.15);
+        }
+
+        .stat-number {
+            font-size: 2.8rem;
+            font-family: var(--font-hud);
+            color: var(--accent-cyan);
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ==========================================================================
+           6. Skills Section
+           ========================================================================== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-card {
+            background: var(--panel-hud);
+            border: 1px solid var(--panel-border);
+            padding: 25px;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-family: var(--font-hud);
+            font-size: 0.9rem;
+        }
+
+        .skill-progress-bg {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 240, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-progress-fill {
+            height: 100%;
+            width: 0%;
+            background: var(--accent-cyan);
+            box-shadow: 0 0 10px var(--accent-cyan);
+            transition: width 1.5s cubic-bezier(0.1, 1, 0.1, 1);
+        }
+
+        /* ==========================================================================
+           7. Projects / Missions Grid
+           ========================================================================== */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--panel-hud);
+            border: 1px solid var(--panel-border);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .project-img-wrapper {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+            border-bottom: 1px solid var(--panel-border);
+        }
+
+        .project-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .project-card:hover .project-img-wrapper img {
+            transform: scale(1.08);
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-number {
+            font-family: var(--font-hud);
+            font-size: 0.75rem;
+            color: var(--accent-red);
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            font-family: var(--font-hud);
+        }
+
+        .project-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            padding: 3px 8px;
+            background: rgba(0, 240, 255, 0.05);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            color: var(--accent-cyan);
+            font-family: var(--font-hud);
+        }
+
+        /* ==========================================================================
+           8. Contact Form
+           ========================================================================== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 40px;
+        }
+
+        .contact-info-box {
+            background: var(--panel-hud);
+            border: 1px solid var(--panel-border);
+            padding: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .contact-icon {
+            width: 45px;
+            height: 45px;
+            border: 1px solid var(--accent-cyan);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-cyan);
+            font-size: 1.2rem;
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--panel-border);
+            color: var(--text-main);
+            font-family: inherit;
+            transition: 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-feedback {
+            margin-top: 15px;
+            font-family: var(--font-hud);
+            font-size: 0.85rem;
+            color: var(--accent-cyan);
+            display: none;
+        }
+
+        .form-feedback.active { display: block; }
+
+        /* ==========================================================================
+           9. Modal System
+           ========================================================================== */
+        .modal {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(3, 7, 18, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.3s;
+        }
+
+        .modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background: var(--panel-hud);
+            border: 1px solid var(--accent-cyan);
+            width: 100%;
+            max-width: 700px;
+            padding: 35px;
+            position: relative;
+            box-shadow: 0 0 35px rgba(0, 240, 255, 0.2);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--accent-cyan);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        html[dir="rtl"] .modal-close {
+            right: auto;
+            left: 20px;
+        }
+
+        /* ==========================================================================
+           10. Scroll Reveal Animations & Responsive
+           ========================================================================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 992px) {
+            .hero-grid, .contact-grid { grid-template-columns: 1fr; }
+            .hero-title { font-size: 2.5rem; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: var(--bg-space);
+                flex-direction: column;
+                justify-content: center;
+                transition: 0.4s;
+                border-top: 1px solid var(--panel-border);
+            }
+            html[dir="rtl"] .nav-menu { left: auto; right: -100%; }
+            .nav-menu.active { left: 0; }
+            html[dir="rtl"] .nav-menu.active { right: 0; }
+            .nav-toggle { display: block; }
+        }
+    </style>
 </head>
 <body>
-    <!-- Background Decorative Elements -->
-    <div class="bg-glow bg-glow-1"></div>
-    <div class="bg-glow bg-glow-2"></div>
-    <div class="bg-grid-pattern"></div>
+
+    <!-- Starfield Interactive Canvas -->
+    <canvas id="starfield-canvas"></canvas>
 
     <!-- Header / Navigation -->
-    <header class="header" id="header">
-        <div class="container header-container">
-            <a href="#home" class="logo" aria-label="AHOORA Home">
-                AHOORA<span class="logo-dot">.</span>
+    <header id="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-satellite"></i> AHOORA<span>.HUD</span>
             </a>
 
-            <nav class="nav" id="nav-menu" aria-label="Main Navigation">
-                <ul class="nav-list">
-                    <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
-                    <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
-                    <li class="nav-item"><a href="#portfolio" class="nav-link">Portfolio</a></li>
-                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
-                </ul>
-            </nav>
-
-            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
-                <span class="hamburger-bar"></span>
-                <span class="hamburger-bar"></span>
-                <span class="hamburger-bar"></span>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Navigation">
+                <i class="fa-solid fa-bars-staggered"></i>
             </button>
+
+            <nav class="nav-menu" id="nav-menu">
+                <a href="#hero" class="nav-link active" data-en="SYS_MAIN" data-fa="صفحه اصلی">SYS_MAIN</a>
+                <a href="#about" class="nav-link" data-en="TELEMETRY" data-fa="درباره من">TELEMETRY</a>
+                <a href="#skills" class="nav-link" data-en="MODULES" data-fa="مهارت‌ها">MODULES</a>
+                <a href="#projects" class="nav-link" data-en="MISSIONS" data-fa="پروژه‌ها">MISSIONS</a>
+                <a href="#contact" class="nav-link" data-en="TRANSMIT" data-fa="تماس">TRANSMIT</a>
+                <button class="lang-btn" id="lang-toggle">FA</button>
+            </nav>
         </div>
     </header>
 
-    <main id="main-content">
+    <main>
         <!-- Hero Section -->
-        <section class="hero section" id="home">
-            <div class="container hero-container">
-                <div class="hero-content reveal-left">
-                    <span class="hero-greeting">Welcome to my world</span>
-                    <h1 class="hero-title">AHOORA</h1>
-                    <div class="hero-typewriter-container">
-                        <span class="hero-subtitle">I am a </span>
+        <section id="hero" class="hero">
+            <div class="container hero-grid">
+                <div class="hero-text-content">
+                    <span class="hud-tag" data-en="[ ORBITAL DATA LOG v4.0 ]" data-fa="[ داده‌های مدار v4.0 ]">[ ORBITAL DATA LOG v4.0 ]</span>
+                    <h1 class="hero-title">
+                        <span data-en="SYSTEM OPERATOR:" data-fa="توسعه‌دهنده سیستم:">SYSTEM OPERATOR:</span><br>
                         <span class="typewriter-text" id="typewriter"></span>
-                        <span class="typewriter-cursor">|</span>
-                    </div>
-                    <p class="hero-tagline">"Turning ideas into meaningful digital experiences."</p>
-                    <p class="hero-description">
-                        Specializing in crafting high-performance, elegant web applications with seamless user interfaces and clean architecture.
+                    </h1>
+                    <p class="hero-desc" data-en="Engineering high-performance, dark-mode digital platforms, web interfaces, and modern interactive applications." data-fa="طراحی و توسعه پلتفرم‌های دیجیتال مدرن، رابط‌های کاربری پیشرفته و برنامه‌های تعاملی تحت وب با کارایی بالا.">
+                        Engineering high-performance, dark-mode digital platforms, web interfaces, and modern interactive applications.
                     </p>
-                    <div class="hero-cta">
-                        <a href="#about" class="btn btn-primary">
-                            <span>Discover More About Me</span>
-                            <i class="fa-solid fa-arrow-right"></i>
+                    <div class="hero-btns">
+                        <a href="#projects" class="btn btn-primary">
+                            <i class="fa-solid fa-rocket"></i> <span data-en="EXPLORE MISSIONS" data-fa="مشاهده پروژه‌ها">EXPLORE MISSIONS</span>
                         </a>
-                        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                        <a href="#contact" class="btn btn-outline">
+                            <i class="fa-solid fa-terminal"></i> <span data-en="INITIATE CONTACT" data-fa="ارتباط بگیرید">INITIATE CONTACT</span>
+                        </a>
                     </div>
                 </div>
 
-                <div class="hero-visual reveal-right">
-                    <div class="profile-frame-wrapper">
-                        <div class="profile-geometric-ring"></div>
-                        <div class="profile-geometric-ring-2"></div>
-                        <div class="profile-image-container">
-                            <!-- Placeholder Profile Image - Replace with your own profile image URL -->
-                            <img src="IMG_20260731_154206_compressed.jpg" class="profile-img" alt="Profile Picture">
-                            
-                            
-                            
-                        </div>
-                    </div>
+                <div class="hero-avatar-box">
+                    <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=800" alt="Ahoora Profile">
                 </div>
             </div>
         </section>
 
-        <!-- About Section -->
-        <section class="about section" id="about">
+        <!-- About / Telemetry Stats -->
+        <section id="about">
             <div class="container">
-                <div class="section-header reveal-up">
-                    <span class="section-subtitle">Biography</span>
-                    <h2 class="section-title">About Me</h2>
-                    <div class="section-title-line"></div>
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <i class="fa-solid fa-microchip"></i>
+                        <span data-en="SYSTEM_TELEMETRY" data-fa="آمار و شاخص‌ها">SYSTEM_TELEMETRY</span>
+                    </h2>
                 </div>
 
-                <div class="about-grid">
-                    <div class="about-text reveal-left">
-                        <h3 class="about-heading">Crafting Exceptional Interfaces with Detail & Precision</h3>
-                        <p class="about-paragraph">
-                            I am a dedicated Frontend Developer passionate about bridging the gap between design and technological implementation. With a strong foundation in modern web technologies including HTML5, CSS3, JavaScript, and React, I turn modern concepts into clean, functional code.
-                        </p>
-                        <p class="about-paragraph">
-                            Driven by detail, reliability, and an unwavering commitment to quality, my approach prioritizes intuitive user experience, responsive visual structures, and sustainable architecture. I thrive on solving complex frontend challenges and continuously expanding my technical mastery.
-                        </p>
-                        <div class="about-highlights">
-                            <div class="highlight-item">
-                                <i class="fa-solid fa-check highlight-icon"></i>
-                                <span>Clean & Maintainable Code</span>
-                            </div>
-                            <div class="highlight-item">
-                                <i class="fa-solid fa-check highlight-icon"></i>
-                                <span>Pixel-Perfect Visual Execution</span>
-                            </div>
-                            <div class="highlight-item">
-                                <i class="fa-solid fa-check highlight-icon"></i>
-                                <span>User-Centric UI/UX Design</span>
-                            </div>
-                            <div class="highlight-item">
-                                <i class="fa-solid fa-check highlight-icon"></i>
-                                <span>Responsive & Accessible Layouts</span>
-                            </div>
-                        </div>
+                <div class="stats-grid">
+                    <div class="stat-card reveal">
+                        <div class="stat-number" data-target="15">0</div>
+                        <div class="stat-label" data-en="YEARS AGE" data-fa="سن">YEARS AGE</div>
                     </div>
-
-                    <!-- Statistics Cards (Editable placeholder values) -->
-                    <div class="about-stats reveal-right">
-                        <div class="stat-card">
-                            <div class="stat-number" data-target="5">5+</div>
-                            <div class="stat-label">Years of Experience</div>
-                            <div class="stat-bar"></div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number" data-target="20">20+</div>
-                            <div class="stat-label">Projects Completed</div>
-                            <div class="stat-bar"></div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number">100%</div>
-                            <div class="stat-label">Commitment to Quality</div>
-                            <div class="stat-bar"></div>
-                        </div>
+                    <div class="stat-card reveal">
+                        <div class="stat-number" data-target="20">0</div>
+                        <div class="stat-label" data-en="DEPLOYED PROJECTS" data-fa="پروژه‌های کامل شده">DEPLOYED PROJECTS</div>
+                    </div>
+                    <div class="stat-card reveal">
+                        <div class="stat-number" data-target="99">0</div>
+                        <div class="stat-label" data-en="SYSTEM EFFICIENCY %" data-fa="بهینه‌سازی سیستم %">SYSTEM EFFICIENCY %</div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Skills Section -->
-        <section class="skills section" id="skills">
+        <section id="skills">
             <div class="container">
-                <div class="section-header reveal-up">
-                    <span class="section-subtitle">Capabilities</span>
-                    <h2 class="section-title">Skills & Expertise</h2>
-                    <div class="section-title-line"></div>
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <i class="fa-solid fa-layer-group"></i>
+                        <span data-en="CORE_MODULES" data-fa="ماژول‌های مهارت">CORE_MODULES</span>
+                    </h2>
                 </div>
 
-                <div class="skills-wrapper">
-                    <!-- Technical Skills -->
-                    <div class="skills-column reveal-left">
-                        <h3 class="skills-category-title">
-                            <i class="fa-solid fa-code title-icon"></i> Technical Skills
-                        </h3>
-                        <div class="skills-list">
-                            <!-- Skill 1 -->
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name">HTML5</span>
-                                    <span class="skill-percentage">95%</span>
-                                </div>
-                                <div class="skill-progress-bg">
-                                    <div class="skill-progress-fill" style="width: 0%;" data-percentage="95%"></div>
-                                </div>
-                            </div>
-                            <!-- Skill 2 -->
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name">CSS3 / SCSS</span>
-                                    <span class="skill-percentage">90%</span>
-                                </div>
-                                <div class="skill-progress-bg">
-                                    <div class="skill-progress-fill" style="width: 0%;" data-percentage="90%"></div>
-                                </div>
-                            </div>
-                            <!-- Skill 3 -->
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name">JavaScript (ES6+)</span>
-                                    <span class="skill-percentage">85%</span>
-                                </div>
-                                <div class="skill-progress-bg">
-                                    <div class="skill-progress-fill" style="width: 0%;" data-percentage="85%"></div>
-                                </div>
-                            </div>
-                            <!-- Skill 4 -->
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name">React</span>
-                                    <span class="skill-percentage">80%</span>
-                                </div>
-                                <div class="skill-progress-bg">
-                                    <div class="skill-progress-fill" style="width: 0%;" data-percentage="80%"></div>
-                                </div>
-                            </div>
-                            <!-- Skill 5 -->
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name">Responsive Design</span>
-                                    <span class="skill-percentage">95%</span>
-                                </div>
-                                <div class="skill-progress-bg">
-                                    <div class="skill-progress-fill" style="width: 0%;" data-percentage="95%"></div>
-                                </div>
-                            </div>
-                            <!-- Skill 6 -->
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name">Git & GitHub</span>
-                                    <span class="skill-percentage">80%</span>
-                                </div>
-                                <div class="skill-progress-bg">
-                                    <div class="skill-progress-fill" style="width: 0%;" data-percentage="80%"></div>
-                                </div>
-                            </div>
+                <div class="skills-grid">
+                    <div class="skill-card reveal">
+                        <div class="skill-info">
+                            <span>HTML5 / CSS3 / GLASSMORPHISM</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-progress-bg">
+                            <div class="skill-progress-fill" data-percentage="95%"></div>
                         </div>
                     </div>
 
-                    <!-- Soft Skills -->
-                    <div class="skills-column reveal-right">
-                        <h3 class="skills-category-title">
-                            <i class="fa-solid fa-user-gear title-icon"></i> Soft Skills
-                        </h3>
-                        <div class="soft-skills-grid">
-                            <div class="soft-skill-card">
-                                <div class="soft-skill-icon"><i class="fa-solid fa-comments"></i></div>
-                                <h4>Effective Communication</h4>
-                                <p>Articulating ideas clearly and collaborating smoothly across multidisciplinary teams.</p>
-                            </div>
-                            <div class="soft-skill-card">
-                                <div class="soft-skill-icon"><i class="fa-solid fa-lightbulb"></i></div>
-                                <h4>Problem Solving</h4>
-                                <p>Analyzing complex logic issues and devising streamlined, efficient solutions.</p>
-                            </div>
-                            <div class="soft-skill-card">
-                                <div class="soft-skill-icon"><i class="fa-solid fa-clock"></i></div>
-                                <h4>Time Management</h4>
-                                <p>Punctual delivery with meticulous planning and effective task prioritization.</p>
-                            </div>
-                            <div class="soft-skill-card">
-                                <div class="soft-skill-icon"><i class="fa-solid fa-users"></i></div>
-                                <h4>Teamwork</h4>
-                                <p>Fostering cooperative environments and contributing positively to group objectives.</p>
-                            </div>
-                            <div class="soft-skill-card">
-                                <div class="soft-skill-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
-                                <h4>Attention to Detail</h4>
-                                <p>Ensuring pixel perfection, clean code, and cohesive aesthetic execution.</p>
-                            </div>
-                            <div class="soft-skill-card">
-                                <div class="soft-skill-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-                                <h4>Continuous Learning</h4>
-                                <p>Constantly staying ahead with evolving frontend technologies and best practices.</p>
-                            </div>
+                    <div class="skill-card reveal">
+                        <div class="skill-info">
+                            <span>JAVASCRIPT (ES6+)</span>
+                            <span>88%</span>
+                        </div>
+                        <div class="skill-progress-bg">
+                            <div class="skill-progress-fill" data-percentage="88%"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card reveal">
+                        <div class="skill-info">
+                            <span>PYTHON & SOFTWARE ARCHITECTURE</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-progress-bg">
+                            <div class="skill-progress-fill" data-percentage="80%"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card reveal">
+                        <div class="skill-info">
+                            <span>CYBERSECURITY & PEN-TESTING</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-progress-bg">
+                            <div class="skill-progress-fill" data-percentage="75%"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Portfolio Section -->
-        <section class="portfolio section" id="portfolio">
+        <!-- Projects / Missions Section -->
+        <section id="projects">
             <div class="container">
-                <div class="section-header reveal-up">
-                    <span class="section-subtitle">Portfolio</span>
-                    <h2 class="section-title">Selected Work</h2>
-                    <div class="section-title-line"></div>
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <i class="fa-solid fa-shuttle-space"></i>
+                        <span data-en="ACTIVE_MISSIONS" data-fa="ماموریت‌ها و پروژه‌ها">ACTIVE_MISSIONS</span>
+                    </h2>
                 </div>
 
-                <div class="portfolio-grid" id="portfolio-grid">
-                    <!-- Project Cards rendered via JS or statically fallback -->
-                    <!-- Card 1 -->
-                    <div class="project-card reveal-up" data-project-id="1">
-                        <div class="project-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" alt="Modern Business Website" class="project-img">
-                            <div class="project-overlay">
-                                <button class="btn btn-sm btn-primary view-details-btn" data-project-id="1">View Details</button>
-                            </div>
+                <div class="projects-grid">
+                    <!-- Project 1 -->
+                    <div class="project-card reveal">
+                        <div class="project-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" alt="Mission 01">
                         </div>
                         <div class="project-content">
-                            <span class="project-number">01</span>
-                            <h3 class="project-title">Modern Business Website</h3>
-                            <p class="project-description">A responsive business website focused on clean design and strong user experience.</p>
-                            <div class="project-tags">
-                                <span class="tag">HTML</span>
-                                <span class="tag">CSS</span>
-                                <span class="tag">JavaScript</span>
+                            <span class="project-number">[ MISSION-01 ]</span>
+                            <h3 class="project-title" data-en="Enterprise Web App" data-fa="وب‌سایت مدرن شرکتی">Enterprise Web App</h3>
+                            <p class="project-desc" data-en="High-converting dark sci-fi business landing page." data-fa="لندینگ پیج سازمانی با طراحی تاریک و نرخ تبدیل بالا.">High-converting dark sci-fi business landing page.</p>
+                            <div class="tags-container">
+                                <span class="tag">HTML5</span>
+                                <span class="tag">CSS GRID</span>
+                                <span class="tag">JS</span>
                             </div>
+                            <button class="btn btn-outline view-details-btn" data-project-id="1">
+                                <i class="fa-solid fa-eye"></i> <span data-en="VIEW LOGS" data-fa="جزئیات">VIEW LOGS</span>
+                            </button>
                         </div>
                     </div>
 
-                    <!-- Card 2 -->
-                    <div class="project-card reveal-up" data-project-id="2">
-                        <div class="project-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=800" alt="Creative Portfolio" class="project-img">
-                            <div class="project-overlay">
-                                <button class="btn btn-sm btn-primary view-details-btn" data-project-id="2">View Details</button>
-                            </div>
+                    <!-- Project 2 -->
+                    <div class="project-card reveal">
+                        <div class="project-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="Mission 02">
                         </div>
                         <div class="project-content">
-                            <span class="project-number">02</span>
-                            <h3 class="project-title">Creative Portfolio</h3>
-                            <p class="project-description">A personal portfolio website featuring modern animations and responsive layouts.</p>
-                            <div class="project-tags">
-                                <span class="tag">HTML</span>
-                                <span class="tag">CSS</span>
-                                <span class="tag">JavaScript</span>
+                            <span class="project-number">[ MISSION-02 ]</span>
+                            <h3 class="project-title" data-en="Analytics HUD Panel" data-fa="پنل داشبورد تحلیلی">Analytics HUD Panel</h3>
+                            <p class="project-desc" data-en="Data visualization & real-time monitoring dashboard." data-fa="داشبورد مدیریت و نمایش داده‌های آنلاین در لحظه.">Data visualization & real-time monitoring dashboard.</p>
+                            <div class="tags-container">
+                                <span class="tag">JAVASCRIPT</span>
+                                <span class="tag">CANVAS</span>
+                                <span class="tag">HUD UI</span>
                             </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 3 -->
-                    <div class="project-card reveal-up" data-project-id="3">
-                        <div class="project-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="Dashboard UI" class="project-img">
-                            <div class="project-overlay">
-                                <button class="btn btn-sm btn-primary view-details-btn" data-project-id="3">View Details</button>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <span class="project-number">03</span>
-                            <h3 class="project-title">Dashboard UI</h3>
-                            <p class="project-description">A modern dashboard interface designed for usability and visual clarity.</p>
-                            <div class="project-tags">
-                                <span class="tag">HTML</span>
-                                <span class="tag">CSS</span>
-                                <span class="tag">JavaScript</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 4 -->
-                    <div class="project-card reveal-up" data-project-id="4">
-                        <div class="project-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&q=80&w=800" alt="E-Commerce Concept" class="project-img">
-                            <div class="project-overlay">
-                                <button class="btn btn-sm btn-primary view-details-btn" data-project-id="4">View Details</button>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <span class="project-number">04</span>
-                            <h3 class="project-title">E-Commerce Concept</h3>
-                            <p class="project-description">A responsive e-commerce interface with a premium shopping experience.</p>
-                            <div class="project-tags">
-                                <span class="tag">HTML</span>
-                                <span class="tag">CSS</span>
-                                <span class="tag">JavaScript</span>
-                            </div>
+                            <button class="btn btn-outline view-details-btn" data-project-id="2">
+                                <i class="fa-solid fa-eye"></i> <span data-en="VIEW LOGS" data-fa="جزئیات">VIEW LOGS</span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -376,1046 +835,269 @@
         </section>
 
         <!-- Contact Section -->
-        <section class="contact section" id="contact">
+        <section id="contact">
             <div class="container">
-                <div class="section-header reveal-up">
-                    <span class="section-subtitle">Get In Touch</span>
-                    <h2 class="section-title">Let's Work Together</h2>
-                    <div class="section-title-line"></div>
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <i class="fa-solid fa-headset"></i>
+                        <span data-en="TRANSMIT_SIGNAL" data-fa="ارسال پیام">TRANSMIT_SIGNAL</span>
+                    </h2>
                 </div>
 
-                <div class="contact-wrapper">
-                    <!-- Contact Info -->
-                    <div class="contact-info reveal-left">
-                        <h3 class="contact-heading">Contact Information</h3>
-                        <p class="contact-lead">
-                            Have a project in mind, a question, or simply want to connect? Feel free to reach out directly through any of the platforms below or send a message using the form.
-                        </p>
-
-                        <div class="info-list">
-                            <a href="mailto:contact@ahoora.dev" class="info-item">
-                                <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
-                                <div class="info-details">
-                                    <span class="info-label">Email</span>
-                                    <span class="info-value">contact@ahoora.dev</span>
-                                </div>
-                            </a>
-
-                            <!-- Social Links -->
-                            <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" class="info-item">
-                                <div class="info-icon"><i class="fa-brands fa-linkedin-in"></i></div>
-                                <div class="info-details">
-                                    <span class="info-label">LinkedIn</span>
-                                    <span class="info-value">linkedin.com/in/ahoora</span>
-                                </div>
-                            </a>
-
-                            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" class="info-item">
-                                <div class="info-icon"><i class="fa-brands fa-github"></i></div>
-                                <div class="info-details">
-                                    <span class="info-label">GitHub</span>
-                                    <span class="info-value">github.com/ahoora</span>
-                                </div>
-                            </a>
-
-                            <a href="https://t.me/yourusername" target="_blank" rel="noopener noreferrer" class="info-item">
-                                <div class="info-icon"><i class="fa-brands fa-telegram"></i></div>
-                                <div class="info-details">
-                                    <span class="info-label">Telegram</span>
-                                    <span class="info-value">t.me/ahoora</span>
-                                </div>
-                            </a>
-
-                            <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" class="info-item">
-                                <div class="info-icon"><i class="fa-brands fa-whatsapp"></i></div>
-                                <div class="info-details">
-                                    <span class="info-label">WhatsApp</span>
-                                    <span class="info-value">+1 (234) 567-890</span>
-                                </div>
-                            </a>
+                <div class="contact-grid">
+                    <div class="contact-info-box reveal">
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+                            <div>
+                                <h4 data-en="LOCATION" data-fa="موقعیت">LOCATION</h4>
+                                <p style="color:var(--text-muted)">Isfahan / Najafabad, Iran</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+                            <div>
+                                <h4 data-en="EMAIL CHANNEL" data-fa="ایمیل">EMAIL CHANNEL</h4>
+                                <p style="color:var(--text-muted)">contact@ahoora.dev</p>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Contact Form -->
-                    <div class="contact-form-container reveal-right">
-                        <form id="contact-form" class="contact-form" novalidate>
-                            <div class="form-group">
-                                <label for="form-name" class="form-label">Full Name *</label>
-                                <input type="text" id="form-name" class="form-input" placeholder="John Doe" required>
-                                <span class="form-error" id="name-error">Please enter your name.</span>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="form-email" class="form-label">Email Address *</label>
-                                <input type="email" id="form-email" class="form-input" placeholder="john@example.com" required>
-                                <span class="form-error" id="email-error">Please enter a valid email address.</span>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="form-subject" class="form-label">Subject *</label>
-                                <input type="text" id="form-subject" class="form-input" placeholder="Project Inquiry" required>
-                                <span class="form-error" id="subject-error">Please enter a subject.</span>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="form-message" class="form-label">Message *</label>
-                                <textarea id="form-message" class="form-input form-textarea" rows="5" placeholder="Tell me about your project or vision..." required></textarea>
-                                <span class="form-error" id="message-error">Please enter your message.</span>
-                            </div>
-
-                            <button type="submit" class="btn btn-primary form-submit-btn" id="form-submit">
-                                <span>Send Message</span>
-                                <i class="fa-solid fa-paper-plane"></i>
-                            </button>
-
-                            <div class="form-feedback-message" id="form-feedback" aria-live="polite"></div>
-                        </form>
-                    </div>
+                    <form id="contact-form" class="reveal">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="YOUR NAME" required data-en-placeholder="YOUR NAME" data-fa-placeholder="نام شما">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="YOUR EMAIL" required data-en-placeholder="YOUR EMAIL" data-fa-placeholder="ایمیل شما">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="TRANSMISSION MESSAGE..." required data-en-placeholder="TRANSMISSION MESSAGE..." data-fa-placeholder="متن پیام شما..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            <i class="fa-solid fa-paper-plane"></i> <span data-en="SEND TRANSMISSION" data-fa="ارسال سیگنال">SEND TRANSMISSION</span>
+                        </button>
+                        <div class="form-feedback" id="form-feedback">TRANSMISSION RECEIVED SUCCESSFULLY.</div>
+                    </form>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container footer-container">
-            <div class="footer-brand">
-                <a href="#home" class="footer-logo">AHOORA<span class="logo-dot">.</span></a>
-                <div class="footer-line"></div>
-                <p class="footer-tagline">Designed with passion & code.</p>
-            </div>
-
-            <div class="footer-nav">
-                <ul class="footer-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-socials">
-                <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-                <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                <a href="https://t.me/yourusername" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
-                <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-            </div>
-
-            <div class="footer-copyright">
-                <p>&copy; 2026 AHOORA. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Portfolio Project Modal -->
-    <div class="modal-overlay" id="portfolio-modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
-        <div class="modal-container" role="document">
-            <button class="modal-close-btn" id="modal-close" aria-label="Close project modal">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <div class="modal-body" id="modal-body">
-                <!-- Content dynamically injected via JavaScript -->
-            </div>
+    <!-- Modal Element -->
+    <div class="modal" id="portfolio-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close"><i class="fa-solid fa-xmark"></i></button>
+            <div id="modal-body"></div>
         </div>
     </div>
 
-    <!-- Back to Top Button -->
-    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
-        <i class="fa-solid fa-chevron-up"></i>
-    </button>
-
-    <!-- External Custom JavaScript -->
-    <script src="script.js"></script>
-</body>
-</html>
-
-<style>/* ==========================================================================
-   AHOORA — Personal Brand Portfolio Stylesheet
-   Color Palette: Deep Navy-Gray, Matte Gold, Warm White, Charcoal
-   ========================================================================== */
-
-/* --------------------------------------------------------------------------
-   1. CSS Custom Properties (Variables)
-   -------------------------------------------------------------------------- */
-:root {
-    /* Color Palette */
-    --bg-primary: #11161D;
-    --bg-secondary: #181E26;
-    --bg-tertiary: #1F2732;
-    --bg-glass: rgba(24, 30, 38, 0.75);
-    
-    --gold: #C8A96B;
-    --gold-light: #D8BD83;
-    --gold-dark: #9E8144;
-    --gold-glow: rgba(200, 169, 107, 0.25);
-    --gold-border: rgba(200, 169, 107, 0.25);
-
-    --text-primary: #F5F3EE;
-    --text-secondary: #A8ADB5;
-    --text-muted: #6C727F;
-
-    --border-subtle: rgba(255, 255, 255, 0.08);
-    --border-gold-glow: 0 0 20px rgba(200, 169, 107, 0.2);
-
-    /* Typography */
-    --font-heading: 'Playfair Display', Georgia, serif;
-    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-
-    /* Transitions & Animations */
-    --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    --transition-slow: 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-
-    /* Layout & Dimensions */
-    --header-height: 80px;
-    --container-max-width: 1200px;
-    --radius-sm: 6px;
-    --radius-md: 12px;
-    --radius-lg: 20px;
-    --radius-full: 9999px;
-}
-
-/* --------------------------------------------------------------------------
-   2. Reset & Universal Styles
-   -------------------------------------------------------------------------- */
-*, *::before, *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    scroll-behavior: smooth;
-    font-size: 16px;
-    text-size-adjust: 100%;
-}
-
-body {
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
-    font-family: var(--font-body);
-    font-weight: 400;
-    line-height: 1.6;
-    overflow-x: hidden;
-    position: relative;
-    min-height: 100vh;
-    -webkit-font-smoothing: antialiased;
-}
-
-/* Typography Selection & Scrollbar */
-::selection {
-    background-color: var(--gold);
-    color: var(--bg-primary);
-}
-
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: var(--bg-primary);
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--bg-tertiary);
-    border-radius: var(--radius-full);
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--gold-dark);
-}
-
-ul {
-    list-style: none;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-    transition: color var(--transition-fast);
-}
-
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-
-button, input, textarea {
-    font-family: inherit;
-    font-size: inherit;
-    color: inherit;
-    border: none;
-    outline: none;
-    background: none;
-}
-
-button {
-    cursor: pointer;
-}
-
-a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
-    outline: 2px solid var(--gold);
-    outline-offset: 3px;
-}
-
-/* --------------------------------------------------------------------------
-   3. Decorative Backgrounds & Ambient Effects
-   -------------------------------------------------------------------------- */
-.bg-glow {
-    position: fixed;
-    border-radius: 50%;
-    filter: blur(140px);
-    z-index: -2;
-    pointer-events: none;
-    opacity: 0.15;
-}
-
-.bg-glow-1 {
-    top: -10%;
-    left: -10%;
-    width: 50vw;
-    height: 50vw;
-    background: radial-gradient(circle, var(--gold) 0%, transparent 70%);
-}
-
-.bg-glow-2 {
-    bottom: -10%;
-    right: -10%;
-    width: 60vw;
-    height: 60vw;
-    background: radial-gradient(circle, #2A3647 0%, transparent 70%);
-}
-
-.bg-grid-pattern {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background-image: 
-        radial-gradient(rgba(200, 169, 107, 0.05) 1px, transparent 1px);
-    background-size: 32px 32px;
-    pointer-events: none;
-}
-
-/* --------------------------------------------------------------------------
-   4. Layout & Reusable Utilities
-   -------------------------------------------------------------------------- */
-.container {
-    width: 100%;
-    max-width: var(--container-max-width);
-    margin: 0 auto;
-    padding: 0 1.5rem;
-}
-
-.section {
-    padding: 7rem 0;
-    position: relative;
-}
-
-.section-header {
-    text-align: center;
-    margin-bottom: 4rem;
-}
-
-.section-subtitle {
-    font-size: 0.875rem;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: var(--gold);
-    font-weight: 600;
-    display: block;
-    margin-bottom: 0.5rem;
-}
-
-.section-title {
-    font-family: var(--font-heading);
-    font-size: 2.75rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    position: relative;
-    display: inline-block;
-}
-
-.section-title-line {
-    width: 60px;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    margin: 1rem auto 0 auto;
-}
-
-/* Buttons */
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    padding: 0.9rem 2rem;
-    border-radius: var(--radius-full);
-    font-size: 0.95rem;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    transition: all var(--transition-smooth);
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-primary {
-    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
-    color: var(--bg-primary);
-    font-weight: 600;
-    box-shadow: 0 4px 15px rgba(200, 169, 107, 0.2);
-}
-
-.btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(200, 169, 107, 0.4);
-    color: var(--bg-primary);
-}
-
-.btn-secondary {
-    background: transparent;
-    color: var(--text-primary);
-    border: 1px solid var(--gold-border);
-}
-
-.btn-secondary:hover {
-    background: rgba(200, 169, 107, 0.1);
-    border-color: var(--gold);
-    transform: translateY(-3px);
-    color: var(--gold-light);
-}
-
-/* --------------------------------------------------------------------------
-   5. Header & Navigation
-   -------------------------------------------------------------------------- */
-.header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: var(--header-height);
-    z-index: 1000;
-    transition: all var(--transition-smooth);
-    display: flex;
-    align-items: center;
-}
-
-.header-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.header.scrolled {
-    height: 70px;
-    background: var(--bg-glass);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border-subtle);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-}
-
-.logo {
-    font-family: var(--font-heading);
-    font-size: 1.75rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    color: var(--gold-light);
-    display: flex;
-    align-items: center;
-}
-
-.nav-list {
-    display: flex;
-    align-items: center;
-    gap: 2.5rem;
-}
-
-.nav-link {
-    font-size: 0.925rem;
-    font-weight: 500;
-    color: var(--text-secondary);
-    position: relative;
-    padding: 0.25rem 0;
-}
-
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0%;
-    height: 2px;
-    background-color: var(--gold);
-    transition: width var(--transition-fast);
-}
-
-.nav-link:hover, .nav-link.active {
-    color: var(--gold-light);
-}
-
-.nav-link:hover::after, .nav-link.active::after {
-    width: 100%;
-}
-
-/* --------------------------------------------------------------------------
-   6. Hero Section
-   -------------------------------------------------------------------------- */
-.hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding-top: calc(var(--header-height) + 2rem);
-    position: relative;
-}
-
-.hero-container {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 3rem;
-    align-items: center;
-}
-
-.hero-title {
-    font-family: var(--font-heading);
-    font-size: 4.5rem;
-    font-weight: 700;
-    line-height: 1.1;
-    margin-bottom: 1rem;
-    background: linear-gradient(180deg, var(--text-primary) 0%, var(--text-secondary) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.profile-image-container {
-    width: 320px;
-    height: 320px;
-    border-radius: 50%;
-    padding: 8px;
-    background: linear-gradient(135deg, var(--gold) 0%, rgba(200, 169, 107, 0.1) 100%);
-    box-shadow: 0 0 50px rgba(200, 169, 107, 0.2);
-    position: relative;
-    z-index: 2;
-    animation: floatAnimation 6s ease-in-out infinite;
-}
-
-.profile-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 3px solid var(--bg-primary);
-}
-
-@keyframes floatAnimation {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-12px); }
-}
-
-/* --------------------------------------------------------------------------
-   7. Portfolio & Card Grid
-   -------------------------------------------------------------------------- */
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2.5rem;
-}
-
-.project-card {
-    background-color: var(--bg-secondary);
-    border-radius: var(--radius-md);
-    border: 1px solid var(--border-subtle);
-    overflow: hidden;
-    transition: all var(--transition-smooth);
-}
-
-.project-card:hover {
-    border-color: var(--gold-border);
-    transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-}
-
-/* --------------------------------------------------------------------------
-   8. Responsive Media Queries
-   -------------------------------------------------------------------------- */
-@media (max-width: 992px) {
-    .hero-container {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-    .portfolio-grid {
-        grid-template-columns: 1fr;
-    }
-}
-/* Scroll Cards Styling */
-.pack {
-    width: 500px;
-    height: 300px;
-    border: 2px solid #ffffff;
-    position: fixed;
-    transition: 2s;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 50px;
-    background-color: #121212;
-    color: #fff;
-    z-index: 1000;
-}
-
-.top {
-    top: -1000px;
-}
-
-.bottom {
-    top: 1000px;
-}
-
-.show {
-    top: 50%;
-    transition: 2s !important;
-}
-
-</style>
-<!-- Scroll Cards Elements -->
-<div class="pack show">1</div>
-<div class="pack bottom">2</div>
-<div class="pack bottom">3</div>
-<div class="pack bottom">4</div>
-
-<script>/**
- * AHOORA — Personal Brand Portfolio JavaScript
- * Features: Typewriter Effect, Sticky Header, Responsive Nav, Dynamic Modal,
- *           Scroll Reveal Observer, Form Validation & Interactive Feedback.
- */
-
-document.addEventListener('DOMContentLoaded', () => {
-
-    /* ==========================================================================
-       1. Portfolio Projects Data Array
-       ========================================================================== */
-    const projectsData = [
-        {
-            id: '1',
-            number: '01',
-            title: 'Modern Business Website',
-            shortDesc: 'A responsive business website focused on clean design and strong user experience.',
-            fullDesc: 'This project is an enterprise-grade corporate platform developed with a focus on brand identity, dynamic content rendering, and conversion optimization. Built to reflect modern visual trends while maintaining fast load performance.',
-            objective: 'To create a high-converting, visually striking digital portal for modern business entities.',
-            keyFeatures: [
-                'Responsive modular layout adapted for all viewports',
-                'Custom interactive hero banner and feature showcase',
-                'Integrated lead-generation call-to-action sections',
-                'Performance optimized image rendering and smooth scroll effects'
-            ],
-            technologies: ['HTML5', 'CSS3 / Grid', 'Vanilla JavaScript'],
-            image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200'
-        },
-        {
-            id: '2',
-            number: '02',
-            title: 'Creative Portfolio',
-            shortDesc: 'A personal portfolio website featuring modern animations and responsive layouts.',
-            fullDesc: 'An interactive personal showcase engineered for high aesthetic appeal. Designed specifically to present creative projects through subtle micro-interactions, smooth page transitions, and structured technical displays.',
-            objective: 'Highlight individual achievements and skill sets through an immersive user-centric web experience.',
-            keyFeatures: [
-                'Glassmorphism modal interfaces for detailed project views',
-                'Custom typewriter & scroll-reveal animations using IntersectionObserver',
-                'Accessible interactive components with full keyboard support',
-                'Minimalist luxury aesthetic with custom CSS variables'
-            ],
-            technologies: ['HTML5', 'CSS3 Variables', 'JavaScript ES6+'],
-            image: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=1200'
-        },
-        {
-            id: '3',
-            number: '03',
-            title: 'Dashboard UI',
-            shortDesc: 'A modern dashboard interface designed for usability and visual clarity.',
-            fullDesc: 'An intuitive, data-dense analytics control panel engineered for maximum readability. It displays real-time statistics, modular widgets, and customizable dark-theme visual structures.',
-            objective: 'Simplify complex data visualization for improved administrative decision making.',
-            keyFeatures: [
-                'Dynamic visual stat counters and progress indicators',
-                'Clean card grid with responsive auto-fit placement',
-                'Structured dark-theme color taxonomy',
-                'Filterable data tables and status indicators'
-            ],
-            technologies: ['HTML5', 'CSS Flexbox/Grid', 'JavaScript ES6+'],
-            image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200'
-        },
-        {
-            id: '4',
-            number: '04',
-            title: 'E-Commerce Concept',
-            shortDesc: 'A responsive e-commerce interface with a premium shopping experience.',
-            fullDesc: 'A high-end retail interface tailored for modern online shopping. Features clean grid layouts, seamless product preview modals, interactive cart states, and responsive navigation.',
-            objective: 'Deliver an elegant digital storefront that enhances product appeal and reduces checkout friction.',
-            keyFeatures: [
-                'Interactive product card gallery with overlay actions',
-                'Structured layout for item descriptions, tags, and pricing',
-                'Clean typography system focused on readability',
-                'Mobile-first responsive shopping flow'
-            ],
-            technologies: ['HTML5', 'CSS3', 'JavaScript'],
-            image: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&q=80&w=1200'
-        }
-    ];
-
-    /* ==========================================================================
-       2. Header Scroll Effect & Dynamic Link Highlighting
-       ========================================================================== */
-    const header = document.getElementById('header');
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    const handleHeaderScroll = () => {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-
-        const scrollY = window.pageYOffset;
-        sections.forEach(current => {
-            const sectionHeight = current.offsetHeight;
-            const sectionTop = current.offsetTop - 100;
-            const sectionId = current.getAttribute('id');
-            const correspondingLink = document.querySelector(`.nav-link[href*="${sectionId}"]`);
-
-            if (correspondingLink) {
-                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                    correspondingLink.classList.add('active');
-                } else {
-                    correspondingLink.classList.remove('active');
-                }
-            }
-        });
-    };
-
-    window.addEventListener('scroll', handleHeaderScroll, { passive: true });
-
-    /* ==========================================================================
-       3. Mobile Hamburger Navigation
-       ========================================================================== */
-    const navToggle = document.getElementById('nav-toggle');
-    const navMenu = document.getElementById('nav-menu');
-
-    const toggleMenu = () => {
-        const isOpen = navMenu.classList.contains('open');
-        navMenu.classList.toggle('open');
-        navToggle.classList.toggle('open');
-        navToggle.setAttribute('aria-expanded', !isOpen);
-    };
-
-    if (navToggle) {
-        navToggle.addEventListener('click', toggleMenu);
-    }
-
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            if (navMenu.classList.contains('open')) {
-                toggleMenu();
-            }
-        });
-    });
-
-    /* ==========================================================================
-       4. Typewriter Animation Effect
-       ========================================================================== */
-    const typewriterElement = document.getElementById('typewriter');
-    const phrases = [
-        'Frontend Developer',
-        'UI/UX Enthusiast',
-        'Creative Problem Solver',
-        'Web Experience Designer'
-    ];
-    let phraseIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let typewriterSpeed = 100;
-
-    const type = () => {
-        const currentPhrase = phrases[phraseIndex];
-
-        if (isDeleting) {
-            typewriterElement.textContent = currentPhrase.substring(0, charIndex - 1);
-            charIndex--;
-            typewriterSpeed = 50;
-        } else {
-            typewriterElement.textContent = currentPhrase.substring(0, charIndex + 1);
-            charIndex++;
-            typewriterSpeed = 100;
-        }
-
-        if (!isDeleting && charIndex === currentPhrase.length) {
-            isDeleting = true;
-            typewriterSpeed = 2000;
-        } else if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            phraseIndex = (phraseIndex + 1) % phrases.length;
-            typewriterSpeed = 500;
-        }
-
-        setTimeout(type, typewriterSpeed);
-    };
-
-    if (typewriterElement) {
-        setTimeout(type, 1000);
-    }
-
-    /* ==========================================================================
-       5. Scroll Reveal & Skill Progress Fill Observer
-       ========================================================================== */
-    const revealElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
-    const skillProgressFills = document.querySelectorAll('.skill-progress-fill');
-
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('reveal-active');
-
-                if (entry.target.classList.contains('skills') || entry.target.querySelector('.skill-progress-fill')) {
-                    skillProgressFills.forEach(fill => {
-                        const targetWidth = fill.getAttribute('data-percentage');
-                        fill.style.width = targetWidth;
+    <!-- Script Section -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            /* 1. Starfield Canvas Background Animation */
+            const canvas = document.getElementById('starfield-canvas');
+            if (canvas) {
+                const ctx = canvas.getContext('2d');
+                let stars = [];
+                const numStars = 150;
+
+                const resize = () => {
+                    canvas.width = window.innerWidth;
+                    canvas.height = window.innerHeight;
+                };
+                window.addEventListener('resize', resize);
+                resize();
+
+                for (let i = 0; i < numStars; i++) {
+                    stars.push({
+                        x: Math.random() * canvas.width,
+                        y: Math.random() * canvas.height,
+                        size: Math.random() * 1.8,
+                        alpha: Math.random(),
+                        speed: Math.random() * 0.4 + 0.1
                     });
                 }
 
-                observer.unobserve(entry.target);
+                const draw = () => {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    stars.forEach(s => {
+                        s.y -= s.speed;
+                        if (s.y < 0) s.y = canvas.height;
+
+                        ctx.fillStyle = `rgba(0, 240, 255, ${s.alpha})`;
+                        ctx.fillRect(s.x, s.y, s.size, s.size);
+                    });
+                    requestAnimationFrame(draw);
+                };
+                draw();
             }
-        });
-    }, {
-        root: null,
-        threshold: 0.15
-    });
 
-    revealElements.forEach(el => revealObserver.observe(el));
+            /* 2. Typewriter Effect */
+            const typewriterEl = document.getElementById('typewriter');
+            const phrasesByLang = {
+                en: ['FRONTEND DEVELOPER', 'ETHICAL HACKER', 'UI/UX DESIGNER', 'PYTHON DEVELOPER'],
+                fa: ['توسعه‌دهنده فرانت‌اند', 'هکر قانون‌مند', 'طراح رابط کاربری', 'برنامه‌نویس پایتون']
+            };
+            let currentLang = 'en';
+            let phraseIdx = 0, charIdx = 0, isDeleting = false;
 
-    const skillsSection = document.getElementById('skills');
-    if (skillsSection) {
-        const skillsObserver = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting) {
-                skillProgressFills.forEach(fill => {
-                    const targetWidth = fill.getAttribute('data-percentage');
-                    fill.style.width = targetWidth;
+            const type = () => {
+                const currentPhrases = phrasesByLang[currentLang];
+                const text = currentPhrases[phraseIdx % currentPhrases.length];
+
+                if (isDeleting) {
+                    typewriterEl.textContent = text.substring(0, charIdx - 1);
+                    charIdx--;
+                } else {
+                    typewriterEl.textContent = text.substring(0, charIdx + 1);
+                    charIdx++;
+                }
+
+                let speed = isDeleting ? 50 : 100;
+
+                if (!isDeleting && charIdx === text.length) {
+                    speed = 2000;
+                    isDeleting = true;
+                } else if (isDeleting && charIdx === 0) {
+                    isDeleting = false;
+                    phraseIdx++;
+                    speed = 500;
+                }
+
+                setTimeout(type, speed);
+            };
+            type();
+
+            /* 3. Navigation & Mobile Toggle */
+            const header = document.getElementById('header');
+            const navToggle = document.getElementById('nav-toggle');
+            const navMenu = document.getElementById('nav-menu');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) header.classList.add('scrolled');
+                else header.classList.remove('scrolled');
+            });
+
+            if (navToggle) {
+                navToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
                 });
             }
-        }, { threshold: 0.2 });
-        skillsObserver.observe(skillsSection);
-    }
 
-    /* ==========================================================================
-       6. Portfolio Modal Logic
-       ========================================================================== */
-    const modal = document.getElementById('portfolio-modal');
-    const modalBody = document.getElementById('modal-body');
-    const modalCloseBtn = document.getElementById('modal-close');
-    const viewDetailsButtons = document.querySelectorAll('.view-details-btn, .project-card');
+            /* 4. Telemetry Counter Animation */
+            const statNumbers = document.querySelectorAll('.stat-number');
+            let animatedStats = false;
 
-    const openModal = (projectId) => {
-        const project = projectsData.find(p => p.id === projectId);
-        if (!project) return;
+            const animateStats = () => {
+                if (animatedStats) return;
+                animatedStats = true;
 
-        modalBody.innerHTML = `
-            <img src="${project.image}" alt="${project.title}" class="modal-image">
-            <span class="project-number">${project.number}</span>
-            <h3 class="modal-title" id="modal-title">${project.title}</h3>
-            <div class="modal-meta-tags">
-                ${project.technologies.map(tech => `<span class="tag">${tech}</span>`).join('')}
-            </div>
-            <p class="modal-text">${project.fullDesc}</p>
-            
-            <h4 class="modal-section-heading">Project Objective</h4>
-            <p class="modal-text">${project.objective}</p>
-            
-            <h4 class="modal-section-heading">Key Features</h4>
-            <ul class="modal-features-list">
-                ${project.keyFeatures.map(feature => `<li>${feature}</li>`).join('')}
-            </ul>
-        `;
+                statNumbers.forEach(counter => {
+                    const target = +counter.getAttribute('data-target');
+                    let current = 0;
+                    const step = Math.max(1, Math.ceil(target / 50));
 
-        modal.classList.add('active');
-        modal.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-    };
+                    const timer = setInterval(() => {
+                        current += step;
+                        if (current >= target) {
+                            counter.textContent = target;
+                            clearInterval(timer);
+                        } else {
+                            counter.textContent = current;
+                        }
+                    }, 30);
+                });
+            };
 
-    const closeModal = () => {
-        modal.classList.remove('active');
-        modal.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-    };
+            /* 5. Scroll Reveal & Progress Fills */
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
 
-    viewDetailsButtons.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const projectId = btn.getAttribute('data-project-id');
-            openModal(projectId);
-        });
-    });
+                        // Fill skill bars
+                        if (entry.target.id === 'skills') {
+                            document.querySelectorAll('.skill-progress-fill').forEach(fill => {
+                                fill.style.width = fill.getAttribute('data-percentage');
+                            });
+                        }
 
-    if (modalCloseBtn) {
-        modalCloseBtn.addEventListener('click', closeModal);
-    }
+                        // Trigger stats
+                        if (entry.target.id === 'about') animateStats();
+                    }
+                });
+            }, { threshold: 0.2 });
 
-    if (modal) {
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeModal();
-            }
-        });
-    }
+            document.querySelectorAll('section, .reveal').forEach(el => observer.observe(el));
 
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.classList.contains('active')) {
-            closeModal();
-        }
-    });
+            /* 6. Modal Logics */
+            const modal = document.getElementById('portfolio-modal');
+            const modalBody = document.getElementById('modal-body');
+            const modalClose = document.getElementById('modal-close');
 
-    /* ==========================================================================
-       7. Contact Form Validation & Submission Feedback
-       ========================================================================== */
-    const contactForm = document.getElementById('contact-form');
-    const nameInput = document.getElementById('form-name');
-    const emailInput = document.getElementById('form-email');
-    const subjectInput = document.getElementById('form-subject');
-    const messageInput = document.getElementById('form-message');
-    const feedbackMsg = document.getElementById('form-feedback');
-    const submitBtn = document.getElementById('form-submit');
+            const projects = {
+                "1": {
+                    title: { en: "Enterprise Web App", fa: "وب‌سایت مدرن شرکتی" },
+                    desc: { en: "High performance corporate landing page built with custom glassmorphism and responsiveness.", fa: "لندینگ پیج سازمانی با طراحی تاریک، شیشه‌ای و واکنش‌گرایی کامل." }
+                },
+                "2": {
+                    title: { en: "Analytics HUD Panel", fa: "پنل داشبورد تحلیلی" },
+                    desc: { en: "Real time telemetry viewer designed for dark sci-fi aesthetic applications.", fa: "نمایشگر آنلاین داده‌های سیستمی با رابط کاربری پیشرفته فضایی." }
+                }
+            };
 
-    const validateEmail = (email) => {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    };
+            document.querySelectorAll('.view-details-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const id = btn.getAttribute('data-project-id');
+                    const item = projects[id];
+                    if (!item) return;
 
-    const setError = (inputElement, isError) => {
-        const parent = inputElement.parentElement;
-        if (isError) {
-            parent.classList.add('error');
-        } else {
-            parent.classList.remove('error');
-        }
-    };
-
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            let isValid = true;
-
-            if (nameInput.value.trim() === '') {
-                setError(nameInput, true);
-                isValid = false;
-            } else {
-                setError(nameInput, false);
-            }
-
-            if (!validateEmail(emailInput.value.trim())) {
-                setError(emailInput, true);
-                isValid = false;
-            } else {
-                setError(emailInput, false);
-            }
-
-            if (subjectInput.value.trim() === '') {
-                setError(subjectInput, true);
-                isValid = false;
-            } else {
-                setError(subjectInput, false);
-            }
-
-            if (messageInput.value.trim() === '') {
-                setError(messageInput, true);
-                isValid = false;
-            } else {
-                setError(messageInput, false);
-            }
-
-            if (isValid) {
-                submitBtn.disabled = true;
-                const originalBtnText = submitBtn.innerHTML;
-                submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> <span>Sending...</span>`;
-
-                setTimeout(() => {
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = originalBtnText;
-
-                    feedbackMsg.textContent = 'Thank you! Your message has been received. I will get back to you shortly.';
-                    feedbackMsg.className = 'form-feedback-message success';
-
-                    contactForm.reset();
-
-                    setTimeout(() => {
-                        feedbackMsg.className = 'form-feedback-message';
-                    }, 6000);
-                }, 1200);
-            }
-        });
-    }
-
-    /* ==========================================================================
-       8. Back to Top Button Logic
-       ========================================================================== */
-    const backToTopBtn = document.getElementById('back-to-top');
-
-    const handleBackToTopVisibility = () => {
-        if (window.scrollY > 400) {
-            backToTopBtn.classList.add('visible');
-        } else {
-            backToTopBtn.classList.remove('visible');
-        }
-    };
-
-    window.addEventListener('scroll', handleBackToTopVisibility, { passive: true });
-
-    if (backToTopBtn) {
-        backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+                    modalBody.innerHTML = `
+                        <span class="project-number">[ MISSION-0${id} LOG ]</span>
+                        <h2 style="font-family:var(--font-hud); margin:15px 0; color:var(--accent-cyan);">${item.title[currentLang]}</h2>
+                        <p style="color:var(--text-muted); line-height:1.6;">${item.desc[currentLang]}</p>
+                    `;
+                    modal.classList.add('active');
+                });
             });
+
+            if (modalClose) {
+                modalClose.addEventListener('click', () => modal.classList.remove('active'));
+            }
+
+            /* 7. Language Switcher (EN / FA) */
+            const langBtn = document.getElementById('lang-toggle');
+            if (langBtn) {
+                langBtn.addEventListener('click', () => {
+                    currentLang = currentLang === 'en' ? 'fa' : 'en';
+                    document.documentElement.setAttribute('lang', currentLang);
+                    document.documentElement.setAttribute('dir', currentLang === 'fa' ? 'rtl' : 'ltr');
+
+                    document.querySelectorAll('[data-en]').forEach(el => {
+                        el.textContent = currentLang === 'fa' ? el.getAttribute('data-fa') : el.getAttribute('data-en');
+                    });
+
+                    document.querySelectorAll('[data-en-placeholder]').forEach(el => {
+                        el.setAttribute('placeholder', currentLang === 'fa' ? el.getAttribute('data-fa-placeholder') : el.getAttribute('data-en-placeholder'));
+                    });
+
+                    langBtn.textContent = currentLang === 'fa' ? 'EN' : 'FA';
+                });
+            }
+
+            /* 8. Form Handler */
+            const contactForm = document.getElementById('contact-form');
+            const feedback = document.getElementById('form-feedback');
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    feedback.classList.add('active');
+                    contactForm.reset();
+                    setTimeout(() => feedback.classList.remove('active'), 4000);
+                });
+            }
         });
-    }
-});
-// ==========================================
-// Scroll Cards Logic
-// ==========================================
-let st = 0;
-let oldSt = 0;
-let myStatus = true;
-let turn = 0;
-const packs = document.querySelectorAll('.pack');
-
-window.addEventListener('scroll', () => {
-    st = parseInt(window.scrollY);
-    if (myStatus) {
-        if (st > oldSt) {
-            if (turn < packs.length - 1) {
-                packs[turn].classList.remove('show');
-                packs[turn].classList.add('top');
-                turn++;
-                packs[turn].classList.remove('bottom');
-                packs[turn].classList.add('show');
-            }
-        } else {
-            if (turn > 0) {
-                packs[turn].classList.remove('show');
-                packs[turn].classList.add('bottom');
-                turn--;
-                packs[turn].classList.remove('top');
-                packs[turn].classList.add('show');
-            }
-        }
-        setTimeout(() => {
-            myStatus = true;
-        }, 2000);
-    }
-    myStatus = false;
-    oldSt = st;
-});
-
-</script>
+    </script>
+</body>
+</html>
