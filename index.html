@@ -1381,5 +1381,41 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+// ==========================================
+// Scroll Cards Logic
+// ==========================================
+let st = 0;
+let oldSt = 0;
+let myStatus = true;
+let turn = 0;
+const packs = document.querySelectorAll('.pack');
+
+window.addEventListener('scroll', () => {
+    st = parseInt(window.scrollY);
+    if (myStatus) {
+        if (st > oldSt) {
+            if (turn < packs.length - 1) {
+                packs[turn].classList.remove('show');
+                packs[turn].classList.add('top');
+                turn++;
+                packs[turn].classList.remove('bottom');
+                packs[turn].classList.add('show');
+            }
+        } else {
+            if (turn > 0) {
+                packs[turn].classList.remove('show');
+                packs[turn].classList.add('bottom');
+                turn--;
+                packs[turn].classList.remove('top');
+                packs[turn].classList.add('show');
+            }
+        }
+        setTimeout(() => {
+            myStatus = true;
+        }, 2000);
+    }
+    myStatus = false;
+    oldSt = st;
+});
 
 </script>
