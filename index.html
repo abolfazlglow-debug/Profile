@@ -8,6 +8,7 @@
     <meta name="author" content="AHOORA">
     <meta name="theme-color" content="#11161D">
 
+    <!-- Open Graph / Social Media -->
     <meta property="og:title" content="AHOORA | Frontend Developer & UI/UX Enthusiast">
     <meta property="og:description" content="Turning ideas into meaningful digital experiences. Explore selected projects, skills, and expertise.">
     <meta property="og:type" content="website">
@@ -16,18 +17,25 @@
 
     <title>AHOORA | Frontend Developer & UI/UX Enthusiast</title>
 
+    <!-- Google Fonts (Inter / Playfair Display for EN, Vazirmatn for FA) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
 /* ==========================================================================
    AHOORA — Personal Brand Portfolio Stylesheet
+   Color Palette: Deep Navy-Gray, Matte Gold, Warm White, Charcoal
    ========================================================================== */
 
+/* --------------------------------------------------------------------------
+   1. CSS Custom Properties (Variables)
+   -------------------------------------------------------------------------- */
 :root {
+    /* Color Palette */
     --bg-primary: #11161D;
     --bg-secondary: #181E26;
     --bg-tertiary: #1F2732;
@@ -44,15 +52,19 @@
     --text-muted: #6C727F;
 
     --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-gold-glow: 0 0 20px rgba(200, 169, 107, 0.2);
 
+    /* Typography */
     --font-heading: 'Playfair Display', Georgia, serif;
     --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --font-fa: 'Vazirmatn', Tahoma, sans-serif;
 
+    /* Transitions & Animations */
     --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     --transition-slow: 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 
+    /* Layout & Dimensions */
     --header-height: 80px;
     --container-max-width: 1200px;
     --radius-sm: 6px;
@@ -61,6 +73,9 @@
     --radius-full: 9999px;
 }
 
+/* --------------------------------------------------------------------------
+   2. Reset & Universal Styles
+   -------------------------------------------------------------------------- */
 *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
@@ -85,6 +100,7 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+/* Persian / RTL mode */
 html[lang="fa"] body {
     font-family: var(--font-fa);
 }
@@ -95,6 +111,7 @@ html[lang="fa"] .footer-logo {
     font-family: var(--font-fa);
 }
 
+/* Typography Selection & Scrollbar */
 ::selection {
     background-color: var(--gold);
     color: var(--bg-primary);
@@ -151,7 +168,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     outline-offset: 3px;
 }
 
-/* Background Effects */
+/* --------------------------------------------------------------------------
+   3. Decorative Backgrounds & Ambient Effects
+   -------------------------------------------------------------------------- */
 .bg-glow {
     position: fixed;
     border-radius: 50%;
@@ -184,12 +203,15 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     width: 100%;
     height: 100%;
     z-index: -1;
-    background-image: radial-gradient(rgba(200, 169, 107, 0.05) 1px, transparent 1px);
+    background-image:
+        radial-gradient(rgba(200, 169, 107, 0.05) 1px, transparent 1px);
     background-size: 32px 32px;
     pointer-events: none;
 }
 
-/* Layout Utilities */
+/* --------------------------------------------------------------------------
+   4. Layout & Reusable Utilities
+   -------------------------------------------------------------------------- */
 .container {
     width: 100%;
     max-width: var(--container-max-width);
@@ -279,7 +301,9 @@ html[lang="fa"] .section-title {
     color: var(--gold-light);
 }
 
-/* Header & Navigation */
+/* --------------------------------------------------------------------------
+   5. Header & Navigation
+   -------------------------------------------------------------------------- */
 .header {
     position: fixed;
     top: 0;
@@ -351,6 +375,7 @@ html[lang="fa"] .section-title {
     width: 100%;
 }
 
+/* Language toggle */
 .lang-toggle {
     display: flex;
     align-items: center;
@@ -373,7 +398,9 @@ html[lang="fa"] .section-title {
     border-color: var(--gold);
 }
 
-/* Hero Section */
+/* --------------------------------------------------------------------------
+   6. Hero Section
+   -------------------------------------------------------------------------- */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -425,6 +452,35 @@ html[lang="fa"] .section-title {
     50% { transform: translateY(-12px); }
 }
 
+/* --------------------------------------------------------------------------
+   7. Portfolio & Card Grid
+   -------------------------------------------------------------------------- */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+}
+
+.project-card {
+    background-color: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-subtle);
+    overflow: hidden;
+    transition: all var(--transition-smooth);
+}
+
+.project-card:hover {
+    border-color: var(--gold-border);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+/* --------------------------------------------------------------------------
+   8. Responsive Media Queries
+   -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   9. Hero content details
+   -------------------------------------------------------------------------- */
 .hero-greeting {
     display: inline-block;
     color: var(--gold);
@@ -475,6 +531,11 @@ html[lang="fa"] .section-title {
     flex-wrap: wrap;
 }
 
+@media (max-width: 992px) {
+    .hero-description { margin-left: auto; margin-right: auto; }
+    .hero-cta { justify-content: center; }
+}
+
 .profile-frame-wrapper {
     position: relative;
     width: 320px;
@@ -489,10 +550,18 @@ html[lang="fa"] .section-title {
     pointer-events: none;
 }
 
-.profile-geometric-ring { inset: -20px; }
-.profile-geometric-ring-2 { inset: -40px; opacity: 0.5; }
+.profile-geometric-ring {
+    inset: -20px;
+}
 
-/* Mobile Navigation */
+.profile-geometric-ring-2 {
+    inset: -40px;
+    opacity: 0.5;
+}
+
+/* --------------------------------------------------------------------------
+   10. Mobile Navigation
+   -------------------------------------------------------------------------- */
 .nav-toggle {
     display: none;
     flex-direction: column;
@@ -538,7 +607,9 @@ html[lang="fa"] .section-title {
     .nav-item { width: 100%; padding: 0.6rem 0; }
 }
 
-/* Animations */
+/* --------------------------------------------------------------------------
+   11. Scroll Reveal Animations
+   -------------------------------------------------------------------------- */
 .reveal-up, .reveal-left, .reveal-right {
     opacity: 0;
     transition: opacity var(--transition-slow), transform var(--transition-slow);
@@ -553,7 +624,9 @@ html[lang="fa"] .section-title {
     transform: translate(0, 0);
 }
 
-/* About Section */
+/* --------------------------------------------------------------------------
+   12. About Section
+   -------------------------------------------------------------------------- */
 .about-grid {
     display: grid;
     grid-template-columns: 1.4fr 1fr;
@@ -631,7 +704,9 @@ html[lang="fa"] .section-title {
     .about-highlights { grid-template-columns: 1fr 1fr; }
 }
 
-/* Skills Section */
+/* --------------------------------------------------------------------------
+   13. Skills Section
+   -------------------------------------------------------------------------- */
 .skills-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -647,7 +722,9 @@ html[lang="fa"] .section-title {
     gap: 0.6rem;
 }
 
-.title-icon { color: var(--gold); }
+.title-icon {
+    color: var(--gold);
+}
 
 .skills-list {
     display: flex;
@@ -724,28 +801,9 @@ html[lang="fa"] .section-title {
     .soft-skills-grid { grid-template-columns: 1fr; }
 }
 
-/* Portfolio Section */
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2.5rem;
-}
-
-.project-card {
-    background-color: var(--bg-secondary);
-    border-radius: var(--radius-md);
-    border: 1px solid var(--border-subtle);
-    overflow: hidden;
-    transition: all var(--transition-smooth);
-    cursor: pointer;
-}
-
-.project-card:hover {
-    border-color: var(--gold-border);
-    transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-}
-
+/* --------------------------------------------------------------------------
+   14. Portfolio Cards
+   -------------------------------------------------------------------------- */
 .project-image-wrapper {
     position: relative;
     overflow: hidden;
@@ -769,8 +827,7 @@ html[lang="fa"] .section-title {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    background: rgba(17, 22, 29, 0.75);
+    background: rgba(17, 22, 29, 0.65);
     opacity: 0;
     transition: opacity var(--transition-fast);
 }
@@ -780,7 +837,7 @@ html[lang="fa"] .section-title {
 }
 
 .btn-sm {
-    padding: 0.6rem 1.2rem;
+    padding: 0.6rem 1.4rem;
     font-size: 0.85rem;
 }
 
@@ -826,7 +883,9 @@ html[lang="fa"] .section-title {
     border: 1px solid var(--border-subtle);
 }
 
-/* Contact Section */
+/* --------------------------------------------------------------------------
+   15. Contact Section
+   -------------------------------------------------------------------------- */
 .contact-wrapper {
     display: grid;
     grid-template-columns: 1fr 1.2fr;
@@ -967,7 +1026,9 @@ html[lang="fa"] .section-title {
     .contact-wrapper { grid-template-columns: 1fr; }
 }
 
-/* Footer */
+/* --------------------------------------------------------------------------
+   16. Footer
+   -------------------------------------------------------------------------- */
 .footer {
     border-top: 1px solid var(--border-subtle);
     padding: 3rem 0;
@@ -1043,7 +1104,9 @@ html[lang="fa"] .section-title {
     margin-top: 1rem;
 }
 
-/* Portfolio Modal */
+/* --------------------------------------------------------------------------
+   17. Portfolio Modal
+   -------------------------------------------------------------------------- */
 .modal-overlay {
     position: fixed;
     inset: 0;
@@ -1146,13 +1209,9 @@ html[dir="rtl"] .modal-features-list {
     padding-right: 1.2rem;
 }
 
-.modal-actions {
-    margin-top: 1.5rem;
-    display: flex;
-    justify-content: flex-end;
-}
-
-/* Back to Top */
+/* --------------------------------------------------------------------------
+   18. Back to Top Button
+   -------------------------------------------------------------------------- */
 .back-to-top {
     position: fixed;
     bottom: 2rem;
@@ -1188,17 +1247,19 @@ html[dir="rtl"] .back-to-top {
         grid-template-columns: 1fr;
         text-align: center;
     }
-    .hero-description { margin-left: auto; margin-right: auto; }
-    .hero-cta { justify-content: center; }
-    .portfolio-grid { grid-template-columns: 1fr; }
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
 }
     </style>
 </head>
 <body>
+    <!-- Background Decorative Elements -->
     <div class="bg-glow bg-glow-1"></div>
     <div class="bg-glow bg-glow-2"></div>
     <div class="bg-grid-pattern"></div>
 
+    <!-- Header / Navigation -->
     <header class="header" id="header">
         <div class="container header-container">
             <a href="#home" class="logo" aria-label="AHOORA Home">
@@ -1215,7 +1276,7 @@ html[dir="rtl"] .back-to-top {
                 </ul>
             </nav>
 
-            <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Switch language">FA</button>
+            <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Switch language / تغییر زبان">FA</button>
 
             <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
                 <span class="hamburger-bar"></span>
@@ -1226,6 +1287,7 @@ html[dir="rtl"] .back-to-top {
     </header>
 
     <main id="main-content">
+        <!-- Hero Section -->
         <section class="hero section" id="home">
             <div class="container hero-container">
                 <div class="hero-content reveal-left">
@@ -1254,6 +1316,7 @@ html[dir="rtl"] .back-to-top {
                         <div class="profile-geometric-ring"></div>
                         <div class="profile-geometric-ring-2"></div>
                         <div class="profile-image-container">
+                            <!-- Placeholder Profile Image - Replace with your own profile image URL -->
                             <img src="IMG_20260731_154206_compressed.jpg" class="profile-img" alt="Profile Picture">
                         </div>
                     </div>
@@ -1261,6 +1324,7 @@ html[dir="rtl"] .back-to-top {
             </div>
         </section>
 
+        <!-- About Section -->
         <section class="about section" id="about">
             <div class="container">
                 <div class="section-header reveal-up">
@@ -1275,8 +1339,8 @@ html[dir="rtl"] .back-to-top {
                         <p class="about-paragraph" data-en="I am a dedicated Frontend Developer passionate about bridging the gap between design and technological implementation. With a strong foundation in modern web technologies including HTML5, CSS3, JavaScript, and React, I turn modern concepts into clean, functional code." data-fa="من یک توسعه‌دهنده فرانت‌اند متعهد هستم که به پر کردن فاصله میان طراحی و پیاده‌سازی فنی علاقه‌مندم. با پایه‌ای قوی در فناوری‌های وب مدرن از جمله HTML5، CSS3، جاوااسکریپت و ری‌اکت، ایده‌های امروزی را به کدی تمیز و کاربردی تبدیل می‌کنم.">
                             I am a dedicated Frontend Developer passionate about bridging the gap between design and technological implementation. With a strong foundation in modern web technologies including HTML5, CSS3, JavaScript, and React, I turn modern concepts into clean, functional code.
                         </p>
-                        <p class="about-paragraph" data-en="Driven by detail, reliability, and an unwavering commitment to quality, my approach prioritizes intuitive user experience, responsive visual structures, and sustainable architecture." data-fa="با انگیزه‌ای برخاسته از دقت، قابلیت اطمینان و تعهد پایدار به کیفیت، رویکرد من اولویت را به تجربه کاربری شهودی، ساختارهای بصری واکنش‌گرا و معماری پایدار می‌دهد.">
-                            Driven by detail, reliability, and an unwavering commitment to quality, my approach prioritizes intuitive user experience, responsive visual structures, and sustainable architecture.
+                        <p class="about-paragraph" data-en="Driven by detail, reliability, and an unwavering commitment to quality, my approach prioritizes intuitive user experience, responsive visual structures, and sustainable architecture. I thrive on solving complex frontend challenges and continuously expanding my technical mastery." data-fa="با انگیزه‌ای برخاسته از دقت، قابلیت اطمینان و تعهد پایدار به کیفیت، رویکرد من اولویت را به تجربه کاربری شهودی، ساختارهای بصری واکنش‌گرا و معماری پایدار می‌دهد. حل چالش‌های پیچیده فرانت‌اند و گسترش مداوم تسلط فنی‌ام برایم لذت‌بخش است.">
+                            Driven by detail, reliability, and an unwavering commitment to quality, my approach prioritizes intuitive user experience, responsive visual structures, and sustainable architecture. I thrive on solving complex frontend challenges and continuously expanding my technical mastery.
                         </p>
                         <div class="about-highlights">
                             <div class="highlight-item">
@@ -1298,10 +1362,11 @@ html[dir="rtl"] .back-to-top {
                         </div>
                     </div>
 
+                    <!-- Statistics Cards -->
                     <div class="about-stats reveal-right">
                         <div class="stat-card">
-                            <div class="stat-number" data-target="1">1+</div>
-                            <div class="stat-label" data-en="Year of Experience" data-fa="سال سابقه کاری">Year of Experience</div>
+                            <div class="stat-number" data-target="5">5+</div>
+                            <div class="stat-label" data-en="Years of Experience" data-fa="سال سابقه کاری">Years of Experience</div>
                             <div class="stat-bar"></div>
                         </div>
                         <div class="stat-card">
@@ -1319,6 +1384,7 @@ html[dir="rtl"] .back-to-top {
             </div>
         </section>
 
+        <!-- Skills Section -->
         <section class="skills section" id="skills">
             <div class="container">
                 <div class="section-header reveal-up">
@@ -1328,10 +1394,10 @@ html[dir="rtl"] .back-to-top {
                 </div>
 
                 <div class="skills-wrapper">
+                    <!-- Technical Skills -->
                     <div class="skills-column reveal-left">
                         <h3 class="skills-category-title">
-                            <i class="fa-solid fa-code title-icon"></i>
-                            <span data-en="Technical Skills" data-fa="مهارت‌های فنی">Technical Skills</span>
+                            <i class="fa-solid fa-code title-icon"></i> <span data-en="Technical Skills" data-fa="مهارت‌های فنی">Technical Skills</span>
                         </h3>
                         <div class="skills-list">
                             <div class="skill-item">
@@ -1391,10 +1457,10 @@ html[dir="rtl"] .back-to-top {
                         </div>
                     </div>
 
+                    <!-- Soft Skills -->
                     <div class="skills-column reveal-right">
                         <h3 class="skills-category-title">
-                            <i class="fa-solid fa-user-gear title-icon"></i>
-                            <span data-en="Soft Skills" data-fa="مهارت‌های نرم">Soft Skills</span>
+                            <i class="fa-solid fa-user-gear title-icon"></i> <span data-en="Soft Skills" data-fa="مهارت‌های نرم">Soft Skills</span>
                         </h3>
                         <div class="soft-skills-grid">
                             <div class="soft-skill-card">
@@ -1410,12 +1476,22 @@ html[dir="rtl"] .back-to-top {
                             <div class="soft-skill-card">
                                 <div class="soft-skill-icon"><i class="fa-solid fa-clock"></i></div>
                                 <h4 data-en="Time Management" data-fa="مدیریت زمان">Time Management</h4>
-                                <p data-en="Prioritizing tasks efficiently to meet strict deadlines with high quality standards." data-fa="اولویت‌بندی کارآمد وظایف جهت تحویل به موقع با استانداردهای بالا.">Prioritizing tasks efficiently to meet strict deadlines with high quality standards.</p>
+                                <p data-en="Punctual delivery with meticulous planning and effective task prioritization." data-fa="تحویل به‌موقع با برنامه‌ریزی دقیق و اولویت‌بندی مؤثر وظایف.">Punctual delivery with meticulous planning and effective task prioritization.</p>
                             </div>
                             <div class="soft-skill-card">
-                                <div class="soft-skill-icon"><i class="fa-solid fa-people-group"></i></div>
-                                <h4 data-en="Team Collaboration" data-fa="کار تیمی">Team Collaboration</h4>
-                                <p data-en="Working hand in hand with designers, developers, and stakeholders for shared goals." data-fa="همکاری تنگاتنگ با طراحان، توسعه‌دهندگان و ذینفعان برای اهداف مشترک.">Working hand in hand with designers, developers, and stakeholders for shared goals.</p>
+                                <div class="soft-skill-icon"><i class="fa-solid fa-users"></i></div>
+                                <h4 data-en="Teamwork" data-fa="کار تیمی">Teamwork</h4>
+                                <p data-en="Fostering cooperative environments and contributing positively to group objectives." data-fa="ایجاد فضای همکاری و مشارکت مثبت در اهداف گروهی.">Fostering cooperative environments and contributing positively to group objectives.</p>
+                            </div>
+                            <div class="soft-skill-card">
+                                <div class="soft-skill-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+                                <h4 data-en="Attention to Detail" data-fa="توجه به جزئیات">Attention to Detail</h4>
+                                <p data-en="Ensuring pixel perfection, clean code, and cohesive aesthetic execution." data-fa="اطمینان از دقت پیکسلی، کد تمیز و اجرای بصری منسجم.">Ensuring pixel perfection, clean code, and cohesive aesthetic execution.</p>
+                            </div>
+                            <div class="soft-skill-card">
+                                <div class="soft-skill-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                                <h4 data-en="Continuous Learning" data-fa="یادگیری مستمر">Continuous Learning</h4>
+                                <p data-en="Constantly staying ahead with evolving frontend technologies and best practices." data-fa="همگام ماندن مداوم با فناوری‌ها و بهترین شیوه‌های فرانت‌اند.">Constantly staying ahead with evolving frontend technologies and best practices.</p>
                             </div>
                         </div>
                     </div>
@@ -1423,52 +1499,91 @@ html[dir="rtl"] .back-to-top {
             </div>
         </section>
 
+        <!-- Portfolio Section -->
         <section class="portfolio section" id="portfolio">
             <div class="container">
                 <div class="section-header reveal-up">
-                    <span class="section-subtitle" data-en="Works" data-fa="نمونه‌ها">Works</span>
-                    <h2 class="section-title" data-en="Featured Projects" data-fa="پروژه‌های منتخب">Featured Projects</h2>
+                    <span class="section-subtitle" data-en="Portfolio" data-fa="نمونه‌کارها">Portfolio</span>
+                    <h2 class="section-title" data-en="Selected Work" data-fa="منتخب پروژه‌ها">Selected Work</h2>
                     <div class="section-title-line"></div>
                 </div>
 
-                <div class="portfolio-grid">
+                <div class="portfolio-grid" id="portfolio-grid">
+                    <!-- Card 1 -->
                     <div class="project-card reveal-up" data-project-id="1">
                         <div class="project-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" class="project-img" alt="Modern E-Commerce Dashboard">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" alt="Modern Business Website" class="project-img">
                             <div class="project-overlay">
-                                <button class="btn btn-primary btn-sm view-project-btn" type="button" data-en="View Details" data-fa="مشاهده جزئیات">View Details</button>
+                                <button class="btn btn-sm btn-primary view-details-btn" data-project-id="1" data-en="View Details" data-fa="مشاهده جزئیات">View Details</button>
                             </div>
                         </div>
                         <div class="project-content">
                             <span class="project-number">01</span>
-                            <h3 class="project-title" data-en="Modern E-Commerce Dashboard" data-fa="داشبورد فروشگاهی مدرن">Modern E-Commerce Dashboard</h3>
-                            <p class="project-description" data-en="A comprehensive analytics dashboard featuring real-time data visualization, order management, and dark/light modes." data-fa="یک داشبورد تحلیلی جامع با قابلیت نمایش داده‌ها به صورت لحظه‌ای، مدیریت سفارش‌ها و حالت تاریک/روشن.">
-                                A comprehensive analytics dashboard featuring real-time data visualization, order management, and dark/light modes.
-                            </p>
+                            <h3 class="project-title" data-en="Modern Business Website" data-fa="وب‌سایت مدرن کسب‌وکار">Modern Business Website</h3>
+                            <p class="project-description" data-en="A responsive business website focused on clean design and strong user experience." data-fa="وب‌سایتی واکنش‌گرا برای کسب‌وکار با طراحی تمیز و تجربه کاربری قوی.">A responsive business website focused on clean design and strong user experience.</p>
                             <div class="project-tags">
-                                <span class="tag">React</span>
-                                <span class="tag">Chart.js</span>
-                                <span class="tag">Tailwind CSS</span>
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                                <span class="tag">JavaScript</span>
                             </div>
                         </div>
                     </div>
 
+                    <!-- Card 2 -->
                     <div class="project-card reveal-up" data-project-id="2">
                         <div class="project-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=800" class="project-img" alt="Creative Agency Web App">
+                            <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=800" alt="Creative Portfolio" class="project-img">
                             <div class="project-overlay">
-                                <button class="btn btn-primary btn-sm view-project-btn" type="button" data-en="View Details" data-fa="مشاهده جزئیات">View Details</button>
+                                <button class="btn btn-sm btn-primary view-details-btn" data-project-id="2" data-en="View Details" data-fa="مشاهده جزئیات">View Details</button>
                             </div>
                         </div>
                         <div class="project-content">
                             <span class="project-number">02</span>
-                            <h3 class="project-title" data-en="Creative Agency Web App" data-fa="وب‌اپلیکیشن آژانس خلاقانه">Creative Agency Web App</h3>
-                            <p class="project-description" data-en="An immersive, animation-driven website for a digital agency highlighting creative portfolios and seamless interactions." data-fa="یک وب‌سایت تعاملی و پر از انیمیشن برای یک آژانس دیجیتال که نمونه‌کارهای خلاقانه را برجسته می‌کند.">
-                                An immersive, animation-driven website for a digital agency highlighting creative portfolios and seamless interactions.
-                            </p>
+                            <h3 class="project-title" data-en="Creative Portfolio" data-fa="نمونه‌کار خلاقانه">Creative Portfolio</h3>
+                            <p class="project-description" data-en="A personal portfolio website featuring modern animations and responsive layouts." data-fa="وب‌سایت نمونه‌کار شخصی با انیمیشن‌های مدرن و طرح‌بندی واکنش‌گرا.">A personal portfolio website featuring modern animations and responsive layouts.</p>
                             <div class="project-tags">
-                                <span class="tag">HTML5</span>
-                                <span class="tag">CSS3</span>
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                                <span class="tag">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="project-card reveal-up" data-project-id="3">
+                        <div class="project-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="Dashboard UI" class="project-img">
+                            <div class="project-overlay">
+                                <button class="btn btn-sm btn-primary view-details-btn" data-project-id="3" data-en="View Details" data-fa="مشاهده جزئیات">View Details</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <span class="project-number">03</span>
+                            <h3 class="project-title" data-en="Dashboard UI" data-fa="رابط کاربری داشبورد">Dashboard UI</h3>
+                            <p class="project-description" data-en="A modern dashboard interface designed for usability and visual clarity." data-fa="رابط داشبورد مدرن طراحی‌شده برای کاربردپذیری و وضوح بصری.">A modern dashboard interface designed for usability and visual clarity.</p>
+                            <div class="project-tags">
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                                <span class="tag">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="project-card reveal-up" data-project-id="4">
+                        <div class="project-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&q=80&w=800" alt="E-Commerce Concept" class="project-img">
+                            <div class="project-overlay">
+                                <button class="btn btn-sm btn-primary view-details-btn" data-project-id="4" data-en="View Details" data-fa="مشاهده جزئیات">View Details</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <span class="project-number">04</span>
+                            <h3 class="project-title" data-en="E-Commerce Concept" data-fa="کانسپت فروشگاه اینترنتی">E-Commerce Concept</h3>
+                            <p class="project-description" data-en="A responsive e-commerce interface with a premium shopping experience." data-fa="رابط فروشگاه اینترنتی واکنش‌گرا با تجربه خرید پریمیوم.">A responsive e-commerce interface with a premium shopping experience.</p>
+                            <div class="project-tags">
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
                                 <span class="tag">JavaScript</span>
                             </div>
                         </div>
@@ -1477,469 +1592,713 @@ html[dir="rtl"] .back-to-top {
             </div>
         </section>
 
+        <!-- Contact Section -->
         <section class="contact section" id="contact">
             <div class="container">
                 <div class="section-header reveal-up">
-                    <span class="section-subtitle" data-en="Get In Touch" data-fa="ارتباط با من">Get In Touch</span>
-                    <h2 class="section-title" data-en="Let's Talk" data-fa="بیایید گفتگو کنیم">Let's Talk</h2>
+                    <span class="section-subtitle" data-en="Get In Touch" data-fa="در تماس باشید">Get In Touch</span>
+                    <h2 class="section-title" data-en="Let's Work Together" data-fa="بیایید با هم کار کنیم">Let's Work Together</h2>
                     <div class="section-title-line"></div>
                 </div>
 
                 <div class="contact-wrapper">
+                    <!-- Contact Info -->
                     <div class="contact-info reveal-left">
-                        <h3 class="contact-heading" data-en="Let's build something exceptional together" data-fa="بیایید باهم چیزی استثنایی بسازیم">Let's build something exceptional together</h3>
-                        <p class="contact-lead" data-en="Have a project in mind, a question, or just want to say hi? Fill out the form or reach out through my direct channels." data-fa="پروژه‌ای در ذهن دارید، سؤالی دارید یا فقط می‌خواهید سلامی کنید؟ فرم را پر کنید یا از طریق راه‌های ارتباطی مستقیم پیام دهید.">
-                            Have a project in mind, a question, or just want to say hi? Fill out the form or reach out through my direct channels.
+                        <h3 class="contact-heading" data-en="Contact Information" data-fa="اطلاعات تماس">Contact Information</h3>
+                        <p class="contact-lead" data-en="Have a project in mind, a question, or simply want to connect? Feel free to reach out directly through any of the platforms below or send a message using the form." data-fa="پروژه‌ای در ذهن دارید، سوالی دارید یا فقط می‌خواهید در ارتباط باشیم؟ از طریق هر یک از پلتفرم‌های زیر یا با ارسال پیام از فرم با من تماس بگیرید.">
+                            Have a project in mind, a question, or simply want to connect? Feel free to reach out directly through any of the platforms below or send a message using the form.
                         </p>
 
                         <div class="info-list">
-                            <a href="mailto:ahoora@dev.com" class="info-item">
+                            <a href="mailto:contact@ahoora.dev" class="info-item">
                                 <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
                                 <div class="info-details">
-                                    <span class="info-label" data-en="Email Me" data-fa="ایمیل من">Email Me</span>
-                                    <span class="info-value">ahoora@dev.com</span>
+                                    <span class="info-label" data-en="Email" data-fa="ایمیل">Email</span>
+                                    <span class="info-value">contact@ahoora.dev</span>
                                 </div>
                             </a>
-                            <div class="info-item">
-                                <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+
+                            <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" class="info-item">
+                                <div class="info-icon"><i class="fa-brands fa-linkedin-in"></i></div>
                                 <div class="info-details">
-                                    <span class="info-label" data-en="Location" data-fa="موقعیت">Location</span>
-                                    <span class="info-value" data-en="Available Worldwide" data-fa="آماده همکاری به صورت جهانی">Available Worldwide</span>
+                                    <span class="info-label">LinkedIn</span>
+                                    <span class="info-value">linkedin.com/in/ahoora</span>
                                 </div>
-                            </div>
+                            </a>
+
+                            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" class="info-item">
+                                <div class="info-icon"><i class="fa-brands fa-github"></i></div>
+                                <div class="info-details">
+                                    <span class="info-label">GitHub</span>
+                                    <span class="info-value">github.com/ahoora</span>
+                                </div>
+                            </a>
+
+                            <a href="https://t.me/yourusername" target="_blank" rel="noopener noreferrer" class="info-item">
+                                <div class="info-icon"><i class="fa-brands fa-telegram"></i></div>
+                                <div class="info-details">
+                                    <span class="info-label">Telegram</span>
+                                    <span class="info-value">t.me/ahoora</span>
+                                </div>
+                            </a>
+
+                            <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" class="info-item">
+                                <div class="info-icon"><i class="fa-brands fa-whatsapp"></i></div>
+                                <div class="info-details">
+                                    <span class="info-label">WhatsApp</span>
+                                    <span class="info-value">+1 (234) 567-890</span>
+                                </div>
+                            </a>
                         </div>
                     </div>
 
-                    <form id="contact-form" class="contact-form reveal-right" action="https://formspree.io/f/xppaozkg" method="POST" novalidate>
-                        <div class="form-group">
-                            <label for="form-name" class="form-label" data-en="Full Name *" data-fa="نام و نام خانوادگی *">Full Name *</label>
-                            <input type="text" id="form-name" name="نام_و_نام_خانوادگی" class="form-input" placeholder="John Doe" data-en-placeholder="John Doe" data-fa-placeholder="علی رضایی" required>
-                            <span class="form-error" id="name-error" data-en="Please enter your full name." data-fa="لطفاً نام و نام خانوادگی خود را وارد کنید.">Please enter your full name.</span>
-                        </div>
+                    <!-- Contact Form -->
+                    <div class="contact-form-container reveal-right">
+                        <form id="contact-form" class="contact-form" action="https://formspree.io/f/xppaozkg" method="POST" novalidate>
+                            <div class="form-group">
+                                <label for="form-name" class="form-label" data-en="Full Name *" data-fa="نام و نام خانوادگی *">Full Name *</label>
+                                <input type="text" id="form-name" name="name" class="form-input" placeholder="John Doe" data-en-placeholder="John Doe" data-fa-placeholder="علی رضایی" required>
+                                <span class="form-error" id="name-error" data-en="Please enter your name." data-fa="لطفاً نام خود را وارد کنید.">Please enter your name.</span>
+                            </div>
 
-                        <div class="form-group">
-                            <label for="form-contact" class="form-label" data-en="Email or Phone Number *" data-fa="ایمیل یا شماره تماس *">Email or Phone Number *</label>
-                            <input type="text" id="form-contact" name="اطلاعات_تماس" class="form-input" placeholder="09123456789 / email@example.com" data-en-placeholder="09123456789 / email@example.com" data-fa-placeholder="09123456789 یا email@example.com" required>
-                            <span class="form-error" id="contact-error" data-en="Please enter a valid phone number or email." data-fa="لطفاً یک شماره تماس صحیح یا ایمیل معتبر وارد کنید.">Please enter a valid phone number or email.</span>
-                        </div>
+                            <div class="form-group">
+                                <label for="form-email" class="form-label" data-en="Email Address *" data-fa="آدرس ایمیل *">Email Address *</label>
+                                <input type="email" id="form-email" name="email" class="form-input" placeholder="john@example.com" data-en-placeholder="john@example.com" data-fa-placeholder="example@email.com" required>
+                                <span class="form-error" id="email-error" data-en="Please enter a valid email address." data-fa="لطفاً یک آدرس ایمیل معتبر وارد کنید.">Please enter a valid email address.</span>
+                            </div>
 
-                        <div class="form-group">
-                            <label for="form-subject" class="form-label" data-en="Subject *" data-fa="موضوع *">Subject *</label>
-                            <input type="text" id="form-subject" name="موضوع" class="form-input" placeholder="Project Inquiry" data-en-placeholder="Project Inquiry" data-fa-placeholder="موضوع ارتباط" required>
-                            <span class="form-error" id="subject-error" data-en="Please enter a subject." data-fa="لطفاً موضوع را وارد کنید.">Please enter a subject.</span>
-                        </div>
+                            <div class="form-group">
+                                <label for="form-phone" class="form-label" data-en="Phone Number *" data-fa="شماره تماس *">Phone Number *</label>
+                                <input type="tel" id="form-phone" name="phone" class="form-input" placeholder="+1 (234) 567-890" data-en-placeholder="+1 (234) 567-890" data-fa-placeholder="۰۹۱۲۳۴۵۶۷۸۹" required>
+                                <span class="form-error" id="phone-error" data-en="Please enter your phone number." data-fa="لطفاً شماره تماس خود را وارد کنید.">Please enter your phone number.</span>
+                            </div>
 
-                        <div class="form-group">
-                            <label for="form-message" class="form-label" data-en="Message *" data-fa="شرح پیام *">Message *</label>
-                            <textarea id="form-message" name="شرح_پیام" class="form-input form-textarea" rows="5" placeholder="Tell me about your project or vision..." data-en-placeholder="Tell me about your project or vision..." data-fa-placeholder="شرح درخواست یا پروژه خود را بنویسید..." required></textarea>
-                            <span class="form-error" id="message-error" data-en="Please enter your message." data-fa="لطفاً شرح پیام را بنویسید.">Please enter your message.</span>
-                        </div>
+                            <div class="form-group">
+                                <label for="form-subject" class="form-label" data-en="Subject *" data-fa="موضوع *">Subject *</label>
+                                <input type="text" id="form-subject" name="subject" class="form-input" placeholder="Project Inquiry" data-en-placeholder="Project Inquiry" data-fa-placeholder="درخواست پروژه" required>
+                                <span class="form-error" id="subject-error" data-en="Please enter a subject." data-fa="لطفاً موضوع را وارد کنید.">Please enter a subject.</span>
+                            </div>
 
-                        <button type="submit" class="btn btn-primary form-submit-btn" id="form-submit">
-                            <span data-en="Send Message" data-fa="ارسال پیام">Send Message</span>
-                            <i class="fa-solid fa-paper-plane"></i>
-                        </button>
+                            <div class="form-group">
+                                <label for="form-message" class="form-label" data-en="Message *" data-fa="پیام *">Message *</label>
+                                <textarea id="form-message" name="message" class="form-input form-textarea" rows="5" placeholder="Tell me about your project or vision..." data-en-placeholder="Tell me about your project or vision..." data-fa-placeholder="درباره پروژه یا ایده خود بگویید..." required></textarea>
+                                <span class="form-error" id="message-error" data-en="Please enter your message." data-fa="لطفاً پیام خود را وارد کنید.">Please enter your message.</span>
+                            </div>
 
-                        <div class="form-feedback-message" id="form-feedback" aria-live="polite"></div>
-                    </form>
+                            <button type="submit" class="btn btn-primary form-submit-btn" id="form-submit">
+                                <span data-en="Send Message" data-fa="ارسال پیام">Send Message</span>
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+
+                            <div class="form-feedback-message" id="form-feedback" aria-live="polite"></div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="container footer-container">
-            <div>
+            <div class="footer-brand">
                 <a href="#home" class="footer-logo">AHOORA<span class="logo-dot">.</span></a>
-                <p class="footer-tagline" data-en="Frontend Developer &amp; UI/UX Enthusiast" data-fa="توسعه‌دهنده فرانت‌اند و علاقه‌مند به UI/UX">Frontend Developer &amp; UI/UX Enthusiast</p>
+                <div class="footer-line"></div>
+                <p class="footer-tagline" data-en="Designed with passion &amp; code." data-fa="طراحی‌شده با اشتیاق و کد.">Designed with passion &amp; code.</p>
             </div>
 
-            <div class="footer-links">
-                <a href="#home" data-en="Home" data-fa="خانه">Home</a>
-                <a href="#about" data-en="About" data-fa="درباره من">About</a>
-                <a href="#skills" data-en="Skills" data-fa="مهارت‌ها">Skills</a>
-                <a href="#portfolio" data-en="Portfolio" data-fa="نمونه‌کارها">Portfolio</a>
-                <a href="#contact" data-en="Contact" data-fa="تماس">Contact</a>
+            <div class="footer-nav">
+                <ul class="footer-links">
+                    <li><a href="#home" data-en="Home" data-fa="خانه">Home</a></li>
+                    <li><a href="#about" data-en="About" data-fa="درباره من">About</a></li>
+                    <li><a href="#skills" data-en="Skills" data-fa="مهارت‌ها">Skills</a></li>
+                    <li><a href="#portfolio" data-en="Portfolio" data-fa="نمونه‌کارها">Portfolio</a></li>
+                    <li><a href="#contact" data-en="Contact" data-fa="تماس">Contact</a></li>
+                </ul>
             </div>
 
             <div class="footer-socials">
-                <a href="https://github.com" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                <a href="https://t.me" target="_blank" rel="noopener" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
+                <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://t.me/yourusername" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
+                <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
             </div>
 
             <div class="footer-copyright">
-                <p data-en="&copy; 2026 Ahoora. All rights reserved." data-fa="&copy; ۲۰۲۶ - تمامی حقوق محفوظ است.">&copy; 2026 Ahoora. All rights reserved.</p>
+                <p data-en="&copy; 2026 AHOORA. All rights reserved." data-fa="&copy; ۲۰۲۶ AHOORA. تمامی حقوق محفوظ است.">&copy; 2026 AHOORA. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <div class="modal-overlay" id="portfolio-modal" aria-hidden="true">
-        <div class="modal-container" role="dialog" aria-modal="true">
-            <button class="modal-close-btn" id="modal-close" type="button" aria-label="Close modal"><i class="fa-solid fa-xmark"></i></button>
-            <div id="modal-body-content">
-                </div>
+    <!-- Portfolio Project Modal -->
+    <div class="modal-overlay" id="portfolio-modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
+        <div class="modal-container" role="document">
+            <button class="modal-close-btn" id="modal-close" aria-label="Close project modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="modal-body" id="modal-body">
+                <!-- Content dynamically injected via JavaScript -->
+            </div>
         </div>
     </div>
 
-    <button class="back-to-top" id="back-to-top" type="button" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <i class="fa-solid fa-chevron-up"></i>
+    </button>
 
     <script>
-        // Global language state
-        let currentLang = 'en';
+/**
+ * AHOORA — Personal Brand Portfolio JavaScript
+ * Features: Typewriter Effect, Sticky Header, Responsive Nav, Dynamic Modal,
+ *           Scroll Reveal Observer, Form Validation & Interactive Feedback,
+ *           English / Persian language toggle.
+ */
 
-        document.addEventListener('DOMContentLoaded', () => {
-            // Header scroll effect
-            const header = document.getElementById('header');
-            const handleScroll = () => {
-                if (window.scrollY > 40) {
-                    header.classList.add('scrolled');
+document.addEventListener('DOMContentLoaded', () => {
+
+    /* ==========================================================================
+       0. Language State
+       ========================================================================== */
+    let currentLang = 'en';
+
+    /* ==========================================================================
+       1. Portfolio Projects Data Array (EN + FA)
+       ========================================================================== */
+    const projectsData = [
+        {
+            id: '1',
+            number: '01',
+            title: { en: 'Modern Business Website', fa: 'وب‌سایت مدرن کسب‌وکار' },
+            fullDesc: {
+                en: 'This project is an enterprise-grade corporate platform developed with a focus on brand identity, dynamic content rendering, and conversion optimization. Built to reflect modern visual trends while maintaining fast load performance.',
+                fa: 'این پروژه یک پلتفرم سازمانی در سطح شرکتی است که با تمرکز بر هویت برند، نمایش پویای محتوا و بهینه‌سازی نرخ تبدیل طراحی شده. ساخته‌شده برای بازتاب روندهای بصری مدرن با حفظ سرعت بارگذاری بالا.'
+            },
+            objective: {
+                en: 'To create a high-converting, visually striking digital portal for modern business entities.',
+                fa: 'ایجاد یک درگاه دیجیتال جذاب و با نرخ تبدیل بالا برای کسب‌وکارهای مدرن.'
+            },
+            keyFeatures: {
+                en: [
+                    'Responsive modular layout adapted for all viewports',
+                    'Custom interactive hero banner and feature showcase',
+                    'Integrated lead-generation call-to-action sections',
+                    'Performance optimized image rendering and smooth scroll effects'
+                ],
+                fa: [
+                    'طرح‌بندی ماژولار واکنش‌گرا برای تمام اندازه‌های صفحه',
+                    'بنر اصلی تعاملی و بخش نمایش ویژگی‌ها',
+                    'بخش‌های فراخوان اقدام برای جذب سرنخ فروش',
+                    'رندر تصاویر بهینه‌شده و افکت‌های اسکرول نرم'
+                ]
+            },
+            technologies: ['HTML5', 'CSS3 / Grid', 'Vanilla JavaScript'],
+            image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200'
+        },
+        {
+            id: '2',
+            number: '02',
+            title: { en: 'Creative Portfolio', fa: 'نمونه‌کار خلاقانه' },
+            fullDesc: {
+                en: 'An interactive personal showcase engineered for high aesthetic appeal. Designed specifically to present creative projects through subtle micro-interactions, smooth page transitions, and structured technical displays.',
+                fa: 'یک نمایشگاه شخصی تعاملی که برای جذابیت بصری بالا طراحی شده. به‌طور ویژه برای معرفی پروژه‌های خلاقانه از طریق ریزتعامل‌های ظریف، انتقال نرم صفحات و نمایش فنی ساختاریافته ساخته شده است.'
+            },
+            objective: {
+                en: 'Highlight individual achievements and skill sets through an immersive user-centric web experience.',
+                fa: 'برجسته‌سازی دستاوردها و مهارت‌های فردی از طریق یک تجربه وب کاربرمحور و غوطه‌ور.'
+            },
+            keyFeatures: {
+                en: [
+                    'Glassmorphism modal interfaces for detailed project views',
+                    'Custom typewriter & scroll-reveal animations using IntersectionObserver',
+                    'Accessible interactive components with full keyboard support',
+                    'Minimalist luxury aesthetic with custom CSS variables'
+                ],
+                fa: [
+                    'رابط‌های مودال شیشه‌ای برای نمایش جزئیات پروژه',
+                    'انیمیشن‌های تایپ‌رایتر و ظاهرشدن هنگام اسکرول با IntersectionObserver',
+                    'اجزای تعاملی در دسترس با پشتیبانی کامل صفحه‌کلید',
+                    'زیبایی‌شناسی مینیمال و لوکس با متغیرهای CSS اختصاصی'
+                ]
+            },
+            technologies: ['HTML5', 'CSS3 Variables', 'JavaScript ES6+'],
+            image: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=1200'
+        },
+        {
+            id: '3',
+            number: '03',
+            title: { en: 'Dashboard UI', fa: 'رابط کاربری داشبورد' },
+            fullDesc: {
+                en: 'An intuitive, data-dense analytics control panel engineered for maximum readability. It displays real-time statistics, modular widgets, and customizable dark-theme visual structures.',
+                fa: 'یک پنل کنترل تحلیلی شهودی و متراکم از داده که برای بیشترین خوانایی ساخته شده. آمار لحظه‌ای، ویجت‌های ماژولار و ساختارهای بصری تیره قابل شخصی‌سازی را نمایش می‌دهد.'
+            },
+            objective: {
+                en: 'Simplify complex data visualization for improved administrative decision making.',
+                fa: 'ساده‌سازی نمایش داده‌های پیچیده برای تصمیم‌گیری مدیریتی بهتر.'
+            },
+            keyFeatures: {
+                en: [
+                    'Dynamic visual stat counters and progress indicators',
+                    'Clean card grid with responsive auto-fit placement',
+                    'Structured dark-theme color taxonomy',
+                    'Filterable data tables and status indicators'
+                ],
+                fa: [
+                    'شمارنده‌های آماری پویا و نشانگرهای پیشرفت',
+                    'شبکه کارت تمیز با چیدمان واکنش‌گرای خودکار',
+                    'نظام رنگی ساختاریافته تم تیره',
+                    'جداول داده قابل فیلتر و نشانگرهای وضعیت'
+                ]
+            },
+            technologies: ['HTML5', 'CSS Flexbox/Grid', 'JavaScript ES6+'],
+            image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200'
+        },
+        {
+            id: '4',
+            number: '04',
+            title: { en: 'E-Commerce Concept', fa: 'کانسپت فروشگاه اینترنتی' },
+            fullDesc: {
+                en: 'A high-end retail interface tailored for modern online shopping. Features clean grid layouts, seamless product preview modals, interactive cart states, and responsive navigation.',
+                fa: 'یک رابط خرده‌فروشی سطح بالا متناسب با خرید آنلاین مدرن. دارای طرح‌بندی شبکه‌ای تمیز، مودال‌های پیش‌نمایش محصول روان، وضعیت‌های تعاملی سبد خرید و ناوبری واکنش‌گرا.'
+            },
+            objective: {
+                en: 'Deliver an elegant digital storefront that enhances product appeal and reduces checkout friction.',
+                fa: 'ارائه یک ویترین دیجیتال شیک که جذابیت محصول را افزایش داده و اصطکاک فرآیند خرید را کاهش می‌دهد.'
+            },
+            keyFeatures: {
+                en: [
+                    'Interactive product card gallery with overlay actions',
+                    'Structured layout for item descriptions, tags, and pricing',
+                    'Clean typography system focused on readability',
+                    'Mobile-first responsive shopping flow'
+                ],
+                fa: [
+                    'گالری کارت محصول تعاملی با اقدامات روی تصویر',
+                    'طرح‌بندی ساختاریافته برای توضیحات، برچسب‌ها و قیمت',
+                    'سیستم تایپوگرافی تمیز با تمرکز بر خوانایی',
+                    'روند خرید واکنش‌گرا با اولویت موبایل'
+                ]
+            },
+            technologies: ['HTML5', 'CSS3', 'JavaScript'],
+            image: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&q=80&w=1200'
+        }
+    ];
+
+    /* ==========================================================================
+       2. Header Scroll Effect & Dynamic Link Highlighting
+       ========================================================================== */
+    const header = document.getElementById('header');
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    const handleHeaderScroll = () => {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+
+        const scrollY = window.pageYOffset;
+        sections.forEach(current => {
+            const sectionHeight = current.offsetHeight;
+            const sectionTop = current.offsetTop - 100;
+            const sectionId = current.getAttribute('id');
+            const correspondingLink = document.querySelector(`.nav-link[href*="${sectionId}"]`);
+
+            if (correspondingLink) {
+                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    correspondingLink.classList.add('active');
                 } else {
-                    header.classList.remove('scrolled');
+                    correspondingLink.classList.remove('active');
                 }
-            };
-            window.addEventListener('scroll', handleScroll, { passive: true });
-            handleScroll();
+            }
+        });
+    };
 
-            // Mobile Navigation Toggle
-            const navToggle = document.getElementById('nav-toggle');
-            const navMenu = document.getElementById('nav-menu');
+    window.addEventListener('scroll', handleHeaderScroll, { passive: true });
+    handleHeaderScroll();
 
-            if (navToggle && navMenu) {
-                navToggle.addEventListener('click', () => {
-                    const isOpen = navToggle.classList.toggle('open');
-                    navMenu.classList.toggle('open');
-                    navToggle.setAttribute('aria-expanded', isOpen);
-                });
+    /* ==========================================================================
+       3. Mobile Hamburger Navigation
+       ========================================================================== */
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
 
-                navMenu.querySelectorAll('.nav-link').forEach(link => {
-                    link.addEventListener('click', () => {
-                        navToggle.classList.remove('open');
-                        navMenu.classList.remove('open');
-                        navToggle.setAttribute('aria-expanded', 'false');
-                    });
-                });
+    const toggleMenu = () => {
+        const isOpen = navMenu.classList.contains('open');
+        navMenu.classList.toggle('open');
+        navToggle.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', !isOpen);
+    };
+
+    if (navToggle) {
+        navToggle.addEventListener('click', toggleMenu);
+    }
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (navMenu.classList.contains('open')) {
+                toggleMenu();
+            }
+        });
+    });
+
+    /* ==========================================================================
+       4. Typewriter Animation Effect (language aware)
+       ========================================================================== */
+    const typewriterElement = document.getElementById('typewriter');
+    const phrasesByLang = {
+        en: ['Frontend Developer', 'UI/UX Enthusiast', 'Creative Problem Solver', 'Web Experience Designer'],
+        fa: ['توسعه‌دهنده فرانت‌اند هستم', 'علاقه‌مند به UI/UX هستم', 'حل‌کننده خلاق مسائل هستم', 'طراح تجربه وب هستم']
+    };
+    let phrases = phrasesByLang.en;
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typewriterSpeed = 100;
+    let typewriterTimeoutId = null;
+
+    const type = () => {
+        const currentPhrase = phrases[phraseIndex % phrases.length];
+
+        if (isDeleting) {
+            typewriterElement.textContent = currentPhrase.substring(0, charIndex - 1);
+            charIndex--;
+            typewriterSpeed = 50;
+        } else {
+            typewriterElement.textContent = currentPhrase.substring(0, charIndex + 1);
+            charIndex++;
+            typewriterSpeed = 100;
+        }
+
+        if (!isDeleting && charIndex === currentPhrase.length) {
+            isDeleting = true;
+            typewriterSpeed = 2000;
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+            typewriterSpeed = 500;
+        }
+
+        typewriterTimeoutId = setTimeout(type, typewriterSpeed);
+    };
+
+    if (typewriterElement) {
+        typewriterTimeoutId = setTimeout(type, 1000);
+    }
+
+    const resetTypewriter = (lang) => {
+        phrases = phrasesByLang[lang] || phrasesByLang.en;
+        phraseIndex = 0;
+        charIndex = 0;
+        isDeleting = false;
+        if (typewriterElement) typewriterElement.textContent = '';
+        if (typewriterTimeoutId) clearTimeout(typewriterTimeoutId);
+        typewriterTimeoutId = setTimeout(type, 400);
+    };
+
+    /* ==========================================================================
+       5. Scroll Reveal & Skill Progress Fill Observer
+       ========================================================================== */
+    const revealElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
+    const skillProgressFills = document.querySelectorAll('.skill-progress-fill');
+    let skillBarsFilled = false;
+
+    const fillSkillBars = () => {
+        if (skillBarsFilled) return;
+        skillBarsFilled = true;
+        skillProgressFills.forEach(fill => {
+            const targetWidth = fill.getAttribute('data-percentage');
+            fill.style.width = targetWidth;
+        });
+    };
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('reveal-active');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        root: null,
+        threshold: 0.15
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    const skillsSection = document.getElementById('skills');
+    if (skillsSection) {
+        const skillsObserver = new IntersectionObserver((entries, observer) => {
+            if (entries[0].isIntersecting) {
+                fillSkillBars();
+                observer.disconnect();
+            }
+        }, { threshold: 0.2 });
+        skillsObserver.observe(skillsSection);
+    }
+
+    /* ==========================================================================
+       6. Portfolio Modal Logic (language aware)
+       ========================================================================== */
+    const modal = document.getElementById('portfolio-modal');
+    const modalBody = document.getElementById('modal-body');
+    const modalCloseBtn = document.getElementById('modal-close');
+    const viewDetailsButtons = document.querySelectorAll('.view-details-btn, .project-card');
+
+    const modalHeadings = {
+        objective: { en: 'Project Objective', fa: 'هدف پروژه' },
+        features: { en: 'Key Features', fa: 'ویژگی‌های کلیدی' }
+    };
+
+    const openModal = (projectId) => {
+        const project = projectsData.find(p => p.id === projectId);
+        if (!project) return;
+
+        const lang = currentLang;
+        modalBody.innerHTML = `
+            <img src="${project.image}" alt="${project.title[lang]}" class="modal-image">
+            <span class="project-number">${project.number}</span>
+            <h3 class="modal-title" id="modal-title">${project.title[lang]}</h3>
+            <div class="modal-meta-tags">
+                ${project.technologies.map(tech => `<span class="tag">${tech}</span>`).join('')}
+            </div>
+            <p class="modal-text">${project.fullDesc[lang]}</p>
+
+            <h4 class="modal-section-heading">${modalHeadings.objective[lang]}</h4>
+            <p class="modal-text">${project.objective[lang]}</p>
+
+            <h4 class="modal-section-heading">${modalHeadings.features[lang]}</h4>
+            <ul class="modal-features-list">
+                ${project.keyFeatures[lang].map(feature => `<li>${feature}</li>`).join('')}
+            </ul>
+        `;
+
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    };
+
+    const closeModal = () => {
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    };
+
+    viewDetailsButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const projectId = btn.getAttribute('data-project-id');
+            openModal(projectId);
+        });
+    });
+
+    if (modalCloseBtn) {
+        modalCloseBtn.addEventListener('click', closeModal);
+    }
+
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (modal && e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    /* ==========================================================================
+       7. Contact Form Validation & Submission Feedback (language aware)
+       ========================================================================== */
+    const contactForm = document.getElementById('contact-form');
+    const nameInput = document.getElementById('form-name');
+    const emailInput = document.getElementById('form-email');
+    const phoneInput = document.getElementById('form-phone');
+    const subjectInput = document.getElementById('form-subject');
+    const messageInput = document.getElementById('form-message');
+    const feedbackMsg = document.getElementById('form-feedback');
+    const submitBtn = document.getElementById('form-submit');
+
+    const validateEmail = (email) => {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    };
+
+    const validatePhone = (phone) => {
+        return phone.trim().length > 0;
+    };
+
+    const setError = (inputElement, isError) => {
+        const parent = inputElement.parentElement;
+        if (isError) {
+            parent.classList.add('error');
+        } else {
+            parent.classList.remove('error');
+        }
+    };
+
+    const feedbackByLang = {
+        en: 'Thank you! Your message has been received. I will get back to you shortly.',
+        fa: 'متشکرم! پیام شما دریافت شد. به‌زودی با شما تماس می‌گیرم.'
+    };
+    const sendingByLang = { en: 'Sending...', fa: 'در حال ارسال...' };
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            let isValid = true;
+
+            if (nameInput.value.trim() === '') {
+                setError(nameInput, true);
+                isValid = false;
+            } else {
+                setError(nameInput, false);
             }
 
-            // Typewriter Effect
-            const typewriterEl = document.getElementById('typewriter');
-            const roles = {
-                en: ['Frontend Developer', 'UI/UX Enthusiast', 'Creative Coder'],
-                fa: ['توسعه‌دهنده فرانت‌اند', 'علاقه‌مند به UI/UX', 'برنامه‌نویس خلاق']
-            };
-            let roleIndex = 0;
-            let charIndex = 0;
-            let isDeleting = false;
-            let typewriterTimeout;
+            if (!validateEmail(emailInput.value.trim())) {
+                setError(emailInput, true);
+                isValid = false;
+            } else {
+                setError(emailInput, false);
+            }
 
-            const typeWriter = () => {
-                if (!typewriterEl) return;
-                const currentRoles = roles[currentLang];
-                const currentRole = currentRoles[roleIndex];
+            if (!validatePhone(phoneInput.value.trim())) {
+                setError(phoneInput, true);
+                isValid = false;
+            } else {
+                setError(phoneInput, false);
+            }
 
-                if (isDeleting) {
-                    typewriterEl.textContent = currentRole.substring(0, charIndex - 1);
-                    charIndex--;
-                } else {
-                    typewriterEl.textContent = currentRole.substring(0, charIndex + 1);
-                    charIndex++;
-                }
+            if (subjectInput.value.trim() === '') {
+                setError(subjectInput, true);
+                isValid = false;
+            } else {
+                setError(subjectInput, false);
+            }
 
-                let typingSpeed = isDeleting ? 60 : 120;
+            if (messageInput.value.trim() === '') {
+                setError(messageInput, true);
+                isValid = false;
+            } else {
+                setError(messageInput, false);
+            }
 
-                if (!isDeleting && charIndex === currentRole.length) {
-                    typingSpeed = 2000; // Pause at end
-                    isDeleting = true;
-                } else if (isDeleting && charIndex === 0) {
-                    isDeleting = false;
-                    roleIndex = (roleIndex + 1) % currentRoles.length;
-                    typingSpeed = 500;
-                }
+            if (isValid) {
+                submitBtn.disabled = true;
+                const originalBtnHTML = submitBtn.innerHTML;
+                submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> <span>${sendingByLang[currentLang]}</span>`;
 
-                typewriterTimeout = setTimeout(typeWriter, typingSpeed);
-            };
-
-            window.resetTypewriter = (lang) => {
-                clearTimeout(typewriterTimeout);
-                charIndex = 0;
-                isDeleting = false;
-                roleIndex = 0;
-                typeWriter();
-            };
-
-            typeWriter();
-
-            // Scroll Reveal Animation via Intersection Observer
-            const revealElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
-            const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-
-            const observer = new IntersectionObserver((entries, observerInstance) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('reveal-active');
-                        observerInstance.unobserve(entry.target);
+                // Submit the form to Formspree
+                fetch(contactForm.action, {
+                    method: 'POST',
+                    body: new FormData(contactForm),
+                    headers: {
+                        'Accept': 'application/json'
                     }
-                });
-            }, observerOptions);
-
-            revealElements.forEach(el => observer.observe(el));
-
-            // Animate Skill Bars & Stats on Scroll
-            const skillsSection = document.getElementById('skills');
-            let animated = false;
-
-            const animateMetrics = () => {
-                if (animated) return;
-                const scrollPos = window.scrollY + window.innerHeight;
-                const skillsPos = skillsSection ? skillsSection.offsetTop : 0;
-
-                if (skillsSection && scrollPos > skillsPos + 100) {
-                    // Skill Progress Bars
-                    document.querySelectorAll('.skill-progress-fill').forEach(bar => {
-                        const targetWidth = bar.getAttribute('data-percentage');
-                        bar.style.width = targetWidth + '%';
-                    });
-
-                    // Stats Number Counter
-                    document.querySelectorAll('.stat-number[data-target]').forEach(stat => {
-                        const target = +stat.getAttribute('data-target');
-                        let count = 0;
-                        const updateCount = () => {
-                            if (count < target) {
-                                count++;
-                                stat.textContent = count + '+';
-                                setTimeout(updateCount, 150);
-                            }
-                        };
-                        updateCount();
-                    });
-
-                    animated = true;
-                }
-            };
-
-            window.addEventListener('scroll', animateMetrics, { passive: true });
-
-            // Portfolio Data & Modal Handler
-            const projectData = {
-                1: {
-                    en: {
-                        title: "Modern E-Commerce Dashboard",
-                        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
-                        description: "A comprehensive analytics dashboard featuring real-time data visualization, order management, and interactive metrics for growing online businesses.",
-                        features: ["Real-time data synchronization", "Advanced Chart.js visual graphs", "Fully responsive dark/light mode", "Modular component-based design"]
-                    },
-                    fa: {
-                        title: "داشبورد فروشگاهی مدرن",
-                        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
-                        description: "یک داشبورد تحلیلی جامع با قابلیت نمایش لحظه‌ای داده‌ها، مدیریت سفارش‌ها و معیارهای تعاملی برای کسب‌وکارهای آنلاین.",
-                        features: ["همگام‌سازی لحظه‌ای داده‌ها", "نمودارهای پیشرفته Chart.js", "حالت تاریک/روشن کاملاً واکنش‌گرا", "طراحی ماژولار مبتنی بر کامپوننت"]
-                    },
-                    tags: ["React", "Chart.js", "Tailwind CSS"]
-                },
-                2: {
-                    en: {
-                        title: "Creative Agency Web App",
-                        image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=800",
-                        description: "An immersive, animation-driven web application tailored for a digital agency to display portfolio pieces with butter-smooth transitions.",
-                        features: ["Smooth Scroll animations", "High performance asset optimization", "Dynamic multilingual support", "Accessible semantic markup"]
-                    },
-                    fa: {
-                        title: "وب‌اپلیکیشن آژانس خلاقانه",
-                        image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=800",
-                        description: "یک وب‌اپلیکیشن تعاملی و پر از انیمیشن مناسب برای آژانس‌های دیجیتال جهت نمایش نمونه‌کارها با روان‌ترین انیمیشن‌ها.",
-                        features: ["انیمیشن‌های اسکرول روان", "بهینه‌سازی پیشرفته دارایی‌ها", "پشتیبانی از چندزبانگی پویا", "نشانه‌گذاری معنایی در دسترس"]
-                    },
-                    tags: ["HTML5", "CSS3", "JavaScript"]
-                }
-            };
-
-            const modalOverlay = document.getElementById('portfolio-modal');
-            const modalBody = document.getElementById('modal-body-content');
-            const modalClose = document.getElementById('modal-close');
-
-            const openModal = (projectId) => {
-                const project = projectData[projectId];
-                if (!project) return;
-                const localized = project[currentLang];
-
-                modalBody.innerHTML = `
-                    <img src="${localized.image}" class="modal-image" alt="${localized.title}">
-                    <div class="modal-meta-tags">
-                        ${project.tags.map(t => `<span class="tag">${t}</span>`).join('')}
-                    </div>
-                    <h3 class="modal-title">${localized.title}</h3>
-                    <p class="modal-text">${localized.description}</p>
-                    <h4 class="modal-section-heading">${currentLang === 'fa' ? 'ویژگی‌های کلیدی:' : 'Key Features:'}</h4>
-                    <ul class="modal-features-list">
-                        ${localized.features.map(f => `<li>${f}</li>`).join('')}
-                    </ul>
-                `;
-                modalOverlay.classList.add('active');
-                modalOverlay.setAttribute('aria-hidden', 'false');
-                document.body.style.overflow = 'hidden';
-            };
-
-            const closeModalFunc = () => {
-                modalOverlay.classList.remove('active');
-                modalOverlay.setAttribute('aria-hidden', 'true');
-                document.body.style.overflow = '';
-            };
-
-            document.querySelectorAll('.view-project-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    const card = e.target.closest('.project-card');
-                    const projectId = card.getAttribute('data-project-id');
-                    openModal(projectId);
-                });
-            });
-
-            if (modalClose) modalClose.addEventListener('click', closeModalFunc);
-            modalOverlay.addEventListener('click', (e) => {
-                if (e.target === modalOverlay) closeModalFunc();
-            });
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && modalOverlay.classList.contains('active')) closeModalFunc();
-            });
-
-            // Back to Top Visibility
-            const backToTopBtn = document.getElementById('back-to-top');
-            const handleBackToTopVisibility = () => {
-                if (window.scrollY > 400) {
-                    backToTopBtn.classList.add('visible');
-                } else {
-                    backToTopBtn.classList.remove('visible');
-                }
-            };
-            window.addEventListener('scroll', handleBackToTopVisibility, { passive: true });
-
-            if (backToTopBtn) {
-                backToTopBtn.addEventListener('click', () => {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                });
-            }
-
-            // Language Switcher Logic
-            const langToggleBtn = document.getElementById('lang-toggle');
-            const translatableTextEls = document.querySelectorAll('[data-en]');
-            const translatablePlaceholderEls = document.querySelectorAll('[data-en-placeholder]');
-
-            const applyLanguage = (lang) => {
-                currentLang = lang;
-                document.documentElement.setAttribute('lang', lang);
-                document.documentElement.setAttribute('dir', lang === 'fa' ? 'rtl' : 'ltr');
-
-                translatableTextEls.forEach(el => {
-                    const text = lang === 'fa' ? el.getAttribute('data-fa') : el.getAttribute('data-en');
-                    if (text !== null) el.innerHTML = text;
-                });
-
-                translatablePlaceholderEls.forEach(el => {
-                    const ph = lang === 'fa' ? el.getAttribute('data-fa-placeholder') : el.getAttribute('data-en-placeholder');
-                    if (ph !== null) el.setAttribute('placeholder', ph);
-                });
-
-                if (langToggleBtn) langToggleBtn.textContent = lang === 'fa' ? 'EN' : 'FA';
-                resetTypewriter(lang);
-            };
-
-            if (langToggleBtn) {
-                langToggleBtn.addEventListener('click', () => {
-                    applyLanguage(currentLang === 'en' ? 'fa' : 'en');
-                });
-            }
-
-            applyLanguage('en');
-
-            // Contact Form Validation & Submission (Formspree AJAX)
-            const contactForm = document.getElementById('contact-form');
-            const feedbackMsg = document.getElementById('form-feedback');
-            const submitBtn = document.getElementById('form-submit');
-
-            const feedbackByLang = {
-                en: 'Thank you! Your message has been successfully sent.',
-                fa: 'متشکرم! پیام شما با موفقیت ارسال شد.'
-            };
-            const errorByLang = {
-                en: 'Oops! There was a problem submitting your form. Please try again.',
-                fa: 'خطا! مشکلی در ارسال فرم پیش آمد. لطفاً دوباره تلاش کنید.'
-            };
-            const sendingByLang = { en: 'Sending...', fa: 'در حال ارسال...' };
-
-            if (contactForm) {
-                contactForm.addEventListener('submit', async (e) => {
-                    e.preventDefault();
-
-                    let isValid = true;
-                    const nameInput = document.getElementById('form-name');
-                    const contactInput = document.getElementById('form-contact');
-                    const subjectInput = document.getElementById('form-subject');
-                    const messageInput = document.getElementById('form-message');
-
-                    // بررسی خالی نبودن نام، موضوع و شرح پیام
-                    [nameInput, subjectInput, messageInput].forEach(input => {
-                        if (input.value.trim() === '') {
-                            input.parentElement.classList.add('error');
-                            isValid = false;
-                        } else {
-                            input.parentElement.classList.remove('error');
-                        }
-                    });
-
-                    // بررسی صحت شماره تماس (موبایل یا شماره صحیح بین المللی) یا ایمیل
-                    const contactValue = contactInput.value.trim();
-                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                    const phoneRegex = /^(\+98|0)?9\d{9}$|^[0-9]{10,15}$/;
-
-                    if (contactValue === '' || (!emailRegex.test(contactValue) && !phoneRegex.test(contactValue))) {
-                        contactInput.parentElement.classList.add('error');
-                        isValid = false;
+                })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
                     } else {
-                        contactInput.parentElement.classList.remove('error');
+                        throw new Error('Network response was not ok.');
                     }
+                })
+                .then(data => {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnHTML;
 
-                    if (isValid) {
-                        submitBtn.disabled = true;
-                        const originalBtnHTML = submitBtn.innerHTML;
-                        submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> <span>${sendingByLang[currentLang]}</span>`;
+                    feedbackMsg.textContent = feedbackByLang[currentLang];
+                    feedbackMsg.className = 'form-feedback-message success';
 
-                        try {
-                            const response = await fetch(contactForm.action, {
-                                method: contactForm.method,
-                                body: new FormData(contactForm),
-                                headers: {
-                                    'Accept': 'application/json'
-                                }
-                            });
+                    contactForm.reset();
 
-                            if (response.ok) {
-                                feedbackMsg.textContent = feedbackByLang[currentLang];
-                                feedbackMsg.className = 'form-feedback-message success';
-                                feedbackMsg.style.color = '#7BC47F';
-                                contactForm.reset();
-                            } else {
-                                feedbackMsg.textContent = errorByLang[currentLang];
-                                feedbackMsg.className = 'form-feedback-message error';
-                                feedbackMsg.style.color = '#E07A6B';
-                            }
-                        } catch (error) {
-                            feedbackMsg.textContent = errorByLang[currentLang];
-                            feedbackMsg.className = 'form-feedback-message error';
-                            feedbackMsg.style.color = '#E07A6B';
-                        } finally {
-                            submitBtn.disabled = false;
-                            submitBtn.innerHTML = originalBtnHTML;
+                    setTimeout(() => {
+                        feedbackMsg.className = 'form-feedback-message';
+                    }, 6000);
+                })
+                .catch(error => {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnHTML;
 
-                            setTimeout(() => {
-                                feedbackMsg.className = 'form-feedback-message';
-                                feedbackMsg.textContent = '';
-                                feedbackMsg.style.color = '';
-                            }, 5000);
-                        }
-                    }
+                    feedbackMsg.textContent = 'Oops! There was a problem sending your message. Please try again.';
+                    feedbackMsg.className = 'form-feedback-message error';
+
+                    setTimeout(() => {
+                        feedbackMsg.className = 'form-feedback-message';
+                    }, 6000);
                 });
             }
         });
+    }
+
+    /* ==========================================================================
+       8. Back to Top Button Logic
+       ========================================================================== */
+    const backToTopBtn = document.getElementById('back-to-top');
+
+    const handleBackToTopVisibility = () => {
+        if (!backToTopBtn) return;
+        if (window.scrollY > 400) {
+            backToTopBtn.classList.add('visible');
+        } else {
+            backToTopBtn.classList.remove('visible');
+        }
+    };
+
+    window.addEventListener('scroll', handleBackToTopVisibility, { passive: true });
+    handleBackToTopVisibility();
+
+    if (backToTopBtn) {
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+
+    /* ==========================================================================
+       9. Language Toggle (English / Persian)
+       ========================================================================== */
+    const langToggleBtn = document.getElementById('lang-toggle');
+    const translatableTextEls = document.querySelectorAll('[data-en]');
+    const translatablePlaceholderEls = document.querySelectorAll('[data-en-placeholder]');
+
+    const applyLanguage = (lang) => {
+        currentLang = lang;
+
+        document.documentElement.setAttribute('lang', lang);
+        document.documentElement.setAttribute('dir', lang === 'fa' ? 'rtl' : 'ltr');
+
+        translatableTextEls.forEach(el => {
+            const text = lang === 'fa' ? el.getAttribute('data-fa') : el.getAttribute('data-en');
+            if (text !== null) el.innerHTML = text;
+        });
+
+        translatablePlaceholderEls.forEach(el => {
+            const ph = lang === 'fa' ? el.getAttribute('data-fa-placeholder') : el.getAttribute('data-en-placeholder');
+            if (ph !== null) el.setAttribute('placeholder', ph);
+        });
+
+        if (langToggleBtn) {
+            langToggleBtn.textContent = lang === 'fa' ? 'EN' : 'FA';
+        }
+
+        resetTypewriter(lang);
+    };
+
+    if (langToggleBtn) {
+        langToggleBtn.addEventListener('click', () => {
+            applyLanguage(currentLang === 'en' ? 'fa' : 'en');
+        });
+    }
+
+    applyLanguage('en');
+});
     </script>
 </body>
 </html>
