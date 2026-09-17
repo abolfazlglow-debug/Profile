@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -1233,4 +1234,1188 @@
 
         .modal-meta-tags {
             display: flex;
-            gap: 0.5rem
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.2rem;
+        }
+
+        .modal-text {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .modal-section-heading {
+            font-family: var(--font-heading);
+            font-size: 1.05rem;
+            color: var(--gold-light);
+            margin: 1.2rem 0 0.6rem;
+        }
+
+        .modal-features-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            padding-left: 1.2rem;
+        }
+
+        .modal-features-list li {
+            list-style: disc;
+            font-size: 0.9rem;
+        }
+
+        html[dir="rtl"] .modal-features-list {
+            padding-left: 0;
+            padding-right: 1.2rem;
+        }
+
+        .modal-actions {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: var(--gold);
+            color: var(--bg-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(10px);
+            transition: all var(--transition-fast);
+            z-index: 900;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        html[dir="rtl"] .back-to-top {
+            right: auto;
+            left: 2rem;
+        }
+
+        @media (max-width: 992px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-cta {
+                justify-content: center;
+            }
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+    <div class="bg-grid-pattern"></div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container header-container">
+            <a href="#home" class="logo" aria-label="AHOORA Home">
+                AHOORA<span class="logo-dot">.</span>
+            </a>
+
+            <nav class="nav" id="nav-menu" aria-label="Main Navigation">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="#home" class="nav-link active" data-en="Home" data-fa="خانه">Home</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link" data-en="About" data-fa="درباره من">About</a></li>
+                    <li class="nav-item"><a href="#skills" class="nav-link" data-en="Skills" data-fa="مهارت‌ها">Skills</a></li>
+                    <li class="nav-item"><a href="#portfolio" class="nav-link" data-en="Portfolio" data-fa="نمونه‌کارها">Portfolio</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link" data-en="Contact" data-fa="تماس">Contact</a></li>
+                </ul>
+            </nav>
+
+            <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Switch language">FA</button>
+            <button class="lang-toggle theme-toggle" id="theme-toggle" type="button" aria-label="Switch theme" title="Royal Green">◐</button>
+
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero section" id="home">
+            <div class="container hero-container">
+                <div class="hero-content reveal-left">
+                    <span class="hero-greeting" data-en="Welcome to my world" data-fa="به دنیای من خوش آمدید">Welcome to my world</span>
+                    <h1 class="hero-title">AHOORA</h1>
+                    <div class="hero-typewriter-container">
+                        <span class="hero-subtitle" data-en="I am a" data-fa="من">I am a</span>
+                        <span class="typewriter-text" id="typewriter"></span>
+                        <span class="typewriter-cursor">|</span>
+                    </div>
+                    <p class="hero-tagline" data-en='"Turning ideas into meaningful digital experiences."' data-fa='«تبدیل ایده‌ها به تجربه‌های دیجیتال معنادار.»'>"Turning ideas into meaningful digital experiences."</p>
+                    <p class="hero-description" data-en="Specializing in crafting high-performance, elegant web applications with seamless user interfaces and clean architecture." data-fa="متخصص در طراحی وب‌اپلیکیشن‌های سریع و شیک با رابط کاربری روان و معماری تمیز.">
+                        Specializing in crafting high-performance, elegant web applications with seamless user interfaces and clean architecture.
+                    </p>
+                    <div class="hero-cta">
+                        <a href="#about" class="btn btn-primary">
+                            <span data-en="Discover More About Me" data-fa="بیشتر درباره من بدانید">Discover More About Me</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a href="#contact" class="btn btn-secondary" data-en="Get In Touch" data-fa="تماس با من">Get In Touch</a>
+                    </div>
+                </div>
+
+                <div class="hero-visual reveal-right">
+                    <div class="profile-frame-wrapper">
+                        <div class="profile-geometric-ring"></div>
+                        <div class="profile-geometric-ring-2"></div>
+                        <div class="profile-image-container">
+                            <img src="IMG_20260731_154206_compressed.jpg" class="profile-img" alt="Profile Picture" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about section" id="about">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <span class="section-subtitle" data-en="Biography" data-fa="بیوگرافی">Biography</span>
+                    <h2 class="section-title" data-en="About Me" data-fa="درباره من">About Me</h2>
+                    <div class="section-title-line"></div>
+                </div>
+
+                <div class="about-grid">
+                    <div class="about-text reveal-left">
+                        <h3 class="about-heading" data-en="Crafting Exceptional Interfaces with Detail &amp; Precision" data-fa="طراحی رابط‌های کاربری استثنایی با دقت و ظرافت">Crafting Exceptional Interfaces with Detail &amp; Precision</h3>
+                        <p class="about-paragraph" data-en="I am a dedicated Frontend Developer passionate about bridging the gap between design and technological implementation. With a strong foundation in modern web technologies including HTML5, CSS3, JavaScript, and React, I turn modern concepts into clean, functional code." data-fa="من یک توسعه‌دهنده فرانت‌اند متعهد هستم که به پر کردن فاصله میان طراحی و پیاده‌سازی فنی علاقه‌مندم. با پایه‌ای قوی در فناوری‌های وب مدرن از جمله HTML5، CSS3، جاوااسکریپت و ری‌اکت، ایده‌های امروزی را به کدی تمیز و کاربردی تبدیل می‌کنم.">
+                            I am a dedicated Frontend Developer passionate about bridging the gap between design and technological implementation. With a strong foundation in modern web technologies including HTML5, CSS3, JavaScript, and React, I turn modern concepts into clean, functional code.
+                        </p>
+                        <p class="about-paragraph" data-en="Driven by detail, reliability, and an unwavering commitment to quality, my approach prioritizes intuitive user experience, responsive visual structures, and sustainable architecture." data-fa="با انگیزه‌ای برخاسته از دقت، قابلیت اطمینان و تعهد پایدار به کیفیت، رویکرد من اولویت را به تجربه کاربری شهودی، ساختارهای بصری واکنش‌گرا و معماری پایدار می‌دهد.">
+                            Driven by detail, reliability, and an unwavering commitment to quality, my approach prioritizes intuitive user experience, responsive visual structures, and sustainable architecture.
+                        </p>
+                        <div class="about-highlights">
+                            <div class="highlight-item">
+                                <i class="fa-solid fa-check highlight-icon"></i>
+                                <span data-en="Clean &amp; Maintainable Code" data-fa="کد تمیز و قابل نگهداری">Clean &amp; Maintainable Code</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fa-solid fa-check highlight-icon"></i>
+                                <span data-en="Pixel-Perfect Visual Execution" data-fa="اجرای بصری دقیق تا آخرین پیکسل">Pixel-Perfect Visual Execution</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fa-solid fa-check highlight-icon"></i>
+                                <span data-en="User-Centric UI/UX Design" data-fa="طراحی UI/UX کاربرمحور">User-Centric UI/UX Design</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fa-solid fa-check highlight-icon"></i>
+                                <span data-en="Responsive &amp; Accessible Layouts" data-fa="طرح‌بندی واکنش‌گرا و در دسترس">Responsive &amp; Accessible Layouts</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="about-stats reveal-right">
+                        <div class="stat-card">
+                            <div class="stat-number" data-target="1">1+</div>
+                            <div class="stat-label" data-en="Year of Experience" data-fa="سال سابقه کاری">Year of Experience</div>
+                            <div class="stat-bar"></div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" data-target="20">20+</div>
+                            <div class="stat-label" data-en="Projects Completed" data-fa="پروژه تکمیل‌شده">Projects Completed</div>
+                            <div class="stat-bar"></div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label" data-en="Commitment to Quality" data-fa="تعهد به کیفیت">Commitment to Quality</div>
+                            <div class="stat-bar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="skills section" id="skills">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <span class="section-subtitle" data-en="Capabilities" data-fa="توانمندی‌ها">Capabilities</span>
+                    <h2 class="section-title" data-en="Skills &amp; Expertise" data-fa="مهارت‌ها و تخصص">Skills &amp; Expertise</h2>
+                    <div class="section-title-line"></div>
+                </div>
+
+                <div class="skills-wrapper">
+                    <div class="skills-column reveal-left">
+                        <h3 class="skills-category-title">
+                            <i class="fa-solid fa-code title-icon"></i> <span data-en="Technical Skills" data-fa="مهارت‌های فنی">Technical Skills</span>
+                        </h3>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">HTML5</span>
+                                    <span class="skill-percentage">95%</span>
+                                </div>
+                                <div class="skill-progress-bg">
+                                    <div class="skill-progress-fill" style="width: 0%;" data-percentage="95%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">CSS3 / SCSS</span>
+                                    <span class="skill-percentage">90%</span>
+                                </div>
+                                <div class="skill-progress-bg">
+                                    <div class="skill-progress-fill" style="width: 0%;" data-percentage="90%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">JavaScript (ES6+)</span>
+                                    <span class="skill-percentage">85%</span>
+                                </div>
+                                <div class="skill-progress-bg">
+                                    <div class="skill-progress-fill" style="width: 0%;" data-percentage="85%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">React</span>
+                                    <span class="skill-percentage">80%</span>
+                                </div>
+                                <div class="skill-progress-bg">
+                                    <div class="skill-progress-fill" style="width: 0%;" data-percentage="80%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name" data-en="Responsive Design" data-fa="طراحی واکنش‌گرا">Responsive Design</span>
+                                    <span class="skill-percentage">95%</span>
+                                </div>
+                                <div class="skill-progress-bg">
+                                    <div class="skill-progress-fill" style="width: 0%;" data-percentage="95%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">Git &amp; GitHub</span>
+                                    <span class="skill-percentage">80%</span>
+                                </div>
+                                <div class="skill-progress-bg">
+                                    <div class="skill-progress-fill" style="width: 0%;" data-percentage="80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skills-column reveal-right">
+                        <h3 class="skills-category-title">
+                            <i class="fa-solid fa-user-gear title-icon"></i> <span data-en="Soft Skills" data-fa="مهارت‌های نرم">Soft Skills</span>
+                        </h3>
+                        <div class="soft-skills-grid">
+                            <div class="soft-skill-card">
+                                <div class="soft-skill-icon"><i class="fa-solid fa-comments"></i></div>
+                                <h4 data-en="Effective Communication" data-fa="ارتباط مؤثر">Effective Communication</h4>
+                                <p data-en="Articulating ideas clearly and collaborating smoothly across multidisciplinary teams." data-fa="بیان روشن ایده‌ها و همکاری روان با تیم‌های چندتخصصی.">Articulating ideas clearly and collaborating smoothly across multidisciplinary teams.</p>
+                            </div>
+                            <div class="soft-skill-card">
+                                <div class="soft-skill-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                                <h4 data-en="Problem Solving" data-fa="حل مسئله">Problem Solving</h4>
+                                <p data-en="Analyzing complex logic issues and devising streamlined, efficient solutions." data-fa="تحلیل مسائل پیچیده منطقی و ارائه راه‌حل‌های کارآمد.">Analyzing complex logic issues and devising streamlined, efficient solutions.</p>
+                            </div>
+                            <div class="soft-skill-card">
+                                <div class="soft-skill-icon"><i class="fa-solid fa-clock"></i></div>
+                                <h4 data-en="Time Management" data-fa="مدیریت زمان">Time Management</h4>
+                                <p data-en="Punctual delivery with meticulous planning and effective task prioritization." data-fa="تحویل به‌موقع با برنامه‌ریزی دقیق و اولویت‌بندی مؤثر وظایف.">Punctual delivery with meticulous planning and effective task prioritization.</p>
+                            </div>
+                            <div class="soft-skill-card">
+                                <div class="soft-skill-icon"><i class="fa-solid fa-users"></i></div>
+                                <h4 data-en="Teamwork" data-fa="کار تیمی">Teamwork</h4>
+                                <p data-en="Fostering cooperative environments and contributing positively to group objectives." data-fa="ایجاد فضای همکاری و مشارکت مثبت در اهداف گروهی.">Fostering cooperative environments and contributing positively to group objectives.</p>
+                            </div>
+                            <div class="soft-skill-card">
+                                <div class="soft-skill-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+                                <h4 data-en="Attention to Detail" data-fa="توجه به جزئیات">Attention to Detail</h4>
+                                <p data-en="Ensuring pixel perfection, clean code, and cohesive aesthetic execution." data-fa="اطمینان از دقت پیکسلی، کد تمیز و اجرای بصری منسجم.">Ensuring pixel perfection, clean code, and cohesive aesthetic execution.</p>
+                            </div>
+                            <div class="soft-skill-card">
+                                <div class="soft-skill-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                                <h4 data-en="Continuous Learning" data-fa="یادگیری مستمر">Continuous Learning</h4>
+                                <p data-en="Constantly staying ahead with evolving frontend technologies and best practices." data-fa="همگام ماندن مداوم با فناوری‌ها و بهترین شیوه‌های فرانت‌اند.">Constantly staying ahead with evolving frontend technologies and best practices.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section class="portfolio section" id="portfolio">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <span class="section-subtitle" data-en="Portfolio" data-fa="نمونه‌کارها">Portfolio</span>
+                    <h2 class="section-title" data-en="Selected Work" data-fa="منتخب پروژه‌ها">Selected Work</h2>
+                    <div class="section-title-line"></div>
+                </div>
+
+                <div class="portfolio-grid" id="portfolio-grid">
+                    <!-- Card 1 -->
+                    <div class="project-card reveal-up" data-project-id="1">
+                        <div class="project-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" alt="MOX Web Application" class="project-img" />
+                            <div class="project-overlay">
+                                <button class="btn btn-sm btn-primary view-details-btn" data-project-id="1" data-en="Details" data-fa="جزئیات">Details</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <span class="project-number">01</span>
+                            <h3 class="project-title" data-en="MOX Web Project" data-fa="پروژه وب MOX">MOX Web Project</h3>
+                            <p class="project-description" data-en="Interactive landing page & dynamic portfolio application." data-fa="لندینگ پیج تعاملی و اپلیکیشن نمونه‌کار پویا.">Interactive landing page & dynamic portfolio application.</p>
+                            <div class="project-tags">
+                                <span class="tag">HTML5</span>
+                                <span class="tag">CSS3</span>
+                                <span class="tag">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="project-card reveal-up" data-project-id="2">
+                        <div class="project-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=800" alt="Creative Portfolio" class="project-img" />
+                            <div class="project-overlay">
+                                <button class="btn btn-sm btn-primary view-details-btn" data-project-id="2" data-en="Details" data-fa="جزئیات">Details</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <span class="project-number">02</span>
+                            <h3 class="project-title" data-en="Creative Portfolio" data-fa="نمونه‌کار خلاقانه">Creative Portfolio</h3>
+                            <p class="project-description" data-en="A personal portfolio website featuring modern animations and responsive layouts." data-fa="وب‌سایت نمونه‌کار شخصی با انیمیشن‌های مدرن و طرح‌بندی واکنش‌گرا.">A personal portfolio website featuring modern animations and responsive layouts.</p>
+                            <div class="project-tags">
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                                <span class="tag">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="project-card reveal-up" data-project-id="3">
+                        <div class="project-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="Dashboard UI" class="project-img" />
+                            <div class="project-overlay">
+                                <button class="btn btn-sm btn-primary view-details-btn" data-project-id="3" data-en="Details" data-fa="جزئیات">Details</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <span class="project-number">03</span>
+                            <h3 class="project-title" data-en="Dashboard UI" data-fa="رابط کاربری داشبورد">Dashboard UI</h3>
+                            <p class="project-description" data-en="A modern dashboard interface designed for usability and visual clarity." data-fa="رابط داشبورد مدرن طراحی‌شده برای کاربردپذیری و وضوح بصری.">A modern dashboard interface designed for usability and visual clarity.</p>
+                            <div class="project-tags">
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                                <span class="tag">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="project-card reveal-up" data-project-id="4">
+                        <div class="project-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&q=80&w=800" alt="E-Commerce Concept" class="project-img" />
+                            <div class="project-overlay">
+                                <button class="btn btn-sm btn-primary view-details-btn" data-project-id="4" data-en="Details" data-fa="جزئیات">Details</button>
+                                <a href="https://mox4726.github.io/MOX47/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-secondary external-link-btn" onclick="event.stopPropagation()">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                    <span data-en="Live Preview" data-fa="پیش‌نمایش آنلاین">Live Preview</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <span class="project-number">04</span>
+                            <h3 class="project-title" data-en="E-Commerce Concept" data-fa="کانسپت فروشگاه اینترنتی">E-Commerce Concept</h3>
+                            <p class="project-description" data-en="A responsive e-commerce interface with a premium shopping experience." data-fa="رابط فروشگاه اینترنتی واکنش‌گرا با تجربه خرید پریمیوم.">A responsive e-commerce interface with a premium shopping experience.</p>
+                            <div class="project-tags">
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                                <span class="tag">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact section" id="contact">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <span class="section-subtitle" data-en="Get In Touch" data-fa="در تماس باشید">Get In Touch</span>
+                    <h2 class="section-title" data-en="Let's Work Together" data-fa="بیایید با هم کار کنیم">Let's Work Together</h2>
+                    <div class="section-title-line"></div>
+                </div>
+
+                <div class="contact-wrapper">
+                    <div class="contact-info reveal-left">
+                        <h3 class="contact-heading" data-en="Contact Information" data-fa="اطلاعات تماس">Contact Information</h3>
+                        <p class="contact-lead" data-en="Have a project in mind, a question, or simply want to connect? Feel free to reach out directly through any of the platforms below or send a message using the form." data-fa="پروژه‌ای در ذهن دارید، سوالی دارید یا فقط می‌خواهید در ارتباط باشیم؟ از طریق هر یک از پلتفرم‌های زیر یا با ارسال پیام از فرم با من تماس بگیرید.">
+                            Have a project in mind, a question, or simply want to connect? Feel free to reach out directly through any of the platforms below or send a message using the form.
+                        </p>
+
+                        <div class="info-list">
+                            <a href="mailto:ahoora@example.com" class="info-item">
+                                <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+                                <div class="info-details">
+                                    <span class="info-label" data-en="Email" data-fa="ایمیل">Email</span>
+                                    <span class="info-value">ahoora@example.com</span>
+                                </div>
+                            </a>
+
+                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="info-item">
+                                <div class="info-icon"><i class="fa-brands fa-linkedin-in"></i></div>
+                                <div class="info-details">
+                                    <span class="info-label">LinkedIn</span>
+                                    <span class="info-value">linkedin.com/in/ahoora</span>
+                                </div>
+                            </a>
+
+                            <a href="https://github.com/mox4726" target="_blank" rel="noopener noreferrer" class="info-item">
+                                <div class="info-icon"><i class="fa-brands fa-github"></i></div>
+                                <div class="info-details">
+                                    <span class="info-label">GitHub</span>
+                                    <span class="info-value">github.com/mox4726</span>
+                                </div>
+                            </a>
+
+                            <a href="https://t.me" target="_blank" rel="noopener noreferrer" class="info-item">
+                                <div class="info-icon"><i class="fa-brands fa-telegram"></i></div>
+                                <div class="info-details">
+                                    <span class="info-label">Telegram</span>
+                                    <span class="info-value">t.me/ahoora</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-container reveal-right">
+                        <form id="contact-form" class="contact-form" action="https://formspree.io/f/xppaozkg" method="POST" novalidate>
+                            <div class="form-group">
+                                <label for="form-name" class="form-label" data-en="Full Name *" data-fa="نام و نام خانوادگی *">Full Name *</label>
+                                <input type="text" id="form-name" name="name" class="form-input" placeholder="John Doe" data-en-placeholder="John Doe" data-fa-placeholder="علی رضایی" required />
+                                <span class="form-error" id="name-error" data-en="Please enter your name." data-fa="لطفاً نام خود را وارد کنید.">Please enter your name.</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="form-contact" class="form-label" data-en="Phone or Email *" data-fa="شماره یا ایمیل *">Phone or Email *</label>
+                                <input type="text" id="form-contact" name="contact" class="form-input" placeholder="Phone number or email" data-en-placeholder="Phone number or email" data-fa-placeholder="شماره تماس یا ایمیل" required />
+                                <span class="form-error" id="contact-error" data-en="Please enter your phone number or email." data-fa="لطفاً شماره تماس یا ایمیل خود را وارد کنید.">Please enter your phone number or email.</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="form-subject" class="form-label" data-en="Subject *" data-fa="موضوع *">Subject *</label>
+                                <input type="text" id="form-subject" name="subject" class="form-input" placeholder="Project Inquiry" data-en-placeholder="Project Inquiry" data-fa-placeholder="درخواست پروژه" required />
+                                <span class="form-error" id="subject-error" data-en="Please enter a subject." data-fa="لطفاً موضوع را وارد کنید.">Please enter a subject.</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="form-message" class="form-label" data-en="Message *" data-fa="پیام *">Message *</label>
+                                <textarea id="form-message" name="message" class="form-input form-textarea" rows="5" placeholder="Tell me about your project or vision..." data-en-placeholder="Tell me about your project or vision..." data-fa-placeholder="درباره پروژه یا ایده خود بگویید..." required></textarea>
+                                <span class="form-error" id="message-error" data-en="Please enter your message." data-fa="لطفاً پیام خود را وارد کنید.">Please enter your message.</span>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary form-submit-btn" id="form-submit">
+                                <span data-en="Send Message" data-fa="ارسال پیام">Send Message</span>
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+
+                            <div class="form-feedback-message" id="form-feedback" aria-live="polite"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="#home" class="footer-logo">AHOORA<span class="logo-dot">.</span></a>
+                <p class="footer-tagline" data-en="Designed with passion &amp; code." data-fa="طراحی‌شده با اشتیاق و کد.">Designed with passion &amp; code.</p>
+            </div>
+
+            <div class="footer-nav">
+                <ul class="footer-links">
+                    <li><a href="#home" data-en="Home" data-fa="خانه">Home</a></li>
+                    <li><a href="#about" data-en="About" data-fa="درباره من">About</a></li>
+                    <li><a href="#skills" data-en="Skills" data-fa="مهارت‌ها">Skills</a></li>
+                    <li><a href="#portfolio" data-en="Portfolio" data-fa="نمونه‌کارها">Portfolio</a></li>
+                    <li><a href="#contact" data-en="Contact" data-fa="تماس">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-socials">
+                <a href="https://github.com/mox4726" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href="https://t.me" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+                    <i class="fa-brands fa-telegram"></i>
+                </a>
+                <a href="mailto:ahoora@example.com" aria-label="Email">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+            </div>
+
+            <div class="footer-copyright">
+                <p data-en="&copy; 2026 AHOORA. All rights reserved." data-fa="&copy; ۲۰۲۶ AHOORA. تمامی حقوق محفوظ است.">&copy; 2026 AHOORA. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="portfolio-modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
+        <div class="modal-container" role="document">
+            <button class="modal-close-btn" id="modal-close" aria-label="Close project modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="modal-body" id="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <i class="fa-solid fa-chevron-up"></i>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            let currentLang = 'en';
+
+            const projectsData = [{
+                id: '1',
+                number: '01',
+                title: { en: 'MOX Web Project', fa: 'پروژه وب MOX' },
+                fullDesc: {
+                    en: 'This project is an interactive dynamic web application optimized for user experience and visual appeal.',
+                    fa: 'این پروژه یک وب اپلیکیشن تعاملی و پویاست که برای بهترین تجربه کاربری و زیبایی بصری بهینه‌سازی شده است.'
+                },
+                objective: {
+                    en: 'To create a high-converting, visually striking digital experience.',
+                    fa: 'ایجاد یک تجربه دیجیتال جذاب و با کیفیت بالا.'
+                },
+                keyFeatures: {
+                    en: [
+                        'Responsive modular layout adapted for all viewports',
+                        'Smooth page scrolling and modern dynamic UI',
+                        'Optimized speed and clean architecture'
+                    ],
+                    fa: [
+                        'طرح‌بندی ماژولار و کاملاً واکنش‌گرا',
+                        'اسکرول روان و رابط کاربری مدرن',
+                        'سرعت بارگذاری بهینه‌شده و معماری تمیز'
+                    ]
+                },
+                technologies: ['HTML5', 'CSS3', 'JavaScript'],
+                image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200',
+                liveUrl: 'https://mox4726.github.io/MOX47/'
+            }, {
+                id: '2',
+                number: '02',
+                title: { en: 'Creative Portfolio', fa: 'نمونه‌کار خلاقانه' },
+                fullDesc: {
+                    en: 'An interactive personal showcase engineered for high aesthetic appeal.',
+                    fa: 'یک نمونه‌کار شخصی تعاملی که برای جذابیت بصری بالا طراحی شده است.'
+                },
+                objective: {
+                    en: 'Highlight individual achievements and skill sets through an immersive user experience.',
+                    fa: 'برجسته‌سازی دستاوردها و مهارت‌های فردی از طریق تجربه کاربرمحور.'
+                },
+                keyFeatures: {
+                    en: ['Glassmorphism interfaces', 'Custom scroll animations', 'Responsive design'],
+                    fa: ['رابط شیشه‌ای گلاسمورفیسم', 'انیمیشن‌های اختصاصی اسکرول', 'طراحی واکنش‌گرا']
+                },
+                technologies: ['HTML5', 'CSS3', 'JavaScript'],
+                image: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=1200',
+                liveUrl: ''
+            }, {
+                id: '3',
+                number: '03',
+                title: { en: 'Dashboard UI', fa: 'رابط کاربری داشبورد' },
+                fullDesc: {
+                    en: 'An intuitive data analytics control panel designed for visual clarity.',
+                    fa: 'پنل کنترل و تحلیل داده مدرن و کاربردی.'
+                },
+                objective: {
+                    en: 'Simplify complex data visualization.',
+                    fa: 'ساده‌سازی نمایش داده‌های پیچیده.'
+                },
+                keyFeatures: {
+                    en: ['Stat counters', 'Clean card layout', 'Dark theme'],
+                    fa: ['شمارنده‌های آماری', 'چیدمان تمیز کارت‌ها', 'تم تیره شیک']
+                },
+                technologies: ['HTML5', 'CSS Grid', 'JavaScript'],
+                image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200',
+                liveUrl: ''
+            }, {
+                id: '4',
+                number: '04',
+                title: { en: 'E-Commerce Concept', fa: 'کانسپت فروشگاه اینترنتی' },
+                fullDesc: {
+                    en: 'A high-end retail interface tailored for modern online shopping.',
+                    fa: 'یک رابط فروشگاه اینترنتی مدرن و شیک.'
+                },
+                objective: {
+                    en: 'Deliver an elegant digital storefront.',
+                    fa: 'ارائه یک ویترین دیجیتال زیبا.'
+                },
+                keyFeatures: {
+                    en: ['Product gallery', 'Interactive cart design', 'Mobile layout'],
+                    fa: ['گالری محصولات', 'طراحی سبد خرید تعاملی', 'طرح‌بندی بهینه موبایل']
+                },
+                technologies: ['HTML5', 'CSS3', 'JavaScript'],
+                image: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&q=80&w=1200',
+                liveUrl: ''
+            }];
+
+            // Header Scroll
+            const header = document.getElementById('header');
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            const handleHeaderScroll = () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+
+                const scrollY = window.pageYOffset;
+                sections.forEach(current => {
+                    const sectionHeight = current.offsetHeight;
+                    const sectionTop = current.offsetTop - 100;
+                    const sectionId = current.getAttribute('id');
+                    const correspondingLink = document.querySelector(
+                        `.nav-link[href*="${sectionId}"]`);
+
+                    if (correspondingLink) {
+                        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                            correspondingLink.classList.add('active');
+                        } else {
+                            correspondingLink.classList.remove('active');
+                        }
+                    }
+                });
+            };
+
+            window.addEventListener('scroll', handleHeaderScroll, { passive: true });
+
+            // Mobile Navigation
+            const navToggle = document.getElementById('nav-toggle');
+            const navMenu = document.getElementById('nav-menu');
+
+            const toggleMenu = () => {
+                const isOpen = navMenu.classList.contains('open');
+                navMenu.classList.toggle('open');
+                navToggle.classList.toggle('open');
+                navToggle.setAttribute('aria-expanded', !isOpen);
+            };
+
+            if (navToggle) navToggle.addEventListener('click', toggleMenu);
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navMenu.classList.contains('open')) toggleMenu();
+                });
+            });
+
+            // Typewriter Effect
+            const typewriterElement = document.getElementById('typewriter');
+            const phrasesByLang = {
+                en: ['Frontend Developer', 'UI/UX Enthusiast', 'Creative Problem Solver',
+                    'Web Experience Designer'
+                ],
+                fa: ['توسعه‌دهنده فرانت‌اند هستم', 'علاقه‌مند به UI/UX هستم', 'حل‌کننده خلاق مسائل هستم',
+                    'طراح تجربه وب هستم'
+                ]
+            };
+            let phrases = phrasesByLang.en;
+            let phraseIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            let typewriterSpeed = 100;
+            let typewriterTimeoutId = null;
+
+            const type = () => {
+                const currentPhrase = phrases[phraseIndex % phrases.length];
+
+                if (isDeleting) {
+                    typewriterElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                    charIndex--;
+                    typewriterSpeed = 50;
+                } else {
+                    typewriterElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                    charIndex++;
+                    typewriterSpeed = 100;
+                }
+
+                if (!isDeleting && charIndex === currentPhrase.length) {
+                    isDeleting = true;
+                    typewriterSpeed = 2000;
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    phraseIndex = (phraseIndex + 1) % phrases.length;
+                    typewriterSpeed = 500;
+                }
+
+                typewriterTimeoutId = setTimeout(type, typewriterSpeed);
+            };
+
+            if (typewriterElement) typewriterTimeoutId = setTimeout(type, 1000);
+
+            const resetTypewriter = (lang) => {
+                phrases = phrasesByLang[lang] || phrasesByLang.en;
+                phraseIndex = 0;
+                charIndex = 0;
+                isDeleting = false;
+                if (typewriterElement) typewriterElement.textContent = '';
+                if (typewriterTimeoutId) clearTimeout(typewriterTimeoutId);
+                typewriterTimeoutId = setTimeout(type, 400);
+            };
+
+            // Scroll Reveal & Skill Progress Fill Observer
+            const revealElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
+            const skillProgressFills = document.querySelectorAll('.skill-progress-fill');
+            let skillBarsFilled = false;
+
+            const fillSkillBars = () => {
+                if (skillBarsFilled) return;
+                skillBarsFilled = true;
+                skillProgressFills.forEach(fill => {
+                    fill.style.width = fill.getAttribute('data-percentage');
+                });
+            };
+
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('reveal-active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            revealElements.forEach(el => revealObserver.observe(el));
+
+            const skillsSection = document.getElementById('skills');
+            if (skillsSection) {
+                const skillsObserver = new IntersectionObserver((entries) => {
+                    if (entries[0].isIntersecting) {
+                        fillSkillBars();
+                        skillsObserver.disconnect();
+                    }
+                }, { threshold: 0.2 });
+                skillsObserver.observe(skillsSection);
+            }
+
+            // Number Counter Animation
+            const statNumbers = document.querySelectorAll('.stat-number[data-target]');
+            let animatedStats = false;
+
+            const animateStats = () => {
+                if (animatedStats) return;
+                animatedStats = true;
+                statNumbers.forEach(stat => {
+                    const target = parseInt(stat.getAttribute('data-target'));
+                    let current = 0;
+                    const increment = target / 20;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            stat.textContent = target + '+';
+                            clearInterval(timer);
+                        } else {
+                            stat.textContent = Math.ceil(current) + '+';
+                        }
+                    }, 50);
+                });
+            };
+
+            const aboutSection = document.getElementById('about');
+            if (aboutSection) {
+                const aboutObserver = new IntersectionObserver((entries) => {
+                    if (entries[0].isIntersecting) {
+                        animateStats();
+                        aboutObserver.disconnect();
+                    }
+                }, { threshold: 0.3 });
+                aboutObserver.observe(aboutSection);
+            }
+
+            // Modal Handling
+            const modal = document.getElementById('portfolio-modal');
+            const modalBody = document.getElementById('modal-body');
+            const modalCloseBtn = document.getElementById('modal-close');
+
+            const modalHeadings = {
+                objective: { en: 'Project Objective', fa: 'هدف پروژه' },
+                features: { en: 'Key Features', fa: 'ویژگی‌های کلیدی' }
+            };
+
+            const openModal = (projectId) => {
+                const project = projectsData.find(p => p.id === projectId);
+                if (!project) return;
+
+                const lang = currentLang;
+                modalBody.innerHTML = `
+                        <img src="${project.image}" alt="${project.title[lang]}" class="modal-image">
+                        <span class="project-number">${project.number}</span>
+                        <h3 class="modal-title" id="modal-title">${project.title[lang]}</h3>
+                        <div class="modal-meta-tags">
+                            ${project.technologies.map(tech => `<span class="tag">${tech}</span>`).join('')}
+                        </div>
+                        <p class="modal-text">${project.fullDesc[lang]}</p>
+
+                        <h4 class="modal-section-heading">${modalHeadings.objective[lang]}</h4>
+                        <p class="modal-text">${project.objective[lang]}</p>
+
+                        <h4 class="modal-section-heading">${modalHeadings.features[lang]}</h4>
+                        <ul class="modal-features-list">
+                            ${project.keyFeatures[lang].map(feature => `<li>${feature}</li>`).join('')}
+                        </ul>
+                        ${project.liveUrl ? `
+                        <div class="modal-actions">
+                            <a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                <span>${lang === 'fa' ? 'مشاهده آنلاین پروژه' : 'View Live Project'}</span>
+                            </a>
+                        </div>` : ''}
+                    `;
+
+                modal.classList.add('active');
+                modal.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+            };
+
+            const closeModal = () => {
+                modal.classList.remove('active');
+                modal.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+            };
+
+            document.querySelectorAll('.project-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const projectId = card.getAttribute('data-project-id');
+                    openModal(projectId);
+                });
+            });
+
+            document.querySelectorAll('.view-details-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const projectId = btn.getAttribute('data-project-id');
+                    openModal(projectId);
+                });
+            });
+
+            if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
+
+            if (modal) {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) closeModal();
+                });
+            }
+
+            document.addEventListener('keydown', (e) => {
+                if (modal && e.key === 'Escape' && modal.classList.contains('active')) {
+                    closeModal();
+                }
+            });
+
+            // Contact Form Logic — Formspree
+            const contactForm = document.getElementById('contact-form');
+            const feedbackMsg = document.getElementById('form-feedback');
+            const submitBtn = document.getElementById('form-submit');
+
+            const feedbackByLang = {
+                en: 'Thank you! Your message has been sent successfully.',
+                fa: 'متشکرم! پیام شما با موفقیت ارسال شد.'
+            };
+
+            const errorByLang = {
+                en: 'Something went wrong. Please try again.',
+                fa: 'خطایی رخ داد. لطفاً دوباره تلاش کنید.'
+            };
+
+            const sendingByLang = {
+                en: 'Sending...',
+                fa: 'در حال ارسال...'
+            };
+
+            const contactErrorByLang = {
+                en: 'Please enter a valid phone number or email address.',
+                fa: 'لطفاً یک شماره تماس یا ایمیل معتبر وارد کنید.'
+            };
+
+            function isValidEmail(value) {
+                const email = value.trim();
+                return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+            }
+
+            function isValidPhone(value) {
+                let phone = value.trim();
+                phone = phone
+                    .replace(/[۰-۹]/g, digit => String(digit.charCodeAt(0) - 1776))
+                    .replace(/[٠-٩]/g, digit => String(digit.charCodeAt(0) - 1632));
+                phone = phone.replace(/[\s\-().]/g, '');
+                return /^(?:0?9\d{9}|\+989\d{9}|00989\d{9}|989\d{9})$/.test(phone);
+            }
+
+            function isValidContact(value) {
+                return isValidEmail(value) || isValidPhone(value);
+            }
+
+            function setFieldError(input, message) {
+                const group = input.closest('.form-group');
+                if (!group) return;
+                group.classList.add('error');
+                const error = group.querySelector('.form-error');
+                if (error && message) {
+                    error.textContent = message;
+                }
+            }
+
+            function clearFieldError(input) {
+                const group = input.closest('.form-group');
+                if (!group) return;
+                group.classList.remove('error');
+            }
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+
+                    const nameInput = document.getElementById('form-name');
+                    const contactInput = document.getElementById('form-contact');
+                    const subjectInput = document.getElementById('form-subject');
+                    const messageInput = document.getElementById('form-message');
+
+                    let isValid = true;
+
+                    [nameInput, contactInput, subjectInput, messageInput].forEach(input => {
+                        if (input) clearFieldError(input);
+                    });
+
+                    if (!nameInput || nameInput.value.trim().length < 2) {
+                        if (nameInput) {
+                            setFieldError(
+                                nameInput,
+                                currentLang === 'fa' ?
+                                'لطفاً نام و نام خانوادگی را وارد کنید.' :
+                                'Please enter your full name.'
+                            );
+                        }
+                        isValid = false;
+                    }
+
+                    if (!contactInput || !isValidContact(contactInput.value)) {
+                        if (contactInput) {
+                            setFieldError(
+                                contactInput,
+                                contactErrorByLang[currentLang]
+                            );
+                        }
+                        isValid = false;
+                    }
+
+                    if (!subjectInput || subjectInput.value.trim().length < 2) {
+                        if (subjectInput) {
+                            setFieldError(
+                                subjectInput,
+                                currentLang === 'fa' ?
+                                'لطفاً موضوع را وارد کنید.' :
+                                'Please enter a subject.'
+                            );
+                        }
+                        isValid = false;
+                    }
+
+                    if (!messageInput || messageInput.value.trim().length < 10) {
+                        if (messageInput) {
+                            setFieldError(
+                                messageInput,
+                                currentLang === 'fa' ?
+                                'شرح پیام باید حداقل ۱۰ کاراکتر باشد.' :
+                                'Message must be at least 10 characters.'
+                            );
+                        }
+                        isValid = false;
+                    }
+
+                    if (!isValid) return;
+
+                    const originalButtonHTML = submitBtn.innerHTML;
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = `
+                            <i class="fa-solid fa-spinner fa-spin"></i>
+                            <span>${sendingByLang[currentLang]}</span>
+                        `;
+
+                    feedbackMsg.className = 'form-feedback-message';
+                    feedbackMsg.textContent = '';
+
+                    try {
+                        const response = await fetch(contactForm.action, {
+                            method: 'POST',
+                            body: new FormData(contactForm),
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                        });
+
+                        if (!response.ok) {
+                            throw new Error('Form submission failed');
+                        }
+
+                        feedbackMsg.textContent = feedbackByLang[currentLang];
+                        feedbackMsg.className = 'form-feedback-message success';
+                        contactForm.reset();
+
+                    } catch (error) {
+                        feedbackMsg.textContent = errorByLang[currentLang];
+                        feedbackMsg.className = 'form-feedback-message error';
+                    } finally {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalButtonHTML;
+                        setTimeout(() => {
+                            feedbackMsg.textContent = '';
+                            feedbackMsg.className = 'form-feedback-message';
+                        }, 6000);
+                    }
+                });
+
+                const contactInput = document.getElementById('form-contact');
+                if (contactInput) {
+                    contactInput.addEventListener('input', () => {
+                        if (contactInput.value.trim() === '') {
+                            clearFieldError(contactInput);
+                            return;
+                        }
+                        if (isValidContact(contactInput.value)) {
+                            clearFieldError(contactInput);
+                        }
+                    });
+
+                    contactInput.addEventListener('blur', () => {
+                        if (contactInput.value.trim() !== '' && !isValidContact(contactInput
+                            .value)) {
+                            setFieldError(
+                                contactInput,
+                                contactErrorByLang[currentLang]
+                            );
+                        }
+                    });
+                }
+            }
+
+            // Back to Top Button
+            const backToTopBtn = document.getElementById('back-to-top');
+            const handleBackToTopVisibility = () => {
+                if (!backToTopBtn) return;
+                if (window.scrollY > 400) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            };
+
+            window.addEventListener('scroll', handleBackToTopVisibility, { passive: true });
+
+            if (backToTopBtn) {
+                backToTopBtn.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+
+            // Theme Switcher
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const savedTheme = localStorage.getItem('ahoora-theme');
+            const applyTheme = (theme) => {
+                const isRoyal = theme === 'royal-light';
+                document.documentElement.setAttribute('data-theme', isRoyal ? 'royal-light' : 'dark');
+                if (themeToggleBtn) {
+                    themeToggleBtn.textContent = isRoyal ? '☾' : '◐';
+                    themeToggleBtn.setAttribute('title', isRoyal ? 'Dark Theme' : 'Royal Green');
+                    themeToggleBtn.setAttribute('aria-label', isRoyal ? 'Switch to dark theme' : 'Switch to royal green light theme');
+                }
+                localStorage.setItem('ahoora-theme', isRoyal ? 'royal-light' : 'dark');
+            };
+
+            if (themeToggleBtn) {
+                themeToggleBtn.addEventListener('click', () => {
+                    const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+                    applyTheme(currentTheme === 'dark' ? 'royal-light' : 'dark');
+                });
+            }
+
+            applyTheme(savedTheme === 'royal-light' ? 'royal-light' : 'dark');
+
+            // Language Switcher
+            const langToggleBtn = document.getElementById('lang-toggle');
+            const translatableTextEls = document.querySelectorAll('[data-en]');
+            const translatablePlaceholderEls = document.querySelectorAll('[data-en-placeholder]');
+
+            const applyLanguage = (lang) => {
+                currentLang = lang;
+                document.documentElement.setAttribute('lang', lang);
+                document.documentElement.setAttribute('dir', lang === 'fa' ? 'rtl' : 'ltr');
+
+                translatableTextEls.forEach(el => {
+                    const text = lang === 'fa' ? el.getAttribute('data-fa') : el.getAttribute(
+                    'data-en');
+                    if (text !== null) el.innerHTML = text;
+                });
+
+                translatablePlaceholderEls.forEach(el => {
+                    const ph = lang === 'fa' ? el.getAttribute('data-fa-placeholder') : el
+                        .getAttribute('data-en-placeholder');
+                    if (ph !== null) el.setAttribute('placeholder', ph);
+                });
+
+                if (langToggleBtn) langToggleBtn.textContent = lang === 'fa' ? 'EN' : 'FA';
+                resetTypewriter(lang);
+            };
+
+            if (langToggleBtn) {
+                langToggleBtn.addEventListener('click', () => {
+                    applyLanguage(currentLang === 'en' ? 'fa' : 'en');
+                });
+            }
+
+            applyLanguage('en');
+        });
+    </script>
+</body>
+</html>
+```
