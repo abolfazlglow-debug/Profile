@@ -64,6 +64,54 @@
             --radius-full: 9999px;
         }
 
+        /* ==========================================================================
+           Royal White & Emerald Theme Overrides
+           ========================================================================== */
+        body.royal-theme {
+            --bg-primary: #F8F9FA;
+            --bg-secondary: #FFFFFF;
+            --bg-tertiary: #EEF2F0;
+            --bg-glass: rgba(255, 255, 255, 0.85);
+
+            --gold: #004B38;
+            --gold-light: #0B6623;
+            --gold-dark: #002E22;
+            --gold-glow: rgba(0, 75, 56, 0.15);
+            --gold-border: rgba(0, 75, 56, 0.25);
+
+            --text-primary: #0F201B;
+            --text-secondary: #3D524B;
+            --text-muted: #738A82;
+
+            --border-subtle: rgba(0, 75, 56, 0.12);
+        }
+
+        body.royal-theme .bg-glow-1 {
+            background: radial-gradient(circle, rgba(0, 75, 56, 0.12) 0%, transparent 70%);
+        }
+
+        body.royal-theme .bg-glow-2 {
+            background: radial-gradient(circle, rgba(11, 102, 35, 0.08) 0%, transparent 70%);
+        }
+
+        body.royal-theme .bg-grid-pattern {
+            background-image: radial-gradient(rgba(0, 75, 56, 0.08) 1px, transparent 1px);
+        }
+
+        body.royal-theme .hero-title {
+            background: linear-gradient(180deg, #0F201B 0%, #004B38 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        body.royal-theme .project-overlay {
+            background: rgba(248, 249, 250, 0.88);
+        }
+
+        body.royal-theme .modal-overlay {
+            background: rgba(15, 32, 27, 0.6);
+        }
+
         *,
         *::before,
         *::after {
@@ -88,6 +136,7 @@
             position: relative;
             min-height: 100vh;
             -webkit-font-smoothing: antialiased;
+            transition: background-color var(--transition-smooth), color var(--transition-smooth);
         }
 
         html[lang="fa"] body {
@@ -265,15 +314,18 @@
 
         .btn-primary {
             background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
-            color: var(--bg-primary);
+            color: #FFFFFF;
             font-weight: 600;
-            box-shadow: 0 4px 15px rgba(200, 169, 107, 0.2);
+            box-shadow: 0 4px 15px var(--gold-glow);
+        }
+
+        body:not(.royal-theme) .btn-primary {
+            color: var(--bg-primary);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(200, 169, 107, 0.4);
-            color: var(--bg-primary);
+            box-shadow: 0 8px 25px var(--gold-glow);
         }
 
         .btn-secondary {
@@ -283,7 +335,7 @@
         }
 
         .btn-secondary:hover {
-            background: rgba(200, 169, 107, 0.1);
+            background: var(--gold-glow);
             border-color: var(--gold);
             transform: translateY(-3px);
             color: var(--gold-light);
@@ -309,13 +361,19 @@
             gap: 1.5rem;
         }
 
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
         .header.scrolled {
             height: 70px;
             background: var(--bg-glass);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border-subtle);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
         .logo {
@@ -363,10 +421,12 @@
             width: 100%;
         }
 
-        .lang-toggle {
+        .lang-toggle,
+        .theme-toggle {
             display: flex;
             align-items: center;
             justify-content: center;
+            gap: 0.4rem;
             min-width: 44px;
             height: 34px;
             padding: 0 0.9rem;
@@ -380,8 +440,9 @@
             flex-shrink: 0;
         }
 
-        .lang-toggle:hover {
-            background: rgba(200, 169, 107, 0.12);
+        .lang-toggle:hover,
+        .theme-toggle:hover {
+            background: var(--gold-glow);
             border-color: var(--gold);
         }
 
@@ -417,8 +478,8 @@
             height: 320px;
             border-radius: 50%;
             padding: 8px;
-            background: linear-gradient(135deg, var(--gold) 0%, rgba(200, 169, 107, 0.1) 100%);
-            box-shadow: 0 0 50px rgba(200, 169, 107, 0.2);
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-glow) 100%);
+            box-shadow: 0 0 50px var(--gold-glow);
             position: relative;
             z-index: 2;
             animation: floatAnimation 6s ease-in-out infinite;
@@ -650,6 +711,7 @@
             border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md);
             padding: 1.5rem 1.75rem;
+            transition: background-color var(--transition-smooth), border-color var(--transition-smooth);
         }
 
         .stat-number {
@@ -745,7 +807,7 @@
             border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md);
             padding: 1.5rem;
-            transition: border-color var(--transition-fast), transform var(--transition-fast);
+            transition: border-color var(--transition-fast), transform var(--transition-fast), background-color var(--transition-smooth);
         }
 
         .soft-skill-card:hover {
@@ -799,7 +861,7 @@
         .project-card:hover {
             border-color: var(--gold-border);
             transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
         }
 
         .project-image-wrapper {
@@ -914,7 +976,7 @@
             background: var(--bg-secondary);
             border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md);
-            transition: border-color var(--transition-fast), transform var(--transition-fast);
+            transition: border-color var(--transition-fast), transform var(--transition-fast), background-color var(--transition-smooth);
         }
 
         .info-item:hover {
@@ -959,6 +1021,7 @@
             border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md);
             padding: 2rem;
+            transition: background-color var(--transition-smooth);
         }
 
         .form-group {
@@ -978,7 +1041,7 @@
             background: var(--bg-tertiary);
             border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm);
-            transition: border-color var(--transition-fast);
+            transition: border-color var(--transition-fast), background-color var(--transition-smooth);
         }
 
         .form-input:focus {
@@ -1132,6 +1195,7 @@
             border: 1px solid var(--border-subtle);
             border-radius: var(--radius-lg);
             padding: 2rem;
+            transition: background-color var(--transition-smooth);
         }
 
         .modal-close-btn {
@@ -1219,7 +1283,7 @@
             height: 46px;
             border-radius: 50%;
             background: var(--gold);
-            color: var(--bg-primary);
+            color: #FFFFFF;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1228,6 +1292,10 @@
             transform: translateY(10px);
             transition: all var(--transition-fast);
             z-index: 900;
+        }
+
+        body:not(.royal-theme) .back-to-top {
+            color: var(--bg-primary);
         }
 
         .back-to-top.visible {
@@ -1281,7 +1349,13 @@
                 </ul>
             </nav>
 
-            <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Switch language">FA</button>
+            <div class="header-actions">
+                <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle Royal Theme">
+                    <i class="fa-solid fa-crown"></i>
+                    <span id="theme-toggle-text" data-en="ROYAL" data-fa="سلطنتی">ROYAL</span>
+                </button>
+                <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Switch language">FA</button>
+            </div>
 
             <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
                 <span class="hamburger-bar"></span>
@@ -1864,6 +1938,30 @@
 
             window.addEventListener('scroll', handleHeaderScroll, { passive: true });
 
+            // Theme Switcher Logic (Royal Emerald Theme)
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const themeToggleText = document.getElementById('theme-toggle-text');
+
+            const updateThemeButtonText = () => {
+                const isRoyal = document.body.classList.contains('royal-theme');
+                if (isRoyal) {
+                    themeToggleText.setAttribute('data-en', 'DEFAULT');
+                    themeToggleText.setAttribute('data-fa', 'پیش‌فرض');
+                    themeToggleText.textContent = currentLang === 'fa' ? 'پیش‌فرض' : 'DEFAULT';
+                } else {
+                    themeToggleText.setAttribute('data-en', 'ROYAL');
+                    themeToggleText.setAttribute('data-fa', 'سلطنتی');
+                    themeToggleText.textContent = currentLang === 'fa' ? 'سلطنتی' : 'ROYAL';
+                }
+            };
+
+            if (themeToggleBtn) {
+                themeToggleBtn.addEventListener('click', () => {
+                    document.body.classList.toggle('royal-theme');
+                    updateThemeButtonText();
+                });
+            }
+
             // Mobile Navigation
             const navToggle = document.getElementById('nav-toggle');
             const navMenu = document.getElementById('nav-menu');
@@ -2314,6 +2412,7 @@
                 });
 
                 if (langToggleBtn) langToggleBtn.textContent = lang === 'fa' ? 'EN' : 'FA';
+                updateThemeButtonText();
                 resetTypewriter(lang);
             };
 
