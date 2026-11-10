@@ -1907,6 +1907,126 @@
                 height: 320px;
             }
         }
+
+        /* =====================================================================
+           AHOORA PREMIUM MOTION LAYER — preserves the original functionality
+           ===================================================================== */
+        :root { --ease-premium: cubic-bezier(.16,1,.3,1); --cursor-x: 50vw; --cursor-y: 50vh; }
+        html { scroll-padding-top: 100px; }
+        body::before { content:""; position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.42; background:radial-gradient(520px circle at var(--cursor-x) var(--cursor-y), var(--gold-glow), transparent 62%); transition:opacity .35s ease; }
+        body::after { content:""; position:fixed; inset:0; z-index:50; pointer-events:none; opacity:.035; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E"); mix-blend-mode:soft-light; }
+        .page-progress { position:fixed; top:0; left:0; width:0; height:3px; z-index:3000; background:linear-gradient(90deg,var(--gold-dark),var(--gold-light),#fff); box-shadow:0 0 16px var(--gold); transition:width .12s linear; }
+        .premium-loader { position:fixed; inset:0; z-index:5000; display:grid; place-items:center; background:var(--bg-primary); transition:opacity .8s var(--ease-premium), visibility .8s; }
+        .premium-loader.is-hidden { opacity:0; visibility:hidden; pointer-events:none; }
+        .loader-mark { width:72px; height:72px; border:1px solid var(--gold-border); border-top-color:var(--gold); border-radius:50%; animation:loaderSpin 1s linear infinite; position:relative; }
+        .loader-mark::after { content:'A'; position:absolute; inset:0; display:grid; place-items:center; color:var(--gold-light); font:700 1.4rem var(--font-heading); animation:loaderSpin 1s linear reverse infinite; }
+        @keyframes loaderSpin { to { transform:rotate(360deg); } }
+        .header { will-change:background,transform; }
+        .header:not(.scrolled) { background:linear-gradient(180deg,rgba(17,22,29,.7),transparent); }
+        .logo { transition:transform .45s var(--ease-premium), color .25s ease; }
+        .logo:hover { transform:translateY(-2px) scale(1.03); }
+        .hero-content > * { will-change:transform; }
+        .hero-title { text-shadow:0 0 50px var(--gold-glow); }
+        .hero-title::after { content:''; display:block; width:0; height:2px; margin-top:18px; background:linear-gradient(90deg,var(--gold),transparent); animation:lineReveal 1.2s .45s var(--ease-premium) forwards; }
+        @keyframes lineReveal { to { width:190px; } }
+        .btn { isolation:isolate; }
+        .btn::before { content:''; position:absolute; inset:0; z-index:-1; transform:translateX(-110%) skewX(-18deg); background:rgba(255,255,255,.18); transition:transform .65s var(--ease-premium); }
+        .btn:hover::before { transform:translateX(110%) skewX(-18deg); }
+        .btn-primary { box-shadow:0 10px 30px var(--gold-glow); }
+        .btn-primary:hover { box-shadow:0 16px 45px var(--gold-glow); }
+        .profile-frame-wrapper { transform-style:preserve-3d; transition:transform .25s var(--ease-premium); }
+        .profile-frame-wrapper::before { content:''; position:absolute; inset:-75px; border-radius:50%; background:conic-gradient(from 0deg,transparent,var(--gold),transparent 28%,transparent 72%,var(--gold-light),transparent); opacity:.18; filter:blur(1px); animation:orbit 14s linear infinite; z-index:-1; }
+        @keyframes orbit { to { transform:rotate(360deg); } }
+        .profile-image-container { transition:box-shadow .5s ease, transform .5s var(--ease-premium); }
+        .profile-frame-wrapper:hover .profile-image-container { box-shadow:0 0 90px var(--gold-glow); transform:scale(1.025); }
+        .stat-card, .soft-skill-card, .project-card, .info-item, .contact-form { transform-style:preserve-3d; will-change:transform; }
+        .stat-card::before, .soft-skill-card::before, .project-card::before, .contact-form::before { content:''; position:absolute; inset:0; pointer-events:none; border-radius:inherit; background:linear-gradient(135deg,rgba(255,255,255,.1),transparent 35%); opacity:0; transition:opacity .4s ease; }
+        .stat-card:hover::before, .soft-skill-card:hover::before, .project-card:hover::before, .contact-form:hover::before { opacity:1; }
+        .project-card { transition:transform .55s var(--ease-premium), border-color .35s ease, box-shadow .55s var(--ease-premium); }
+        .project-image-wrapper::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg,transparent 52%,rgba(0,0,0,.48)); pointer-events:none; }
+        .project-img { filter:saturate(.82); }
+        .project-card:hover .project-img { filter:saturate(1.12); }
+        .tag { transition:transform .25s var(--ease-premium), background .25s ease; }
+        .tag:hover { transform:translateY(-3px); background:var(--gold-glow); }
+        .section-title-line { position:relative; overflow:hidden; }
+        .section-title-line::after { content:''; position:absolute; inset:0; background:var(--bg-primary); transform:translateX(-100%); animation:lineSweep 1s var(--ease-premium) both; }
+        .reveal-up, .reveal-left, .reveal-right { transition-timing-function:var(--ease-premium); }
+        .reveal-active { animation:softIn .9s var(--ease-premium) both; }
+        @keyframes softIn { from { filter:blur(4px); } to { filter:blur(0); } }
+        .back-to-top { box-shadow:0 8px 25px var(--gold-glow); }
+        .modal-container { animation:modalIn .55s var(--ease-premium); }
+        @keyframes modalIn { from { opacity:0; transform:translateY(25px) scale(.96); } to { opacity:1; transform:none; } }
+        @keyframes lineSweep { to { transform:translateX(100%); } }
+        @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration:.001ms!important; animation-iteration-count:1!important; scroll-behavior:auto!important; transition-duration:.001ms!important; } body::before { display:none; } }
+        @media (max-width:768px) { body::after { opacity:.022; } .profile-frame-wrapper::before { inset:-35px; } .hero-title::after { margin:14px auto 0; } }
+
+
+        /* =====================================================================
+           APPLE-INSPIRED CINEMATIC EXPERIENCE — AHOORA
+           ===================================================================== */
+        @property --aurora-angle { syntax:'<angle>'; initial-value:0deg; inherits:false; }
+        body.cinematic { background:var(--bg-primary); }
+        body.cinematic .bg-glow-1 { animation:auroraFloat 16s ease-in-out infinite alternate; }
+        body.cinematic .bg-glow-2 { animation:auroraFloat 20s ease-in-out infinite alternate-reverse; }
+        @keyframes auroraFloat { 0%{transform:translate3d(-3%,0,0) scale(.92)} 50%{transform:translate3d(6%,4%,0) scale(1.08)} 100%{transform:translate3d(-2%,-4%,0) scale(.98)} }
+        .cinematic-canvas { position:fixed; inset:0; width:100%; height:100%; z-index:-3; pointer-events:none; opacity:.62; mix-blend-mode:screen; }
+        .cinematic-cursor { position:fixed; width:28px; height:28px; border:1px solid var(--gold-light); border-radius:50%; pointer-events:none; z-index:4000; transform:translate(-50%,-50%); opacity:0; transition:width .35s var(--ease-premium),height .35s var(--ease-premium),opacity .3s ease,background .3s ease; mix-blend-mode:difference; }
+        .cinematic-cursor.is-visible { opacity:.8; }
+        .cinematic-cursor.is-hovering { width:70px; height:70px; background:rgba(255,255,255,.08); }
+        .cinematic-scroll-label { position:fixed; left:2rem; bottom:2rem; z-index:800; writing-mode:vertical-rl; letter-spacing:3px; text-transform:uppercase; font-size:.65rem; color:var(--text-muted); display:flex; gap:12px; align-items:center; }
+        .cinematic-scroll-label::after { content:''; width:1px; height:56px; background:linear-gradient(var(--gold),transparent); animation:scrollLine 2s ease-in-out infinite; }
+        @keyframes scrollLine { 0%,100%{transform:scaleY(.55);transform-origin:top;opacity:.4} 50%{transform:scaleY(1);opacity:1} }
+        .hero { min-height:110vh; overflow:hidden; }
+        .hero-content { position:relative; z-index:2; }
+        .hero-visual { perspective:1200px; }
+        .hero-title { letter-spacing:-.04em; background:linear-gradient(100deg,var(--text-primary) 10%,var(--gold-light) 47%,var(--text-primary) 78%); background-size:220% auto; animation:titleShine 8s linear infinite; }
+        @keyframes titleShine { to{background-position:220% center} }
+        .hero-greeting { position:relative; padding-left:42px; }
+        html[dir="rtl"] .hero-greeting { padding-left:0; padding-right:42px; }
+        .hero-greeting::before { content:''; position:absolute; top:50%; left:0; width:28px; height:1px; background:var(--gold); }
+        html[dir="rtl"] .hero-greeting::before { left:auto; right:0; }
+        .hero-visual::after { content:''; position:absolute; width:260px; height:260px; border:1px solid var(--gold-border); border-radius:50%; top:50%; left:50%; transform:translate(-50%,-50%); animation:pulseRing 4s ease-out infinite; pointer-events:none; }
+        @keyframes pulseRing { 0%{opacity:.6;transform:translate(-50%,-50%) scale(.75)} 75%,100%{opacity:0;transform:translate(-50%,-50%) scale(1.6)} }
+        .cinematic-section-marker { position:absolute; top:50%; right:2rem; transform:translateY(-50%); color:var(--text-muted); font:600 .68rem var(--font-body); letter-spacing:2px; writing-mode:vertical-rl; opacity:.7; }
+        html[dir="rtl"] .cinematic-section-marker { right:auto; left:2rem; }
+        .section { isolation:isolate; }
+        .section:not(.hero)::before { content:''; position:absolute; top:0; left:50%; width:1px; height:72px; background:linear-gradient(var(--gold-border),transparent); opacity:.65; }
+        .section-header { transform:translateZ(0); }
+        .section-title { letter-spacing:-.03em; }
+        .project-card, .stat-card, .soft-skill-card, .info-item { overflow:hidden; }
+        .project-card .project-content, .stat-card > *, .soft-skill-card > *, .info-item > * { position:relative; z-index:1; }
+        .project-card::after { content:''; position:absolute; width:160px; height:160px; border-radius:50%; top:var(--spot-y,50%); left:var(--spot-x,50%); transform:translate(-50%,-50%); background:radial-gradient(circle,var(--gold-glow),transparent 68%); opacity:0; pointer-events:none; transition:opacity .4s ease; }
+        .project-card:hover::after { opacity:1; }
+        .project-number { transition:transform .5s var(--ease-premium),opacity .5s ease; }
+        .project-card:hover .project-number { transform:translateY(-5px) scale(1.12); opacity:.9; }
+        .contact-form { background:linear-gradient(135deg,var(--bg-secondary),rgba(200,169,107,.045)); }
+        .premium-word { display:inline-block; transform:translateY(1.1em); opacity:0; animation:wordRise .9s var(--ease-premium) forwards; }
+        @keyframes wordRise { to{transform:none;opacity:1} }
+        @media (max-width:768px) { .cinematic-cursor,.cinematic-scroll-label,.cinematic-section-marker{display:none;} .hero{min-height:100svh;} .hero-visual::after{width:180px;height:180px;} }
+        @media (prefers-reduced-motion:reduce) { .cinematic-canvas,.cinematic-cursor{display:none!important;} }
+
+    
+        /* === Bug-fix & Security Layer: additive-only CSS === */
+        .logo-dot { color: var(--gold); }
+
+        @media (max-width: 480px) {
+            .header-container { gap: 0.65rem; }
+            .lang-toggle {
+                min-width: 36px;
+                height: 30px;
+                padding: 0 0.55rem;
+                font-size: 0.78rem;
+            }
+        }
+
+        /* Images only: text elsewhere remains selectable and copyable. */
+        img, picture, svg image,
+        .profile-img, .project-img, .modal-image {
+            -webkit-user-select: none;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+
     </style>
 </head>
 <body>
@@ -2513,7 +2633,7 @@
                 });
             };
 
-            window.addEventListener('scroll', handleHeaderScroll, { passive: true });
+            window.__ahooraHandleHeaderScroll = handleHeaderScroll;
 
             // Mobile Navigation
             const navToggle = document.getElementById('nav-toggle');
@@ -2672,6 +2792,8 @@
                 if (!project) return;
 
                 const lang = currentLang;
+                const safeLiveUrl = typeof project.liveUrl === 'string' &&
+                    /^https?:\/\//i.test(project.liveUrl.trim()) ? project.liveUrl.trim() : '';
                 modalBody.innerHTML = `
                         <img src="${project.image}" alt="${project.title[lang]}" class="modal-image">
                         <span class="project-number">${project.number}</span>
@@ -2688,9 +2810,9 @@
                         <ul class="modal-features-list">
                             ${project.keyFeatures[lang].map(feature => `<li>${feature}</li>`).join('')}
                         </ul>
-                        ${project.liveUrl ? `
+                        ${safeLiveUrl ? `
                         <div class="modal-actions">
-                            <a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                            <a href="${safeLiveUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
                                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                 <span>${lang === 'fa' ? 'مشاهده آنلاین پروژه' : 'View Live Project'}</span>
                             </a>
@@ -2773,7 +2895,7 @@
                     .replace(/[۰-۹]/g, digit => String(digit.charCodeAt(0) - 1776))
                     .replace(/[٠-٩]/g, digit => String(digit.charCodeAt(0) - 1632));
                 phone = phone.replace(/[\s\-().]/g, '');
-                return /^(?:0?9\d{9}|\+989\d{9}|00989\d{9}|989\d{9})$/.test(phone);
+                return /^(?:(?:0?9\d{9}|\+989\d{9}|00989\d{9}|989\d{9})|0\d{2,3}\d{7,8})$/.test(phone);
             }
 
             function isValidContact(value) {
@@ -2806,6 +2928,19 @@
                     const messageInput = document.getElementById('form-message');
 
                     let isValid = true;
+
+                    const boundedFields = [
+                        [nameInput, 100],
+                        [subjectInput, 150],
+                        [messageInput, 2000]
+                    ];
+                    boundedFields.forEach(([input, maxLength]) => {
+                        if (input) {
+                            input.value = input.value.trim().slice(0, maxLength);
+                            input.maxLength = maxLength;
+                        }
+                    });
+                    if (contactInput) contactInput.value = contactInput.value.trim();
 
                     [nameInput, contactInput, subjectInput, messageInput].forEach(input => {
                         if (input) clearFieldError(input);
@@ -2858,6 +2993,15 @@
                     }
 
                     if (!isValid) return;
+
+                    const endpoint = contactForm.getAttribute('action') || '';
+                    if (!/^https:\/\/formspree\.io\/f\/[A-Za-z0-9]+(?:-[A-Za-z0-9]+)?$/.test(endpoint)) {
+                        if (feedbackMsg) {
+                            feedbackMsg.textContent = errorByLang[currentLang];
+                            feedbackMsg.className = 'form-feedback-message error';
+                        }
+                        return;
+                    }
 
                     const originalButtonHTML = submitBtn.innerHTML;
                     submitBtn.disabled = true;
@@ -3000,5 +3144,213 @@
             applyLanguage('en');
         });
     </script>
+
+    <script>
+    /* Premium interaction layer — no changes to the site's existing protections or form flow. */
+    (() => {
+      const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const add = (tag, cls, parent=document.body) => { const el=document.createElement(tag); if(cls) el.className=cls; parent.appendChild(el); return el; };
+      const progress = add('div','page-progress');
+      const loader = add('div','premium-loader'); loader.innerHTML='<div class="loader-mark" aria-label="Loading"></div>';
+      window.addEventListener('load', () => setTimeout(() => loader.classList.add('is-hidden'), 420), {once:true});
+      const updateProgress = () => { const max=document.documentElement.scrollHeight-innerHeight; progress.style.width=(max>0 ? (scrollY/max)*100 : 0)+'%'; };
+      window.__ahooraUpdateProgress = updateProgress;
+      updateProgress();
+      if (!reduceMotion) {
+        addEventListener('pointermove', e => { document.documentElement.style.setProperty('--cursor-x',e.clientX+'px'); document.documentElement.style.setProperty('--cursor-y',e.clientY+'px'); }, {passive:true});
+        window.__ahooraParallaxEnabled = true;
+        document.querySelectorAll('.project-card,.stat-card,.soft-skill-card,.info-item').forEach(card => {
+          card.addEventListener('pointermove', e => { if(innerWidth<800) return; const r=card.getBoundingClientRect(), x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5; card.style.transform=`perspective(900px) rotateX(${y*-3}deg) rotateY(${x*3}deg) translateY(-6px)`; });
+          card.addEventListener('pointerleave', () => { card.style.transform=''; });
+        });
+        document.querySelectorAll('.btn').forEach(btn => { btn.addEventListener('pointermove',e=>{const r=btn.getBoundingClientRect();btn.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.08}px,${(e.clientY-r.top-r.height/2)*.08-3}px)`}); btn.addEventListener('pointerleave',()=>btn.style.transform=''); });
+      }
+      // Progressive image loading without changing existing image URLs.
+      document.querySelectorAll('img').forEach(img => { img.loading='lazy'; img.decoding='async'; img.addEventListener('error',()=>img.classList.add('image-failed'),{once:true}); });
+      // Close the mobile menu when navigating with keyboard or selecting a destination.
+      document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',()=>document.activeElement?.blur()));
+    })();
+    </script>
+
+
+    <script>
+    /* Cinematic native motion system. It enhances visuals only and leaves the existing site logic intact. */
+    (() => {
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      document.body.classList.add('cinematic');
+      if (reduced) return;
+      const canvas = document.createElement('canvas'); canvas.className='cinematic-canvas'; document.body.prepend(canvas);
+      const ctx=canvas.getContext('2d'); let w,h,dpr,particles=[];
+      const resize=()=>{ dpr=Math.min(devicePixelRatio||1,2); w=innerWidth; h=innerHeight; canvas.width=w*dpr; canvas.height=h*dpr; canvas.style.width=w+'px'; canvas.style.height=h+'px'; ctx.setTransform(dpr,0,0,dpr,0,0); particles=Array.from({length:Math.min(90,Math.max(34,Math.floor(w/18)))},()=>({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.18,vy:(Math.random()-.5)*.18,r:Math.random()*1.5+.35,a:Math.random()*.55+.12}));};
+      const draw=()=>{ ctx.clearRect(0,0,w,h); const gold=getComputedStyle(document.documentElement).getPropertyValue('--gold').trim()||'#c8a96b'; for(const p of particles){p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=w;if(p.x>w)p.x=0;if(p.y<0)p.y=h;if(p.y>h)p.y=0;ctx.beginPath();ctx.fillStyle=gold;ctx.globalAlpha=p.a;ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();} ctx.globalAlpha=.09; for(let i=0;i<particles.length;i++)for(let j=i+1;j<particles.length;j++){const a=particles[i],b=particles[j],dx=a.x-b.x,dy=a.y-b.y,dist=Math.hypot(dx,dy);if(dist<120){ctx.strokeStyle=gold;ctx.lineWidth=.5;ctx.globalAlpha=(1-dist/120)*.14;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}} ctx.globalAlpha=1; requestAnimationFrame(draw);};
+      addEventListener('resize',resize,{passive:true}); resize(); draw();
+      const cursor=document.createElement('div'); cursor.className='cinematic-cursor'; document.body.appendChild(cursor); let cx=-100,cy=-100,tx=-100,ty=-100;
+      addEventListener('pointermove',e=>{tx=e.clientX;ty=e.clientY;cursor.classList.add('is-visible')},{passive:true});
+      const cursorLoop=()=>{cx+=(tx-cx)*.16;cy+=(ty-cy)*.16;cursor.style.left=cx+'px';cursor.style.top=cy+'px';requestAnimationFrame(cursorLoop)}; cursorLoop();
+      document.querySelectorAll('a,button,.project-card,.soft-skill-card,.stat-card').forEach(el=>{el.addEventListener('pointerenter',()=>cursor.classList.add('is-hovering'));el.addEventListener('pointerleave',()=>cursor.classList.remove('is-hovering'));});
+      const marker=document.createElement('div'); marker.className='cinematic-scroll-label'; marker.innerHTML='<span>Scroll to explore</span>'; document.body.appendChild(marker);
+      document.querySelectorAll('section[id]').forEach(section=>{const mark=document.createElement('span');mark.className='cinematic-section-marker';mark.textContent=section.id.toUpperCase();section.appendChild(mark);});
+      // Scroll choreography: the hero drifts away while the content gains focus.
+      const heroContent=document.querySelector('.hero-content');
+      window.__ahooraHeroContent = heroContent;
+      document.querySelectorAll('.project-card').forEach(card=>card.addEventListener('pointermove',e=>{const r=card.getBoundingClientRect();card.style.setProperty('--spot-x',(e.clientX-r.left)+'px');card.style.setProperty('--spot-y',(e.clientY-r.top)+'px');},{passive:true}));
+      // Staggered section entrance, using the existing reveal classes.
+      document.querySelectorAll('.section-header,.about-grid,.skills-wrapper,.portfolio-grid,.contact-wrapper').forEach((el,i)=>{el.style.transitionDelay=(Math.min(i*.06,.24))+'s';});
+    })();
+    </script>
+
+
+    <script>
+    // === Bug-fix & Security Layer ===
+    (() => {
+        'use strict';
+
+        // Refuse to render the portfolio inside an untrusted frame.
+        if (window.top !== window.self) {
+            try {
+                window.top.location = window.self.location.href;
+            } catch (_) {
+                document.documentElement.textContent = '';
+                document.documentElement.style.background = '#11161D';
+                document.body && (document.body.textContent = 'This page cannot be displayed inside a frame.');
+            }
+            return;
+        }
+
+        // Hide the existing loader on load, or after at most three seconds.
+        const loader = document.querySelector('.premium-loader');
+        if (loader) {
+            let loaderHidden = false;
+            let loaderTimer;
+            const hideLoader = () => {
+                if (loaderHidden) return;
+                loaderHidden = true;
+                clearTimeout(loaderTimer);
+                setTimeout(() => loader.classList.add('is-hidden'), 420);
+            };
+            loaderTimer = setTimeout(hideLoader, 3000);
+            window.addEventListener('load', hideLoader, { once: true });
+        }
+
+        // Block mouse context menus without suppressing keyboard context-menu access.
+        document.addEventListener('contextmenu', event => {
+            if (event.button === 2 || event.detail > 0) event.preventDefault();
+        });
+
+        // Prevent dragging image media; do not disable selection on surrounding text.
+        document.addEventListener('dragstart', event => {
+            if (event.target && event.target.closest &&
+                event.target.closest('img, picture, svg image, .profile-img, .project-img, .modal-image')) {
+                event.preventDefault();
+            }
+        });
+
+        // Restrict only the requested developer-tool/view-source shortcuts.
+        document.addEventListener('keydown', event => {
+            const key = event.key;
+            const ctrl = event.ctrlKey || event.metaKey;
+            const blocked = key === 'F12' ||
+                (ctrl && event.shiftKey && ['I', 'J', 'C'].includes(key.toUpperCase())) ||
+                (ctrl && !event.shiftKey && key.toUpperCase() === 'U');
+            if (blocked) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+        }, true);
+
+        // Prevent copy/cut only when the selection is within the designated media.
+        document.addEventListener('copy', event => {
+            const selection = window.getSelection();
+            const anchor = selection && selection.anchorNode;
+            const element = anchor && (anchor.nodeType === 1 ? anchor : anchor.parentElement);
+            if (element && element.closest && element.closest('.profile-img, .project-img, .modal-image')) {
+                event.preventDefault();
+            }
+        });
+
+        // Harden any target=_blank links, including links inserted after page load.
+        const secureExternalLinks = root => {
+            (root || document).querySelectorAll('a[target="_blank"]').forEach(anchor => {
+                const rel = new Set((anchor.getAttribute('rel') || '').split(/\s+/).filter(Boolean));
+                rel.add('noopener');
+                rel.add('noreferrer');
+                anchor.setAttribute('rel', Array.from(rel).join(' '));
+            });
+        };
+        secureExternalLinks();
+        new MutationObserver(records => {
+            records.forEach(record => record.addedNodes.forEach(node => {
+                if (node.nodeType !== 1) return;
+                if (node.matches && node.matches('a[target="_blank"]')) {
+                    const rel = new Set((node.getAttribute('rel') || '').split(/\s+/).filter(Boolean));
+                    rel.add('noopener');
+                    rel.add('noreferrer');
+                    node.setAttribute('rel', Array.from(rel).join(' '));
+                }
+                secureExternalLinks(node);
+            }));
+        }).observe(document.documentElement, { childList: true, subtree: true });
+
+        // Compose all scroll-driven effects through one passive listener and one rAF.
+        let scrollFramePending = false;
+        let pointerX = 0;
+        let pointerY = 0;
+        let pointerActive = false;
+        const heroVisual = document.querySelector('.hero-visual');
+        const nav = document.getElementById('nav-menu');
+        const header = document.getElementById('header');
+
+        const renderScrollState = () => {
+            scrollFramePending = false;
+
+            if (typeof window.__ahooraHandleHeaderScroll === 'function') {
+                window.__ahooraHandleHeaderScroll();
+            }
+            if (typeof window.__ahooraUpdateProgress === 'function') {
+                window.__ahooraUpdateProgress();
+            }
+
+            const y = Math.min(window.scrollY, window.innerHeight);
+            if (window.__ahooraHeroContent) {
+                window.__ahooraHeroContent.style.transform = `translate3d(0, ${y * 0.12}px, 0)`;
+            }
+
+            if (heroVisual) {
+                const mouseX = pointerActive && window.innerWidth >= 900 ? pointerX : 0;
+                const mouseY = pointerActive && window.innerWidth >= 900 ? pointerY : 0;
+                const scrollY = y * 0.045;
+                const scale = 1 - y * 0.00008;
+                heroVisual.style.transform =
+                    `translate3d(${mouseX}px, ${mouseY + scrollY}px, 0) scale(${scale})`;
+            }
+
+            if (nav && header && window.innerWidth <= 768) {
+                nav.style.top = `${header.getBoundingClientRect().height}px`;
+            }
+        };
+
+        const requestScrollRender = () => {
+            if (scrollFramePending) return;
+            scrollFramePending = true;
+            requestAnimationFrame(renderScrollState);
+        };
+
+        window.addEventListener('scroll', requestScrollRender, { passive: true });
+        window.addEventListener('resize', requestScrollRender, { passive: true });
+
+        window.addEventListener('pointermove', event => {
+            if (window.innerWidth < 900) return;
+            pointerX = (event.clientX / window.innerWidth - 0.5) * 8;
+            pointerY = (event.clientY / window.innerHeight - 0.5) * -8;
+            pointerActive = true;
+            requestScrollRender();
+        }, { passive: true });
+
+        // Apply initial header/nav/progress state after DOMContentLoaded setup runs.
+        requestScrollRender();
+        document.addEventListener('DOMContentLoaded', requestScrollRender, { once: true });
+    })();
+    </script>
+
 </body>
 </html>
