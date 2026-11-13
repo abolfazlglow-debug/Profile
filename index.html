@@ -6,7 +6,7 @@
     <meta name="description" content="AHOORA — A modern personal portfolio showcasing frontend development, UI/UX skills, creative projects, and digital experiences." />
     <meta name="keywords" content="AHOORA, Frontend Developer, UI/UX Enthusiast, Portfolio, Web Design, JavaScript, React, Web Developer" />
     <meta name="author" content="AHOORA" />
-    <meta name="theme-color" content="#11161D" />
+    <meta name="theme-color" content="#FFFFFF" />
 
     <!-- Open Graph / Social Media -->
     <meta property="og:title" content="AHOORA | Frontend Developer & UI/UX Enthusiast" />
@@ -31,22 +31,22 @@
            ========================================================================== */
 
         :root {
-            --bg-primary: #11161D;
-            --bg-secondary: #181E26;
-            --bg-tertiary: #1F2732;
-            --bg-glass: rgba(24, 30, 38, 0.75);
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #F5F5F5;
+            --bg-tertiary: #D5D5D5;
+            --bg-glass: rgba(255, 255, 255, 0.82);
 
-            --gold: #C8A96B;
-            --gold-light: #D8BD83;
-            --gold-dark: #9E8144;
-            --gold-glow: rgba(200, 169, 107, 0.25);
-            --gold-border: rgba(200, 169, 107, 0.25);
+            --gold: #303030;
+            --gold-light: #171717;
+            --gold-dark: #080808;
+            --gold-glow: rgba(48, 48, 48, 0.16);
+            --gold-border: rgba(48, 48, 48, 0.24);
 
-            --text-primary: #F5F3EE;
-            --text-secondary: #A8ADB5;
-            --text-muted: #6C727F;
+            --text-primary: #080808;
+            --text-secondary: #303030;
+            --text-muted: #A6A6A6;
 
-            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-subtle: rgba(48, 48, 48, 0.14);
 
             --font-heading: 'Playfair Display', Georgia, serif;
             --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -64,71 +64,6 @@
             --radius-full: 9999px;
         }
 
-        /* Royal Green Light Theme */
-        html[data-theme="royal-light"] {
-            --bg-primary: #F7FAF6;
-            --bg-secondary: #FFFFFF;
-            --bg-tertiary: #EEF4EE;
-            --bg-glass: rgba(255, 255, 255, 0.78);
-
-            --gold: #176B45;
-            --gold-light: #0F5A3A;
-            --gold-dark: #0A432B;
-            --gold-glow: rgba(23, 107, 69, 0.16);
-            --gold-border: rgba(23, 107, 69, 0.22);
-
-            --text-primary: #173025;
-            --text-secondary: #52645B;
-            --text-muted: #7C8C84;
-
-            --border-subtle: rgba(23, 107, 69, 0.12);
-        }
-
-        html[data-theme="royal-light"] body {
-            background:
-                radial-gradient(circle at 10% 5%, rgba(23, 107, 69, 0.08), transparent 28%),
-                radial-gradient(circle at 90% 85%, rgba(23, 107, 69, 0.06), transparent 30%),
-                var(--bg-primary);
-        }
-
-        html[data-theme="royal-light"] .bg-glow-1 {
-            background: radial-gradient(circle, rgba(23, 107, 69, 0.28) 0%, transparent 70%);
-            opacity: 0.12;
-        }
-
-        html[data-theme="royal-light"] .bg-glow-2 {
-            background: radial-gradient(circle, rgba(78, 129, 102, 0.18) 0%, transparent 70%);
-            opacity: 0.10;
-        }
-
-        html[data-theme="royal-light"] .bg-grid-pattern {
-            background-image: radial-gradient(rgba(23, 107, 69, 0.08) 1px, transparent 1px);
-        }
-
-        html[data-theme="royal-light"] .header.scrolled {
-            box-shadow: 0 10px 30px rgba(23, 107, 69, 0.08);
-        }
-
-        html[data-theme="royal-light"] .project-overlay {
-            background: rgba(10, 67, 43, 0.68);
-        }
-
-        html[data-theme="royal-light"] .modal-overlay {
-            background: rgba(23, 48, 37, 0.55);
-        }
-
-        html[data-theme="royal-light"] .profile-image-container {
-            box-shadow: 0 0 50px rgba(23, 107, 69, 0.15);
-        }
-
-        html[data-theme="royal-light"] .profile-img {
-            border-color: var(--bg-primary);
-        }
-
-        html[data-theme="royal-light"] .form-input::placeholder {
-            color: #91A098;
-        }
-
         *,
         *::before,
         *::after {
@@ -144,7 +79,7 @@
         }
 
         body {
-            background-color: var(--bg-primary);
+            background-color: #FFFFFF;
             color: var(--text-primary);
             font-family: var(--font-body);
             font-weight: 400;
@@ -167,7 +102,7 @@
 
         ::selection {
             background-color: var(--gold);
-            color: var(--bg-primary);
+            color: #FFFFFF;
         }
 
         ::-webkit-scrollbar {
@@ -249,7 +184,7 @@
             right: -10%;
             width: 60vw;
             height: 60vw;
-            background: radial-gradient(circle, #2A3647 0%, transparent 70%);
+            background: radial-gradient(circle, #303030 0%, transparent 70%);
         }
 
         .bg-grid-pattern {
@@ -259,7 +194,7 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background-image: radial-gradient(rgba(200, 169, 107, 0.05) 1px, transparent 1px);
+            background-image: radial-gradient(rgba(213, 213, 213, 0.05) 1px, transparent 1px);
             background-size: 32px 32px;
             pointer-events: none;
         }
@@ -330,15 +265,15 @@
 
         .btn-primary {
             background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
-            color: var(--bg-primary);
+            color: #FFFFFF;
             font-weight: 600;
-            box-shadow: 0 4px 15px rgba(200, 169, 107, 0.2);
+            box-shadow: 0 4px 15px rgba(213, 213, 213, 0.20);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(200, 169, 107, 0.4);
-            color: var(--bg-primary);
+            box-shadow: 0 8px 25px rgba(213, 213, 213, 0.40);
+            color: #FFFFFF;
         }
 
         .btn-secondary {
@@ -348,7 +283,7 @@
         }
 
         .btn-secondary:hover {
-            background: rgba(200, 169, 107, 0.1);
+            background: rgba(213, 213, 213, 0.10);
             border-color: var(--gold);
             transform: translateY(-3px);
             color: var(--gold-light);
@@ -446,7 +381,7 @@
         }
 
         .lang-toggle:hover {
-            background: rgba(200, 169, 107, 0.12);
+            background: rgba(213, 213, 213, 0.12);
             border-color: var(--gold);
         }
 
@@ -473,8 +408,18 @@
             line-height: 1.1;
             margin-bottom: 1rem;
             background: linear-gradient(180deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+            background-color: transparent;
+            background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+
+        @supports not ((background-clip: text) or (-webkit-background-clip: text)) {
+            .hero-title {
+                background: none;
+                color: var(--text-primary);
+                -webkit-text-fill-color: var(--text-primary);
+            }
         }
 
         .profile-image-container {
@@ -482,8 +427,8 @@
             height: 320px;
             border-radius: 50%;
             padding: 8px;
-            background: linear-gradient(135deg, var(--gold) 0%, rgba(200, 169, 107, 0.1) 100%);
-            box-shadow: 0 0 50px rgba(200, 169, 107, 0.2);
+            background: linear-gradient(135deg, var(--gold) 0%, rgba(213, 213, 213, 0.10) 100%);
+            box-shadow: 0 0 50px rgba(213, 213, 213, 0.20);
             position: relative;
             z-index: 2;
             animation: floatAnimation 6s ease-in-out infinite;
@@ -891,7 +836,7 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            background: rgba(17, 22, 29, 0.75);
+            background: rgba(255, 255, 255, 0.82);
             opacity: 0;
             transition: opacity var(--transition-fast);
         }
@@ -1058,11 +1003,11 @@
         .form-error {
             display: none;
             font-size: 0.8rem;
-            color: #E07A6B;
+            color: #A6A6A6;
         }
 
         .form-group.error .form-input {
-            border-color: #E07A6B;
+            border-color: #A6A6A6;
         }
 
         .form-group.error .form-error {
@@ -1081,7 +1026,7 @@
         }
 
         .form-feedback-message.success {
-            color: #7BC47F;
+            color: #D5D5D5;
         }
 
         @media (max-width: 992px) {
@@ -1170,7 +1115,7 @@
         .modal-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(17, 22, 29, 0.85);
+            background: rgba(8, 8, 8, 0.72);
             backdrop-filter: blur(6px);
             display: flex;
             align-items: center;
@@ -1284,7 +1229,7 @@
             height: 46px;
             border-radius: 50%;
             background: var(--gold);
-            color: var(--bg-primary);
+            color: #FFFFFF;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1424,7 +1369,7 @@
 
             .profile-image-container {
                 padding: 10px;
-                box-shadow: 0 0 60px rgba(200, 169, 107, 0.25);
+                box-shadow: 0 0 60px rgba(213, 213, 213, 0.18);
             }
 
             .profile-img {
@@ -1596,7 +1541,7 @@
 
             .project-overlay {
                 gap: 12px;
-                background: rgba(17, 22, 29, 0.78);
+                background: rgba(255, 255, 255, 0.86);
             }
 
             .btn-sm {
@@ -1830,12 +1775,12 @@
                 height: 52px;
                 font-size: 1.1rem;
                 transform: translateY(12px);
-                box-shadow: 0 8px 25px rgba(200, 169, 107, 0.35);
+                box-shadow: 0 8px 25px rgba(213, 213, 213, 0.35);
             }
 
             .back-to-top:hover {
                 transform: translateY(-4px);
-                box-shadow: 0 12px 30px rgba(200, 169, 107, 0.5);
+                box-shadow: 0 12px 30px rgba(213, 213, 213, 0.50);
             }
 
             html[dir="rtl"] .back-to-top {
@@ -1909,20 +1854,20 @@
         }
 
         /* =====================================================================
-           AHOORA PREMIUM MOTION LAYER — preserves the original functionality
+           MONOCHROME PREMIUM MOTION LAYER — preserves the original functionality
            ===================================================================== */
-        :root { --ease-premium: cubic-bezier(.16,1,.3,1); --cursor-x: 50vw; --cursor-y: 50vh; }
+        :root { --ease-premium: cubic-bezier(.16,1,.3,1); }
         html { scroll-padding-top: 100px; }
-        body::before { content:""; position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.42; background:radial-gradient(520px circle at var(--cursor-x) var(--cursor-y), var(--gold-glow), transparent 62%); transition:opacity .35s ease; }
+        body::before { content:""; position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.28; background:radial-gradient(520px circle at 50% 12%, var(--gold-glow), transparent 62%); }
         body::after { content:""; position:fixed; inset:0; z-index:50; pointer-events:none; opacity:.035; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E"); mix-blend-mode:soft-light; }
         .page-progress { position:fixed; top:0; left:0; width:0; height:3px; z-index:3000; background:linear-gradient(90deg,var(--gold-dark),var(--gold-light),#fff); box-shadow:0 0 16px var(--gold); transition:width .12s linear; }
-        .premium-loader { position:fixed; inset:0; z-index:5000; display:grid; place-items:center; background:var(--bg-primary); transition:opacity .8s var(--ease-premium), visibility .8s; }
+        .premium-loader { position:fixed; inset:0; z-index:5000; display:grid; place-items:center; background:var(--bg-primary); transition:opacity .2s var(--ease-premium), visibility .2s; }
         .premium-loader.is-hidden { opacity:0; visibility:hidden; pointer-events:none; }
         .loader-mark { width:72px; height:72px; border:1px solid var(--gold-border); border-top-color:var(--gold); border-radius:50%; animation:loaderSpin 1s linear infinite; position:relative; }
         .loader-mark::after { content:'A'; position:absolute; inset:0; display:grid; place-items:center; color:var(--gold-light); font:700 1.4rem var(--font-heading); animation:loaderSpin 1s linear reverse infinite; }
         @keyframes loaderSpin { to { transform:rotate(360deg); } }
         .header { will-change:background,transform; }
-        .header:not(.scrolled) { background:linear-gradient(180deg,rgba(17,22,29,.7),transparent); }
+        .header:not(.scrolled) { background:linear-gradient(180deg,rgba(255,255,255,.82),transparent); }
         .logo { transition:transform .45s var(--ease-premium), color .25s ease; }
         .logo:hover { transform:translateY(-2px) scale(1.03); }
         .hero-content > * { will-change:transform; }
@@ -1962,7 +1907,7 @@
 
 
         /* =====================================================================
-           APPLE-INSPIRED CINEMATIC EXPERIENCE — AHOORA
+           MONOCHROME CINEMATIC EXPERIENCE
            ===================================================================== */
         @property --aurora-angle { syntax:'<angle>'; initial-value:0deg; inherits:false; }
         body.cinematic { background:var(--bg-primary); }
@@ -1970,16 +1915,14 @@
         body.cinematic .bg-glow-2 { animation:auroraFloat 20s ease-in-out infinite alternate-reverse; }
         @keyframes auroraFloat { 0%{transform:translate3d(-3%,0,0) scale(.92)} 50%{transform:translate3d(6%,4%,0) scale(1.08)} 100%{transform:translate3d(-2%,-4%,0) scale(.98)} }
         .cinematic-canvas { position:fixed; inset:0; width:100%; height:100%; z-index:-3; pointer-events:none; opacity:.62; mix-blend-mode:screen; }
-        .cinematic-cursor { position:fixed; width:28px; height:28px; border:1px solid var(--gold-light); border-radius:50%; pointer-events:none; z-index:4000; transform:translate(-50%,-50%); opacity:0; transition:width .35s var(--ease-premium),height .35s var(--ease-premium),opacity .3s ease,background .3s ease; mix-blend-mode:difference; }
-        .cinematic-cursor.is-visible { opacity:.8; }
-        .cinematic-cursor.is-hovering { width:70px; height:70px; background:rgba(255,255,255,.08); }
         .cinematic-scroll-label { position:fixed; left:2rem; bottom:2rem; z-index:800; writing-mode:vertical-rl; letter-spacing:3px; text-transform:uppercase; font-size:.65rem; color:var(--text-muted); display:flex; gap:12px; align-items:center; }
         .cinematic-scroll-label::after { content:''; width:1px; height:56px; background:linear-gradient(var(--gold),transparent); animation:scrollLine 2s ease-in-out infinite; }
         @keyframes scrollLine { 0%,100%{transform:scaleY(.55);transform-origin:top;opacity:.4} 50%{transform:scaleY(1);opacity:1} }
         .hero { min-height:110vh; overflow:hidden; }
         .hero-content { position:relative; z-index:2; }
         .hero-visual { perspective:1200px; }
-        .hero-title { letter-spacing:-.04em; background:linear-gradient(100deg,var(--text-primary) 10%,var(--gold-light) 47%,var(--text-primary) 78%); background-size:220% auto; animation:titleShine 8s linear infinite; }
+        .hero-title { letter-spacing:-.04em; background:linear-gradient(100deg,var(--text-primary) 10%,var(--gold-light) 47%,var(--text-primary) 78%); background-color:transparent; background-clip:text; -webkit-background-clip:text; background-size:220% auto; animation:titleShine 8s linear infinite; }
+        @supports not ((background-clip: text) or (-webkit-background-clip: text)) { .hero-title { background:none; color:var(--text-primary); -webkit-text-fill-color:var(--text-primary); } }
         @keyframes titleShine { to{background-position:220% center} }
         .hero-greeting { position:relative; padding-left:42px; }
         html[dir="rtl"] .hero-greeting { padding-left:0; padding-right:42px; }
@@ -1999,11 +1942,11 @@
         .project-card:hover::after { opacity:1; }
         .project-number { transition:transform .5s var(--ease-premium),opacity .5s ease; }
         .project-card:hover .project-number { transform:translateY(-5px) scale(1.12); opacity:.9; }
-        .contact-form { background:linear-gradient(135deg,var(--bg-secondary),rgba(200,169,107,.045)); }
+        .contact-form { background:linear-gradient(135deg,var(--bg-secondary),rgba(213,213,213,.045)); }
         .premium-word { display:inline-block; transform:translateY(1.1em); opacity:0; animation:wordRise .9s var(--ease-premium) forwards; }
         @keyframes wordRise { to{transform:none;opacity:1} }
-        @media (max-width:768px) { .cinematic-cursor,.cinematic-scroll-label,.cinematic-section-marker{display:none;} .hero{min-height:100svh;} .hero-visual::after{width:180px;height:180px;} }
-        @media (prefers-reduced-motion:reduce) { .cinematic-canvas,.cinematic-cursor{display:none!important;} }
+        @media (max-width:768px) { .cinematic-scroll-label,.cinematic-section-marker{display:none;} .hero{min-height:100svh;} .hero-visual::after{width:180px;height:180px;} }
+        @media (prefers-reduced-motion:reduce) { .cinematic-canvas{display:none!important;} }
 
     
         /* === Bug-fix & Security Layer: additive-only CSS === */
@@ -2052,7 +1995,6 @@
             </nav>
 
             <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Switch language">FA</button>
-            <button class="lang-toggle theme-toggle" id="theme-toggle" type="button" aria-label="Switch theme" title="Royal Green">◐</button>
 
             <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
                 <span class="hamburger-bar"></span>
@@ -2383,37 +2325,28 @@
                         <p class="contact-lead" data-en="Have a project in mind, a question, or simply want to connect? Feel free to reach out directly through any of the platforms below or send a message using the form." data-fa="پروژه‌ای در ذهن دارید، سوالی دارید یا فقط می‌خواهید در ارتباط باشیم؟ از طریق هر یک از پلتفرم‌های زیر یا با ارسال پیام از فرم با من تماس بگیرید.">
                             Have a project in mind, a question, or simply want to connect? Feel free to reach out directly through any of the platforms below or send a message using the form.
                         </p>
-
                         <div class="info-list">
-                            <a href="mailto:ahoora@example.com" class="info-item">
-                                <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
-                                <div class="info-details">
-                                    <span class="info-label" data-en="Email" data-fa="ایمیل">Email</span>
-                                    <span class="info-value">ahoora@example.com</span>
-                                </div>
-                            </a>
-
-                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="info-item">
+                            <a href="https://www.linkedin.com/in/AbolfazlMoradi" target="_blank" rel="noopener noreferrer" class="info-item">
                                 <div class="info-icon"><i class="fa-brands fa-linkedin-in"></i></div>
                                 <div class="info-details">
                                     <span class="info-label">LinkedIn</span>
-                                    <span class="info-value">linkedin.com/in/ahoora</span>
+                                    <span class="info-value">linkedin.com/in/AbolfazlMoradi</span>
                                 </div>
                             </a>
 
-                            <a href="https://github.com/mox4726" target="_blank" rel="noopener noreferrer" class="info-item">
-                                <div class="info-icon"><i class="fa-brands fa-github"></i></div>
+                            <a href="https://wa.me/ito.i" target="_blank" rel="noopener noreferrer" class="info-item">
+                                <div class="info-icon"><i class="fa-brands fa-whatsapp"></i></div>
                                 <div class="info-details">
-                                    <span class="info-label">GitHub</span>
-                                    <span class="info-value">github.com/mox4726</span>
+                                    <span class="info-label">WhatsApp</span>
+                                    <span class="info-value">@ito.i</span>
                                 </div>
                             </a>
 
-                            <a href="https://t.me" target="_blank" rel="noopener noreferrer" class="info-item">
+                            <a href="https://t.me/CLS2009" target="_blank" rel="noopener noreferrer" class="info-item">
                                 <div class="info-icon"><i class="fa-brands fa-telegram"></i></div>
                                 <div class="info-details">
                                     <span class="info-label">Telegram</span>
-                                    <span class="info-value">t.me/ahoora</span>
+                                    <span class="info-value">CLS2009</span>
                                 </div>
                             </a>
                         </div>
@@ -2475,19 +2408,15 @@
                     <li><a href="#contact" data-en="Contact" data-fa="تماس">Contact</a></li>
                 </ul>
             </div>
-
             <div class="footer-socials">
-                <a href="https://github.com/mox4726" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                    <i class="fa-brands fa-github"></i>
-                </a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/in/AbolfazlMoradi" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                     <i class="fa-brands fa-linkedin-in"></i>
                 </a>
-                <a href="https://t.me" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
-                    <i class="fa-brands fa-telegram"></i>
+                <a href="https://wa.me/ito.i" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                    <i class="fa-brands fa-whatsapp"></i>
                 </a>
-                <a href="mailto:ahoora@example.com" aria-label="Email">
-                    <i class="fa-solid fa-envelope"></i>
+                <a href="https://t.me/CLS2009" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+                    <i class="fa-brands fa-telegram"></i>
                 </a>
             </div>
 
@@ -3086,29 +3015,6 @@
                 });
             }
 
-            // Theme Switcher
-            const themeToggleBtn = document.getElementById('theme-toggle');
-            const savedTheme = localStorage.getItem('ahoora-theme');
-            const applyTheme = (theme) => {
-                const isRoyal = theme === 'royal-light';
-                document.documentElement.setAttribute('data-theme', isRoyal ? 'royal-light' : 'dark');
-                if (themeToggleBtn) {
-                    themeToggleBtn.textContent = isRoyal ? '☾' : '◐';
-                    themeToggleBtn.setAttribute('title', isRoyal ? 'Dark Theme' : 'Royal Green');
-                    themeToggleBtn.setAttribute('aria-label', isRoyal ? 'Switch to dark theme' : 'Switch to royal green light theme');
-                }
-                localStorage.setItem('ahoora-theme', isRoyal ? 'royal-light' : 'dark');
-            };
-
-            if (themeToggleBtn) {
-                themeToggleBtn.addEventListener('click', () => {
-                    const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
-                    applyTheme(currentTheme === 'dark' ? 'royal-light' : 'dark');
-                });
-            }
-
-            applyTheme(savedTheme === 'royal-light' ? 'royal-light' : 'dark');
-
             // Language Switcher
             const langToggleBtn = document.getElementById('lang-toggle');
             const translatableTextEls = document.querySelectorAll('[data-en]');
@@ -3152,12 +3058,11 @@
       const add = (tag, cls, parent=document.body) => { const el=document.createElement(tag); if(cls) el.className=cls; parent.appendChild(el); return el; };
       const progress = add('div','page-progress');
       const loader = add('div','premium-loader'); loader.innerHTML='<div class="loader-mark" aria-label="Loading"></div>';
-      window.addEventListener('load', () => setTimeout(() => loader.classList.add('is-hidden'), 420), {once:true});
+      window.addEventListener('load', () => setTimeout(() => loader.classList.add('is-hidden'), 300), {once:true});
       const updateProgress = () => { const max=document.documentElement.scrollHeight-innerHeight; progress.style.width=(max>0 ? (scrollY/max)*100 : 0)+'%'; };
       window.__ahooraUpdateProgress = updateProgress;
       updateProgress();
       if (!reduceMotion) {
-        addEventListener('pointermove', e => { document.documentElement.style.setProperty('--cursor-x',e.clientX+'px'); document.documentElement.style.setProperty('--cursor-y',e.clientY+'px'); }, {passive:true});
         window.__ahooraParallaxEnabled = true;
         document.querySelectorAll('.project-card,.stat-card,.soft-skill-card,.info-item').forEach(card => {
           card.addEventListener('pointermove', e => { if(innerWidth<800) return; const r=card.getBoundingClientRect(), x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5; card.style.transform=`perspective(900px) rotateX(${y*-3}deg) rotateY(${x*3}deg) translateY(-6px)`; });
@@ -3182,12 +3087,8 @@
       const canvas = document.createElement('canvas'); canvas.className='cinematic-canvas'; document.body.prepend(canvas);
       const ctx=canvas.getContext('2d'); let w,h,dpr,particles=[];
       const resize=()=>{ dpr=Math.min(devicePixelRatio||1,2); w=innerWidth; h=innerHeight; canvas.width=w*dpr; canvas.height=h*dpr; canvas.style.width=w+'px'; canvas.style.height=h+'px'; ctx.setTransform(dpr,0,0,dpr,0,0); particles=Array.from({length:Math.min(90,Math.max(34,Math.floor(w/18)))},()=>({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.18,vy:(Math.random()-.5)*.18,r:Math.random()*1.5+.35,a:Math.random()*.55+.12}));};
-      const draw=()=>{ ctx.clearRect(0,0,w,h); const gold=getComputedStyle(document.documentElement).getPropertyValue('--gold').trim()||'#c8a96b'; for(const p of particles){p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=w;if(p.x>w)p.x=0;if(p.y<0)p.y=h;if(p.y>h)p.y=0;ctx.beginPath();ctx.fillStyle=gold;ctx.globalAlpha=p.a;ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();} ctx.globalAlpha=.09; for(let i=0;i<particles.length;i++)for(let j=i+1;j<particles.length;j++){const a=particles[i],b=particles[j],dx=a.x-b.x,dy=a.y-b.y,dist=Math.hypot(dx,dy);if(dist<120){ctx.strokeStyle=gold;ctx.lineWidth=.5;ctx.globalAlpha=(1-dist/120)*.14;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}} ctx.globalAlpha=1; requestAnimationFrame(draw);};
+      const draw=()=>{ ctx.clearRect(0,0,w,h); const gold=getComputedStyle(document.documentElement).getPropertyValue('--gold').trim()||'#a6a6a6'; for(const p of particles){p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=w;if(p.x>w)p.x=0;if(p.y<0)p.y=h;if(p.y>h)p.y=0;ctx.beginPath();ctx.fillStyle=gold;ctx.globalAlpha=p.a;ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();} ctx.globalAlpha=.09; for(let i=0;i<particles.length;i++)for(let j=i+1;j<particles.length;j++){const a=particles[i],b=particles[j],dx=a.x-b.x,dy=a.y-b.y,dist=Math.hypot(dx,dy);if(dist<120){ctx.strokeStyle=gold;ctx.lineWidth=.5;ctx.globalAlpha=(1-dist/120)*.14;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}} ctx.globalAlpha=1; requestAnimationFrame(draw);};
       addEventListener('resize',resize,{passive:true}); resize(); draw();
-      const cursor=document.createElement('div'); cursor.className='cinematic-cursor'; document.body.appendChild(cursor); let cx=-100,cy=-100,tx=-100,ty=-100;
-      addEventListener('pointermove',e=>{tx=e.clientX;ty=e.clientY;cursor.classList.add('is-visible')},{passive:true});
-      const cursorLoop=()=>{cx+=(tx-cx)*.16;cy+=(ty-cy)*.16;cursor.style.left=cx+'px';cursor.style.top=cy+'px';requestAnimationFrame(cursorLoop)}; cursorLoop();
-      document.querySelectorAll('a,button,.project-card,.soft-skill-card,.stat-card').forEach(el=>{el.addEventListener('pointerenter',()=>cursor.classList.add('is-hovering'));el.addEventListener('pointerleave',()=>cursor.classList.remove('is-hovering'));});
       const marker=document.createElement('div'); marker.className='cinematic-scroll-label'; marker.innerHTML='<span>Scroll to explore</span>'; document.body.appendChild(marker);
       document.querySelectorAll('section[id]').forEach(section=>{const mark=document.createElement('span');mark.className='cinematic-section-marker';mark.textContent=section.id.toUpperCase();section.appendChild(mark);});
       // Scroll choreography: the hero drifts away while the content gains focus.
@@ -3211,7 +3112,7 @@
                 window.top.location = window.self.location.href;
             } catch (_) {
                 document.documentElement.textContent = '';
-                document.documentElement.style.background = '#11161D';
+                document.documentElement.style.background = '#080808';
                 document.body && (document.body.textContent = 'This page cannot be displayed inside a frame.');
             }
             return;
@@ -3226,9 +3127,9 @@
                 if (loaderHidden) return;
                 loaderHidden = true;
                 clearTimeout(loaderTimer);
-                setTimeout(() => loader.classList.add('is-hidden'), 420);
+                setTimeout(() => loader.classList.add('is-hidden'), 200);
             };
-            loaderTimer = setTimeout(hideLoader, 3000);
+            loaderTimer = setTimeout(hideLoader, 500);
             window.addEventListener('load', hideLoader, { once: true });
         }
 
