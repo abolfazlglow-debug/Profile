@@ -2010,6 +2010,101 @@
         @media (prefers-reduced-motion:reduce) { .cinematic-canvas{display:none!important;} }
 
     
+
+        /* ============================================================
+           MOBILE PERFORMANCE MODE
+           Desktop motion and visual effects remain unchanged.
+           ============================================================ */
+        @media (max-width: 768px) {
+            /* Remove continuously animated effects that consume mobile GPU time. */
+            .profile-image-container,
+            .typewriter-cursor,
+            .loader-mark,
+            .loader-mark::after,
+            .profile-frame-wrapper::before,
+            .hero-title,
+            .hero-title::after,
+            .hero-visual::after,
+            .section-title-line::after,
+            .reveal-active,
+            .premium-word,
+            body.cinematic .bg-glow-1,
+            body.cinematic .bg-glow-2 {
+                animation: none !important;
+            }
+
+            /* Preserve the visual details in a static state. */
+            .hero-title {
+                background-position: center !important;
+            }
+
+            .hero-title::after {
+                width: min(190px, 55vw);
+            }
+
+            .profile-frame-wrapper::before {
+                opacity: 0.10;
+            }
+
+            .hero-visual::after {
+                opacity: 0.22;
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            .section-title-line::after {
+                transform: translateX(100%);
+            }
+
+            .premium-word {
+                opacity: 1;
+                transform: none;
+            }
+
+            .reveal-active {
+                filter: none;
+            }
+
+            /* Fewer promoted layers and shorter reveal movement on small devices. */
+            .hero-content > *,
+            .stat-card,
+            .soft-skill-card,
+            .project-card,
+            .info-item,
+            .contact-form {
+                will-change: auto;
+            }
+
+            .profile-frame-wrapper,
+            .stat-card,
+            .soft-skill-card,
+            .project-card,
+            .info-item,
+            .contact-form {
+                transform-style: flat;
+            }
+
+            .reveal-up,
+            .reveal-left,
+            .reveal-right {
+                transform: translate3d(0, 12px, 0);
+                transition-duration: 0.35s;
+            }
+
+            .reveal-active {
+                transform: translate3d(0, 0, 0);
+            }
+
+            /* Avoid a fixed blend-mode texture layer on constrained GPUs. */
+            body::after {
+                display: none;
+            }
+
+            .nav {
+                backdrop-filter: blur(8px);
+                -webkit-backdrop-filter: blur(8px);
+            }
+        }
+
         /* === Bug-fix & Security Layer: additive-only CSS === */
         .logo-dot { color: var(--gold); }
 
@@ -3149,8 +3244,11 @@
     /* Cinematic native motion system. It enhances visuals only and leaves the existing site logic intact. */
     (() => {
       const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const mobileMotionMode = matchMedia('(max-width: 768px)').matches;
       document.body.classList.add('cinematic');
-      if (reduced) return;
+      // Keep the full cinematic layer on desktop; skip its continuous canvas,
+      // pointer effects and scroll choreography on mobile to reduce CPU/GPU work.
+      if (reduced || mobileMotionMode) return;
       const canvas = document.createElement('canvas'); canvas.className='cinematic-canvas'; document.body.prepend(canvas);
       const ctx=canvas.getContext('2d'); let w,h,dpr,particles=[];
       const resize=()=>{ dpr=Math.min(devicePixelRatio||1,2); w=innerWidth; h=innerHeight; canvas.width=w*dpr; canvas.height=h*dpr; canvas.style.width=w+'px'; canvas.style.height=h+'px'; ctx.setTransform(dpr,0,0,dpr,0,0); particles=Array.from({length:Math.min(90,Math.max(34,Math.floor(w/18)))},()=>({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.18,vy:(Math.random()-.5)*.18,r:Math.random()*1.5+.35,a:Math.random()*.55+.12}));};
@@ -3279,17 +3377,23 @@
             }
 
             const y = Math.min(window.scrollY, window.innerHeight);
-            if (window.__ahooraHeroContent) {
-                window.__ahooraHeroContent.style.transform = `translate3d(0, ${y * 0.12}px, 0)`;
-            }
+            // Parallax is desktop-only. Mobile keeps the natural document flow.
+            if (window.innerWidth > 768) {
+                if (window.__ahooraHeroContent) {
+                    window.__ahooraHeroContent.style.transform = `translate3d(0, ${y * 0.12}px, 0)`;
+                }
 
-            if (heroVisual) {
-                const mouseX = pointerActive && window.innerWidth >= 900 ? pointerX : 0;
-                const mouseY = pointerActive && window.innerWidth >= 900 ? pointerY : 0;
-                const scrollY = y * 0.045;
-                const scale = 1 - y * 0.00008;
-                heroVisual.style.transform =
-                    `translate3d(${mouseX}px, ${mouseY + scrollY}px, 0) scale(${scale})`;
+                if (heroVisual) {
+                    const mouseX = pointerActive && window.innerWidth >= 900 ? pointerX : 0;
+                    const mouseY = pointerActive && window.innerWidth >= 900 ? pointerY : 0;
+                    const scrollY = y * 0.045;
+                    const scale = 1 - y * 0.00008;
+                    heroVisual.style.transform =
+                        `translate3d(${mouseX}px, ${mouseY + scrollY}px, 0) scale(${scale})`;
+                }
+            } else {
+                if (window.__ahooraHeroContent) window.__ahooraHeroContent.style.transform = '';
+                if (heroVisual) heroVisual.style.transform = '';
             }
 
             if (nav && header && window.innerWidth <= 768) {
