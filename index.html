@@ -9,6 +9,7 @@
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta name="theme-color" content="#FFFFFF" />
     <link rel="canonical" href="https://www.axvorq.ir/" />
+    <link rel="preload" as="image" href="https://www.axvorq.ir/IMG_20260731_154206_compressed.jpg" fetchpriority="high" />
 
     <!-- Open Graph / Social Media -->
     <meta property="og:locale" content="en_US" />
@@ -2094,7 +2095,7 @@
                         <div class="profile-geometric-ring"></div>
                         <div class="profile-geometric-ring-2"></div>
                         <div class="profile-image-container">
-                            <img src="IMG_20260731_154206_compressed.jpg" class="profile-img" alt="Profile Picture" />
+                            <img src="IMG_20260731_154206_compressed.jpg" class="profile-img" alt="Profile Picture" width="380" height="380" loading="eager" fetchpriority="high" decoding="async" />
                         </div>
                     </div>
                 </div>
@@ -2286,7 +2287,7 @@
                     <!-- Card 1 -->
                     <div class="project-card reveal-up" data-project-id="1">
                         <div class="project-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" alt="MOX Web Application" class="project-img" />
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" alt="MOX Web Application" class="project-img" width="800" height="500" loading="lazy" decoding="async" />
                             <div class="project-overlay">
                                 <button class="btn btn-sm btn-primary view-details-btn" data-project-id="1" data-en="Details" data-fa="جزئیات">Details</button>
                             </div>
@@ -2306,7 +2307,7 @@
                     <!-- Card 2 -->
                     <div class="project-card reveal-up" data-project-id="2">
                         <div class="project-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=800" alt="FOCUS Planner" class="project-img" />
+                            <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=800" alt="FOCUS Planner" class="project-img" width="800" height="500" loading="lazy" decoding="async" />
                             <div class="project-overlay">
                                 <button class="btn btn-sm btn-primary view-details-btn" data-project-id="2" data-en="Details" data-fa="جزئیات">Details</button>
                             </div>
@@ -2326,7 +2327,7 @@
                     <!-- Card 3 -->
                     <div class="project-card reveal-up" data-project-id="3">
                         <div class="project-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="Dashboard UI" class="project-img" />
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="Dashboard UI" class="project-img" width="800" height="500" loading="lazy" decoding="async" />
                             <div class="project-overlay">
                                 <button class="btn btn-sm btn-primary view-details-btn" data-project-id="3" data-en="Details" data-fa="جزئیات">Details</button>
                             </div>
@@ -2346,7 +2347,7 @@
                     <!-- Card 4 -->
                     <div class="project-card reveal-up" data-project-id="4">
                         <div class="project-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&q=80&w=800" alt="E-Commerce Concept" class="project-img" />
+                            <img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&q=80&w=800" alt="E-Commerce Concept" class="project-img" width="800" height="500" loading="lazy" decoding="async" />
                             <div class="project-overlay">
                                 <button class="btn btn-sm btn-primary view-details-btn" data-project-id="4" data-en="Details" data-fa="جزئیات">Details</button>
                                 <a href="https://mox4726.github.io/MOX47/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-secondary external-link-btn" onclick="event.stopPropagation()">
@@ -2784,7 +2785,7 @@
                 const safeLiveUrl = typeof project.liveUrl === 'string' &&
                     /^https?:\/\//i.test(project.liveUrl.trim()) ? project.liveUrl.trim() : '';
                 modalBody.innerHTML = `
-                        <img src="${project.image}" alt="${project.title[lang]}" class="modal-image">
+                        <img src="${project.image}" alt="${project.title[lang]}" class="modal-image" width="1200" height="675" loading="lazy" decoding="async">
                         <span class="project-number">${project.number}</span>
                         <h3 class="modal-title" id="modal-title">${project.title[lang]}</h3>
                         <div class="modal-meta-tags">
@@ -3131,7 +3132,13 @@
         document.querySelectorAll('.btn').forEach(btn => { btn.addEventListener('pointermove',e=>{const r=btn.getBoundingClientRect();btn.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.08}px,${(e.clientY-r.top-r.height/2)*.08-3}px)`}); btn.addEventListener('pointerleave',()=>btn.style.transform=''); });
       }
       // Progressive image loading without changing existing image URLs.
-      document.querySelectorAll('img').forEach(img => { img.loading='lazy'; img.decoding='async'; img.addEventListener('error',()=>img.classList.add('image-failed'),{once:true}); });
+      document.querySelectorAll('img').forEach(img => {
+        const isHeroLcpCandidate = img.classList.contains('profile-img');
+        img.loading = isHeroLcpCandidate ? 'eager' : 'lazy';
+        img.decoding = 'async';
+        if (isHeroLcpCandidate) img.fetchPriority = 'high';
+        img.addEventListener('error',()=>img.classList.add('image-failed'),{once:true});
+      });
       // Close the mobile menu when navigating with keyboard or selecting a destination.
       document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',()=>document.activeElement?.blur()));
     })();
