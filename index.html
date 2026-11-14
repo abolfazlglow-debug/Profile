@@ -2126,7 +2126,36 @@
             -webkit-user-drag: none;
         }
 
-    </style>
+    
+
+        /* Mobile ultra-light mode: remove motion without affecting desktop. */
+        @media (max-width: 768px) {
+            html { scroll-behavior: auto !important; }
+            *, *::before, *::after {
+                animation: none !important;
+                transition: none !important;
+                scroll-behavior: auto !important;
+                caret-color: transparent;
+                will-change: auto !important;
+            }
+            .reveal-up, .reveal-left, .reveal-right,
+            .reveal-active {
+                opacity: 1 !important;
+                transform: none !important;
+                filter: none !important;
+            }
+            .cinematic-canvas, .cinematic-scroll-label {
+                display: none !important;
+            }
+            .profile-image-container, .profile-frame-wrapper,
+            .hero-visual, .hero-content {
+                animation: none !important;
+                transform: none !important;
+            }
+            .typewriter-cursor { display: none !important; }
+            .bg-glow { display: none !important; }
+        }
+</style>
 </head>
 <body>
     <div class="bg-glow bg-glow-1"></div>
@@ -2781,15 +2810,27 @@
                 typewriterTimeoutId = setTimeout(type, typewriterSpeed);
             };
 
-            if (typewriterElement) typewriterTimeoutId = setTimeout(type, 1000);
+            if (typewriterElement) {
+                if (window.matchMedia('(max-width: 768px)').matches) {
+                    typewriterElement.textContent = phrases[0];
+                } else {
+                    typewriterTimeoutId = setTimeout(type, 1000);
+                }
+            }
 
             const resetTypewriter = (lang) => {
                 phrases = phrasesByLang[lang] || phrasesByLang.en;
                 phraseIndex = 0;
                 charIndex = 0;
                 isDeleting = false;
-                if (typewriterElement) typewriterElement.textContent = '';
                 if (typewriterTimeoutId) clearTimeout(typewriterTimeoutId);
+                if (typewriterElement) {
+                    if (window.matchMedia('(max-width: 768px)').matches) {
+                        typewriterElement.textContent = phrases[0];
+                        return;
+                    }
+                    typewriterElement.textContent = '';
+                }
                 typewriterTimeoutId = setTimeout(type, 400);
             };
 
@@ -2837,6 +2878,10 @@
                 animatedStats = true;
                 statNumbers.forEach(stat => {
                     const target = parseInt(stat.getAttribute('data-target'));
+                    if (window.matchMedia('(max-width: 768px)').matches) {
+                        stat.textContent = target + '+';
+                        return;
+                    }
                     let current = 0;
                     const increment = target / 20;
                     const timer = setInterval(() => {
