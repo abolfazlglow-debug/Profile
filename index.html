@@ -20,12 +20,12 @@
     <meta property="og:site_name" content="AXVORQ" />
     <meta property="og:updated_time" content="2026-11-14" />
     <meta property="og:url" content="https://www.axvorq.ir/" />
-    <meta property="og:image" content="Futuristic Monochrome AX Monogram_compressed.webp" />
+    <meta property="og:image" content="https://www.axvorq.ir/Futuristic%20Monochrome%20AX%20Monogram_compressed.webp" />
     <meta property="og:image:alt" content="Abolfazl Moradi — personal portfolio" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Abolfazl Moradi | AXVORQ" />
     <meta name="twitter:description" content="Web development, front-end, UI/UX and digital creative portfolio." />
-    <meta name="twitter:image" content="Futuristic Monochrome AX Monogram_compressed.webp" />
+    <meta name="twitter:image" content="https://www.axvorq.ir/Futuristic%20Monochrome%20AX%20Monogram_compressed.webp" />
 
     <title>Abolfazl Moradi | AXVORQ — Web Developer & Digital Creator</title>
 
@@ -49,7 +49,7 @@
           "name": "Abolfazl Moradi",
           "alternateName": "AXVORQ",
           "url": "https://www.axvorq.ir/",
-          "image": "Futuristic Monochrome AX Monogram_compressed.webp",
+          "image": "https://www.axvorq.ir/Futuristic%20Monochrome%20AX%20Monogram_compressed.webp",
           "jobTitle": [
             "Web Developer",
             "Front-End Developer",
@@ -1921,17 +1921,17 @@
         html { scroll-padding-top: 100px; }
         body::before { content:""; position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.28; background:radial-gradient(520px circle at 50% 12%, var(--gold-glow), transparent 62%); }
         body::after { content:""; position:fixed; inset:0; z-index:50; pointer-events:none; opacity:.035; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E"); mix-blend-mode:soft-light; }
-        .page-progress { position:fixed; top:0; left:0; width:0; height:3px; z-index:3000; background:linear-gradient(90deg,var(--gold-dark),var(--gold-light),#fff); box-shadow:0 0 16px var(--gold); transition:width .12s linear; }
+        .page-progress { position:fixed; top:0; left:0; width:0; height:3px; z-index:3000; background:linear-gradient(90deg,var(--gold-dark),var(--gold-light),#fff); box-shadow:0 0 16px var(--gold); transition:width .16s linear; }
         .premium-loader { position:fixed; inset:0; z-index:5000; display:grid; place-items:center; background:var(--bg-primary); transition:opacity .2s var(--ease-premium), visibility .2s; }
         .premium-loader.is-hidden { opacity:0; visibility:hidden; pointer-events:none; }
         .loader-mark { width:72px; height:72px; border:1px solid var(--gold-border); border-top-color:var(--gold); border-radius:50%; animation:loaderSpin 1s linear infinite; position:relative; }
         .loader-mark::after { content:'A'; position:absolute; inset:0; display:grid; place-items:center; color:var(--gold-light); font:700 1.4rem var(--font-heading); animation:loaderSpin 1s linear reverse infinite; }
         @keyframes loaderSpin { to { transform:rotate(360deg); } }
-        .header { will-change:background,transform; }
+        .header { }
         .header:not(.scrolled) { background:linear-gradient(180deg,rgba(255,255,255,.82),transparent); }
         .logo { transition:transform .45s var(--ease-premium), color .25s ease; }
         .logo:hover { transform:translateY(-2px) scale(1.03); }
-        .hero-content > * { will-change:transform; }
+        /* Avoid permanently promoting every hero child to its own GPU layer. */
         .hero-title { text-shadow:0 0 50px var(--gold-glow); }
         .hero-title::after { content:''; display:block; width:0; height:2px; margin-top:18px; background:linear-gradient(90deg,var(--gold),transparent); animation:lineReveal 1.2s .45s var(--ease-premium) forwards; }
         @keyframes lineReveal { to { width:190px; } }
@@ -1945,7 +1945,7 @@
         @keyframes orbit { to { transform:rotate(360deg); } }
         .profile-image-container { transition:box-shadow .5s ease, transform .5s var(--ease-premium); }
         .profile-frame-wrapper:hover .profile-image-container { box-shadow:0 0 90px var(--gold-glow); transform:scale(1.025); }
-        .stat-card, .soft-skill-card, .project-card, .info-item, .contact-form { transform-style:preserve-3d; will-change:transform; }
+        .stat-card, .soft-skill-card, .project-card, .info-item, .contact-form { transform-style:preserve-3d; }
         .stat-card::before, .soft-skill-card::before, .project-card::before, .contact-form::before { content:''; position:absolute; inset:0; pointer-events:none; border-radius:inherit; background:linear-gradient(135deg,rgba(255,255,255,.1),transparent 35%); opacity:0; transition:opacity .4s ease; }
         .stat-card:hover::before, .soft-skill-card:hover::before, .project-card:hover::before, .contact-form:hover::before { opacity:1; }
         .project-card { transition:transform .55s var(--ease-premium), border-color .35s ease, box-shadow .55s var(--ease-premium); }
@@ -1957,8 +1957,8 @@
         .section-title-line { position:relative; overflow:hidden; }
         .section-title-line::after { content:''; position:absolute; inset:0; background:var(--bg-primary); transform:translateX(-100%); animation:lineSweep 1s var(--ease-premium) both; }
         .reveal-up, .reveal-left, .reveal-right { transition-timing-function:var(--ease-premium); }
-        .reveal-active { animation:softIn .9s var(--ease-premium) both; }
-        @keyframes softIn { from { filter:blur(4px); } to { filter:blur(0); } }
+        .reveal-active { animation:softIn .55s var(--ease-premium) both; }
+        @keyframes softIn { from { opacity:.72; } to { opacity:1; } }
         .back-to-top { box-shadow:0 8px 25px var(--gold-glow); }
         .modal-container { animation:modalIn .55s var(--ease-premium); }
         @keyframes modalIn { from { opacity:0; transform:translateY(25px) scale(.96); } to { opacity:1; transform:none; } }
@@ -1982,7 +1982,7 @@
         .hero { min-height:110vh; overflow:hidden; }
         .hero-content { position:relative; z-index:2; }
         .hero-visual { perspective:1200px; }
-        .hero-title { letter-spacing:-.04em; background:linear-gradient(100deg,var(--text-primary) 10%,var(--gold-light) 47%,var(--text-primary) 78%); background-color:transparent; background-clip:text; -webkit-background-clip:text; background-size:220% auto; animation:titleShine 8s linear infinite; }
+        .hero-title { letter-spacing:-.04em; background:linear-gradient(100deg,var(--text-primary) 10%,var(--gold-light) 47%,var(--text-primary) 78%); background-color:transparent; background-clip:text; -webkit-background-clip:text; background-size:220% auto; animation:titleShine 14s linear infinite; }
         @supports not ((background-clip: text) or (-webkit-background-clip: text)) { .hero-title { background:none; color:var(--text-primary); -webkit-text-fill-color:var(--text-primary); } }
         @keyframes titleShine { to{background-position:220% center} }
         .hero-greeting { position:relative; padding-left:42px; }
@@ -2100,8 +2100,8 @@
             }
 
             .nav {
-                backdrop-filter: blur(8px);
-                -webkit-backdrop-filter: blur(8px);
+                backdrop-filter: blur(4px);
+                -webkit-backdrop-filter: blur(4px);
             }
         }
 
@@ -2135,7 +2135,6 @@
                 animation: none !important;
                 transition: none !important;
                 scroll-behavior: auto !important;
-                caret-color: transparent;
                 will-change: auto !important;
             }
             .reveal-up, .reveal-left, .reveal-right,
@@ -2201,7 +2200,7 @@
                         <span class="typewriter-text" id="typewriter"></span>
                         <span class="typewriter-cursor">|</span>
                     </div>
-                    <p class="hero-tagline" data-en='"Turning ideas into meaningful digital experiences."' data-fa='«تبدیل ایده‌ها به تجربه‌های دیجیتال معنادار.»'>"Turning ideas into meaningful digital experiences."</p>
+                    <p class="hero-tagline" data-en='"A great interface does more than look good — it makes people stay."' data-fa='«رابط کاربری خوب فقط زیبا نیست؛ کاری می‌کند کاربر بماند.»'>"A great interface does more than look good — it makes people stay."</p>
                     <p class="hero-description" data-en="Specializing in crafting high-performance, elegant web applications with seamless user interfaces and clean architecture." data-fa="متخصص در طراحی وب‌اپلیکیشن‌های سریع و شیک با رابط کاربری روان و معماری تمیز.">
                         Specializing in crafting high-performance, elegant web applications with seamless user interfaces and clean architecture.
                     </p>
@@ -2219,7 +2218,7 @@
                         <div class="profile-geometric-ring"></div>
                         <div class="profile-geometric-ring-2"></div>
                         <div class="profile-image-container">
-                            <img src="Futuristic Monochrome AX Monogram_compressed.webp" class="profile-img" alt="Profile Picture" width="380" height="380" loading="eager" fetchpriority="high" decoding="async" />
+                            <img src="Futuristic Monochrome AX Monogram_compressed.webp" class="profile-img" alt="AXVORQ monochrome monogram" width="380" height="380" loading="eager" fetchpriority="high" decoding="async" />
                         </div>
                     </div>
                 </div>
@@ -3258,18 +3257,40 @@
       const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
       const add = (tag, cls, parent=document.body) => { const el=document.createElement(tag); if(cls) el.className=cls; parent.appendChild(el); return el; };
       const progress = add('div','page-progress');
-      const loader = add('div','premium-loader'); loader.innerHTML='<div class="loader-mark" aria-label="Loading"></div>';
-      window.addEventListener('load', () => setTimeout(() => loader.classList.add('is-hidden'), 300), {once:true});
+      // The full-screen intro loader is desktop-only; mobile content stays visible immediately.
+      const loader = matchMedia('(max-width: 768px)').matches ? null : add('div','premium-loader');
+      if (loader) {
+        loader.innerHTML='<div class="loader-mark" aria-label="Loading"></div>';
+        window.addEventListener('load', () => setTimeout(() => loader.classList.add('is-hidden'), 180), {once:true});
+      }
       const updateProgress = () => { const max=document.documentElement.scrollHeight-innerHeight; progress.style.width=(max>0 ? (scrollY/max)*100 : 0)+'%'; };
       window.__ahooraUpdateProgress = updateProgress;
       updateProgress();
       if (!reduceMotion) {
         window.__ahooraParallaxEnabled = true;
-        document.querySelectorAll('.project-card,.stat-card,.soft-skill-card,.info-item').forEach(card => {
-          card.addEventListener('pointermove', e => { if(innerWidth<800) return; const r=card.getBoundingClientRect(), x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5; card.style.transform=`perspective(900px) rotateX(${y*-3}deg) rotateY(${x*3}deg) translateY(-6px)`; });
-          card.addEventListener('pointerleave', () => { card.style.transform=''; });
-        });
-        document.querySelectorAll('.btn').forEach(btn => { btn.addEventListener('pointermove',e=>{const r=btn.getBoundingClientRect();btn.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.08}px,${(e.clientY-r.top-r.height/2)*.08-3}px)`}); btn.addEventListener('pointerleave',()=>btn.style.transform=''); });
+        if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
+          document.querySelectorAll('.project-card,.stat-card,.soft-skill-card,.info-item').forEach(card => {
+            let frame=0, px=0, py=0;
+            card.addEventListener('pointermove', e => {
+              px=e.clientX; py=e.clientY;
+              if(frame) return;
+              frame=requestAnimationFrame(()=>{
+                frame=0; const r=card.getBoundingClientRect();
+                const x=(px-r.left)/r.width-.5, y=(py-r.top)/r.height-.5;
+                card.style.transform=`perspective(900px) rotateX(${y*-2.2}deg) rotateY(${x*2.2}deg) translate3d(0,-4px,0)`;
+              });
+            },{passive:true});
+            card.addEventListener('pointerleave', () => { if(frame) cancelAnimationFrame(frame); frame=0; card.style.transform=''; });
+          });
+          document.querySelectorAll('.btn').forEach(btn => {
+            let frame=0, px=0, py=0;
+            btn.addEventListener('pointermove',e=>{
+              px=e.clientX; py=e.clientY; if(frame) return;
+              frame=requestAnimationFrame(()=>{frame=0;const r=btn.getBoundingClientRect();btn.style.transform=`translate3d(${(px-r.left-r.width/2)*.045}px,${(py-r.top-r.height/2)*.045-2}px,0)`;});
+            },{passive:true});
+            btn.addEventListener('pointerleave',()=>{if(frame)cancelAnimationFrame(frame);frame=0;btn.style.transform='';});
+          });
+        }
       }
       // Progressive image loading without changing existing image URLs.
       document.querySelectorAll('img').forEach(img => {
@@ -3294,17 +3315,42 @@
       // Keep the full cinematic layer on desktop; skip its continuous canvas,
       // pointer effects and scroll choreography on mobile to reduce CPU/GPU work.
       if (reduced || mobileMotionMode) return;
-      const canvas = document.createElement('canvas'); canvas.className='cinematic-canvas'; document.body.prepend(canvas);
-      const ctx=canvas.getContext('2d'); let w,h,dpr,particles=[];
-      const resize=()=>{ dpr=Math.min(devicePixelRatio||1,2); w=innerWidth; h=innerHeight; canvas.width=w*dpr; canvas.height=h*dpr; canvas.style.width=w+'px'; canvas.style.height=h+'px'; ctx.setTransform(dpr,0,0,dpr,0,0); particles=Array.from({length:Math.min(90,Math.max(34,Math.floor(w/18)))},()=>({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.18,vy:(Math.random()-.5)*.18,r:Math.random()*1.5+.35,a:Math.random()*.55+.12}));};
-      const draw=()=>{ ctx.clearRect(0,0,w,h); const gold=getComputedStyle(document.documentElement).getPropertyValue('--gold').trim()||'#a6a6a6'; for(const p of particles){p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=w;if(p.x>w)p.x=0;if(p.y<0)p.y=h;if(p.y>h)p.y=0;ctx.beginPath();ctx.fillStyle=gold;ctx.globalAlpha=p.a;ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();} ctx.globalAlpha=.09; for(let i=0;i<particles.length;i++)for(let j=i+1;j<particles.length;j++){const a=particles[i],b=particles[j],dx=a.x-b.x,dy=a.y-b.y,dist=Math.hypot(dx,dy);if(dist<120){ctx.strokeStyle=gold;ctx.lineWidth=.5;ctx.globalAlpha=(1-dist/120)*.14;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}} ctx.globalAlpha=1; requestAnimationFrame(draw);};
-      addEventListener('resize',resize,{passive:true}); resize(); draw();
+      const canvas = document.createElement('canvas'); canvas.className='cinematic-canvas'; canvas.setAttribute('aria-hidden','true'); document.body.prepend(canvas);
+      const ctx=canvas.getContext('2d',{alpha:true,desynchronized:true});
+      if (!ctx) { canvas.remove(); return; }
+      let w=0,h=0,dpr=1,particles=[],rafId=0,lastFrame=0;
+      const resize=()=>{
+        dpr=Math.min(devicePixelRatio||1,1.5); w=innerWidth; h=innerHeight;
+        canvas.width=Math.round(w*dpr); canvas.height=Math.round(h*dpr);
+        canvas.style.width=w+'px'; canvas.style.height=h+'px'; ctx.setTransform(dpr,0,0,dpr,0,0);
+        const count=Math.min(42,Math.max(22,Math.floor(w/34)));
+        particles=Array.from({length:count},()=>({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.12,vy:(Math.random()-.5)*.12,r:Math.random()*1.25+.35,a:Math.random()*.42+.12}));
+      };
+      const draw=(now)=>{
+        rafId=0;
+        if (document.hidden) return;
+        if (now-lastFrame<32) { rafId=requestAnimationFrame(draw); return; }
+        lastFrame=now; ctx.clearRect(0,0,w,h);
+        const gold=getComputedStyle(document.documentElement).getPropertyValue('--gold').trim()||'#a6a6a6';
+        for(const p of particles){p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=w;if(p.x>w)p.x=0;if(p.y<0)p.y=h;if(p.y>h)p.y=0;ctx.beginPath();ctx.fillStyle=gold;ctx.globalAlpha=p.a;ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();}
+        ctx.globalAlpha=.07;
+        for(let i=0;i<particles.length;i++) for(let j=i+1;j<particles.length;j++){
+          const a=particles[i],b=particles[j],dx=a.x-b.x,dy=a.y-b.y,dist=dx*dx+dy*dy;
+          if(dist<10000){ctx.strokeStyle=gold;ctx.lineWidth=.45;ctx.globalAlpha=(1-Math.sqrt(dist)/100)*.11;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}
+        }
+        ctx.globalAlpha=1; rafId=requestAnimationFrame(draw);
+      };
+      const startCanvas=()=>{if(!rafId&&!document.hidden)rafId=requestAnimationFrame(draw);};
+      const stopCanvas=()=>{if(rafId){cancelAnimationFrame(rafId);rafId=0;}};
+      addEventListener('resize',resize,{passive:true});
+      document.addEventListener('visibilitychange',()=>document.hidden?stopCanvas():startCanvas());
+      resize(); startCanvas();
       const marker=document.createElement('div'); marker.className='cinematic-scroll-label'; marker.innerHTML='<span>Scroll to explore</span>'; document.body.appendChild(marker);
       document.querySelectorAll('section[id]').forEach(section=>{const mark=document.createElement('span');mark.className='cinematic-section-marker';mark.textContent=section.id.toUpperCase();section.appendChild(mark);});
       // Scroll choreography: the hero drifts away while the content gains focus.
       const heroContent=document.querySelector('.hero-content');
       window.__ahooraHeroContent = heroContent;
-      document.querySelectorAll('.project-card').forEach(card=>card.addEventListener('pointermove',e=>{const r=card.getBoundingClientRect();card.style.setProperty('--spot-x',(e.clientX-r.left)+'px');card.style.setProperty('--spot-y',(e.clientY-r.top)+'px');},{passive:true}));
+      if (matchMedia('(hover: hover) and (pointer: fine)').matches) document.querySelectorAll('.project-card').forEach(card=>card.addEventListener('pointermove',e=>{const r=card.getBoundingClientRect();card.style.setProperty('--spot-x',(e.clientX-r.left)+'px');card.style.setProperty('--spot-y',(e.clientY-r.top)+'px');},{passive:true}));
       // Staggered section entrance, using the existing reveal classes.
       document.querySelectorAll('.section-header,.about-grid,.skills-wrapper,.portfolio-grid,.contact-wrapper').forEach((el,i)=>{el.style.transitionDelay=(Math.min(i*.06,.24))+'s';});
     })();
