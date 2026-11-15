@@ -1,33 +1,38 @@
+<!-- Deploy notes: serve with Brotli, long-lived immutable caching for hashed assets, and HTTPS/HTTP2 or HTTP3. Test on the production URL with Lighthouse. -->
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Abolfazl Moradi — Digital Creator, Web Developer, Front-End Developer and UI/UX Designer. Explore web projects, design work and digital experiences." />
-    <meta name="keywords" content="Abolfazl Moradi, AXVORQ, Web Developer, Front-End Developer, Frontend Developer, UI UX Designer, Digital Creator, Web Design, HTML, CSS, JavaScript, React, Portfolio" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="AXVORQ is the portfolio of Abolfazl Moradi, showcasing frontend development, responsive web design, UI/UX projects and modern digital experiences." />
+    
     <meta name="author" content="Abolfazl Moradi" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta name="theme-color" content="#FFFFFF" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
     <link rel="canonical" href="https://www.axvorq.ir/" />
+    <link rel="alternate" hreflang="en" href="https://www.axvorq.ir/" />
+    <link rel="alternate" hreflang="fa-IR" href="https://www.axvorq.ir/fa/" />
+    <link rel="alternate" hreflang="x-default" href="https://www.axvorq.ir/" />
     <link rel="preload" as="image" href="Futuristic Monochrome AX Monogram_compressed.webp" fetchpriority="high" />
 
     <!-- Open Graph / Social Media -->
     <meta property="og:locale" content="en_US" />
     <meta property="og:locale:alternate" content="fa_IR" />
-    <meta property="og:title" content="Abolfazl Moradi | AXVORQ — Web Developer & Digital Creator" />
-    <meta property="og:description" content="Explore the portfolio, web development projects, front-end skills and UI/UX work of Abolfazl Moradi." />
+    <meta property="og:title" content="AXVORQ | Abolfazl Moradi — Frontend Developer &amp; UI/UX" />
+    <meta property="og:description" content="Explore frontend development, responsive web design, UI/UX projects and modern digital experiences by Abolfazl Moradi." />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="AXVORQ" />
-    <meta property="og:updated_time" content="2026-11-14" />
+    
     <meta property="og:url" content="https://www.axvorq.ir/" />
     <meta property="og:image" content="https://www.axvorq.ir/Futuristic%20Monochrome%20AX%20Monogram_compressed.webp" />
     <meta property="og:image:alt" content="Abolfazl Moradi — personal portfolio" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Abolfazl Moradi | AXVORQ" />
-    <meta name="twitter:description" content="Web development, front-end, UI/UX and digital creative portfolio." />
+    <meta name="twitter:title" content="AXVORQ | Abolfazl Moradi — Frontend Developer" />
+    <meta name="twitter:description" content="Frontend development, responsive web design, UI/UX projects and digital experiences." />
     <meta name="twitter:image" content="https://www.axvorq.ir/Futuristic%20Monochrome%20AX%20Monogram_compressed.webp" />
 
-    <title>Abolfazl Moradi | AXVORQ — Web Developer & Digital Creator</title>
+    <title>AXVORQ | Abolfazl Moradi — Frontend Developer &amp; UI/UX</title>
 
     <script type="application/ld+json">
     {
@@ -79,12 +84,14 @@
     </script>
 
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
     <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" /></noscript>
 
     <style>
         /* ==========================================================================
@@ -105,7 +112,7 @@
 
             --text-primary: #080808;
             --text-secondary: #303030;
-            --text-muted: #A6A6A6;
+            --text-muted: #666666;
 
             --border-subtle: rgba(48, 48, 48, 0.14);
 
@@ -1064,11 +1071,11 @@
         .form-error {
             display: none;
             font-size: 0.8rem;
-            color: #A6A6A6;
+            color: #666666;
         }
 
         .form-group.error .form-input {
-            border-color: #A6A6A6;
+            border-color: #666666;
         }
 
         .form-group.error .form-error {
@@ -1087,7 +1094,7 @@
         }
 
         .form-feedback-message.success {
-            color: #D5D5D5;
+            color: #666666;
         }
 
         @media (max-width: 992px) {
@@ -2168,7 +2175,7 @@
                 AXVORQ<span class="logo-dot">.</span>
             </a>
 
-            <nav class="nav" id="nav-menu" aria-label="Main Navigation">
+            <nav class="nav" id="nav-menu" aria-label="Primary navigation">
                 <ul class="nav-list">
                     <li class="nav-item"><a href="#home" class="nav-link active" data-en="Home" data-fa="خانه">Home</a></li>
                     <li class="nav-item"><a href="#about" class="nav-link" data-en="About" data-fa="درباره من">About</a></li>
@@ -2178,7 +2185,7 @@
                 </ul>
             </nav>
 
-            <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Switch language">FA</button>
+            <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Switch to Persian" title="Switch language">FA</button>
 
             <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
                 <span class="hamburger-bar"></span>
@@ -2611,7 +2618,7 @@
     </footer>
 
     <!-- Modal -->
-    <div class="modal-overlay" id="portfolio-modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
+    <div class="modal-overlay" id="portfolio-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Project details">
         <div class="modal-container" role="document">
             <button class="modal-close-btn" id="modal-close" aria-label="Close project modal">
                 <i class="fa-solid fa-xmark"></i>
@@ -2628,7 +2635,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
 
-            let currentLang = 'en';
+            let currentLang = document.documentElement.lang.toLowerCase().startsWith('fa') ? 'fa' : 'en';
 
             const projectsData = [{
                 id: '1',
@@ -2916,10 +2923,12 @@
                 features: { en: 'Key Features', fa: 'ویژگی‌های کلیدی' }
             };
 
-            const openModal = (projectId) => {
+            let modalOpener = null;
+            const openModal = (projectId, opener = document.activeElement) => {
                 const project = projectsData.find(p => p.id === projectId);
                 if (!project) return;
 
+                modalOpener = opener;
                 const lang = currentLang;
                 const safeLiveUrl = typeof project.liveUrl === 'string' &&
                     /^https?:\/\//i.test(project.liveUrl.trim()) ? project.liveUrl.trim() : '';
@@ -2951,18 +2960,21 @@
                 modal.classList.add('active');
                 modal.setAttribute('aria-hidden', 'false');
                 document.body.style.overflow = 'hidden';
+                if (modalCloseBtn) modalCloseBtn.focus();
             };
 
             const closeModal = () => {
                 modal.classList.remove('active');
                 modal.setAttribute('aria-hidden', 'true');
                 document.body.style.overflow = '';
+                if (modalOpener && typeof modalOpener.focus === 'function') modalOpener.focus();
+                modalOpener = null;
             };
 
             document.querySelectorAll('.project-card').forEach(card => {
                 card.addEventListener('click', () => {
                     const projectId = card.getAttribute('data-project-id');
-                    openModal(projectId);
+                    openModal(projectId, card.querySelector('button, a') || card);
                 });
             });
 
@@ -2970,7 +2982,7 @@
                 btn.addEventListener('click', (e) => {
                     e.stopPropagation();
                     const projectId = btn.getAttribute('data-project-id');
-                    openModal(projectId);
+                    openModal(projectId, btn);
                 });
             });
 
@@ -2983,8 +2995,14 @@
             }
 
             document.addEventListener('keydown', (e) => {
-                if (modal && e.key === 'Escape' && modal.classList.contains('active')) {
-                    closeModal();
+                if (!modal || !modal.classList.contains('active')) return;
+                if (e.key === 'Escape') { closeModal(); return; }
+                if (e.key === 'Tab') {
+                    const focusable = modal.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])');
+                    if (!focusable.length) { e.preventDefault(); return; }
+                    const first = focusable[0], last = focusable[focusable.length - 1];
+                    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+                    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
                 }
             });
 
@@ -3243,11 +3261,12 @@
 
             if (langToggleBtn) {
                 langToggleBtn.addEventListener('click', () => {
-                    applyLanguage(currentLang === 'en' ? 'fa' : 'en');
+                    // Separate language URLs allow search engines to index each translation.
+                    window.location.assign(currentLang === 'en' ? '/fa/' : '/');
                 });
             }
 
-            applyLanguage('en');
+            applyLanguage(currentLang);
         });
     </script>
 
@@ -3389,41 +3408,8 @@
             window.addEventListener('load', hideLoader, { once: true });
         }
 
-        // Block mouse context menus without suppressing keyboard context-menu access.
-        document.addEventListener('contextmenu', event => {
-            if (event.button === 2 || event.detail > 0) event.preventDefault();
-        });
-
-        // Prevent dragging image media; do not disable selection on surrounding text.
-        document.addEventListener('dragstart', event => {
-            if (event.target && event.target.closest &&
-                event.target.closest('img, picture, svg image, .profile-img, .project-img, .modal-image')) {
-                event.preventDefault();
-            }
-        });
-
-        // Restrict only the requested developer-tool/view-source shortcuts.
-        document.addEventListener('keydown', event => {
-            const key = event.key;
-            const ctrl = event.ctrlKey || event.metaKey;
-            const blocked = key === 'F12' ||
-                (ctrl && event.shiftKey && ['I', 'J', 'C'].includes(key.toUpperCase())) ||
-                (ctrl && !event.shiftKey && key.toUpperCase() === 'U');
-            if (blocked) {
-                event.preventDefault();
-                event.stopPropagation();
-            }
-        }, true);
-
-        // Prevent copy/cut only when the selection is within the designated media.
-        document.addEventListener('copy', event => {
-            const selection = window.getSelection();
-            const anchor = selection && selection.anchorNode;
-            const element = anchor && (anchor.nodeType === 1 ? anchor : anchor.parentElement);
-            if (element && element.closest && element.closest('.profile-img, .project-img, .modal-image')) {
-                event.preventDefault();
-            }
-        });
+        // Browser shortcuts, text selection and context menus remain available;
+        // client-side shortcut blocking is not a security boundary.
 
         // Harden any target=_blank links, including links inserted after page load.
         const secureExternalLinks = root => {
