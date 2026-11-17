@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="description" content="AXVORQ؛ نمونه‌کارهای ابوالفضل مرادی در زمینه توسعه فرانت‌اند، طراحی وب واکنش‌گرا، رابط و تجربه کاربری و ساخت تجربه‌های دیجیتال مدرن." />
+    <meta name="description" content="AXVORQ؛ رسانه تخصصی، مقاله‌های کاربردی و شبکه کارشناسان برای همکاری حرفه‌ای." />
     
     <meta name="author" content="Abolfazl Moradi" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
@@ -32,7 +32,7 @@
     <meta name="twitter:description" content="توسعه فرانت‌اند، طراحی وب واکنش‌گرا و پروژه‌های رابط و تجربه کاربری." />
     <meta name="twitter:image" content="https://www.axvorq.ir/Futuristic%20Monochrome%20AX%20Monogram_compressed.webp" />
 
-    <title>AXVORQ | ابوالفضل مرادی — توسعه‌دهنده فرانت‌اند و طراح UI/UX</title>
+    <title>AXVORQ | رسانه تخصصی و شبکه کارشناسان</title>
 
     <script type="application/ld+json">
     {
@@ -63,7 +63,7 @@
           ],
           "sameAs": [
             "https://www.linkedin.com/in/AbolfazlMoradi/",
-            "https://t.me/CLS2009"
+            "https://t.me/axvorq"
           ],
           "knowsAbout": [
             "Web Development",
@@ -2161,6 +2161,43 @@
             .typewriter-cursor { display: none !important; }
             .bg-glow { display: none !important; }
         }
+
+        /* AXVORQ Platform Expansion — preserves the original monochrome system */
+        .platform-section { padding: 7rem 0; position: relative; }
+        .platform-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.25rem; }
+        .platform-card { background:var(--bg-secondary); border:1px solid var(--border-subtle); border-radius:var(--radius-md); padding:1.5rem; transition:transform var(--transition-fast),border-color var(--transition-fast),box-shadow var(--transition-fast); }
+        .platform-card:hover { transform:translateY(-5px); border-color:var(--gold-border); box-shadow:0 15px 35px rgba(0,0,0,.12); }
+        .platform-card-icon { width:46px; height:46px; display:flex; align-items:center; justify-content:center; border-radius:50%; background:var(--bg-tertiary); color:var(--gold-light); margin-bottom:1rem; }
+        .platform-card h3 { font-size:1.1rem; margin-bottom:.55rem; color:var(--text-primary); }
+        .platform-card p { color:var(--text-secondary); font-size:.9rem; line-height:1.75; }
+        .platform-card .tag { display:inline-flex; margin:.75rem .3rem 0 0; }
+        .platform-toolbar { display:flex; gap:1rem; flex-wrap:wrap; margin:0 auto 2rem; max-width:820px; }
+        .platform-search { flex:1; min-width:230px; padding:.95rem 1.1rem; background:var(--bg-secondary); border:1px solid var(--border-subtle); border-radius:var(--radius-full); }
+        .platform-search:focus { border-color:var(--gold); }
+        .role-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
+        .role-card { text-align:center; padding:1.4rem 1rem; background:var(--bg-secondary); border:1px solid var(--border-subtle); border-radius:var(--radius-md); }
+        .role-card i { color:var(--gold); font-size:1.4rem; margin-bottom:.8rem; }
+        .role-card h3 { font-size:1rem; margin-bottom:.4rem; }
+        .role-card p { color:var(--text-secondary); font-size:.83rem; }
+        .platform-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; counter-reset:steps; }
+        .platform-step { position:relative; padding:1.4rem; background:var(--bg-secondary); border:1px solid var(--border-subtle); border-radius:var(--radius-md); }
+        .platform-step::before { counter-increment:steps; content:'0' counter(steps); display:block; font-family:var(--font-heading); font-size:2rem; color:var(--gold); opacity:.65; margin-bottom:.6rem; }
+        .platform-step h3 { font-size:1rem; margin-bottom:.45rem; }
+        .platform-step p { color:var(--text-secondary); font-size:.85rem; line-height:1.7; }
+        .platform-cta { display:flex; justify-content:space-between; align-items:center; gap:2rem; padding:2.2rem; background:var(--text-primary); color:#fff; border-radius:var(--radius-lg); }
+        .platform-cta h3 { color:#fff; font-size:1.5rem; margin-bottom:.45rem; }
+        .platform-cta p { color:#d5d5d5; max-width:650px; }
+        .platform-cta .btn-secondary { color:#fff; border-color:#666; }
+        .platform-cta .btn-secondary:hover { background:#303030; border-color:#fff; color:#fff; }
+        .expert-avatar { width:58px; height:58px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:var(--text-primary); color:#fff; font-weight:700; margin-bottom:1rem; }
+        .expert-meta { display:flex; justify-content:space-between; align-items:center; gap:.5rem; margin-top:1rem; color:var(--text-muted); font-size:.78rem; }
+        .expert-rating { color:var(--text-primary); font-weight:700; }
+        .project-form { display:grid; grid-template-columns:1fr 1fr; gap:1rem; background:var(--bg-secondary); border:1px solid var(--border-subtle); border-radius:var(--radius-md); padding:1.5rem; }
+        .project-form .form-textarea, .project-form .form-submit-btn, .project-form .form-feedback-message { grid-column:1/-1; }
+        .project-form .form-input { background:var(--bg-tertiary); }
+        @media (max-width:992px){ .platform-grid{grid-template-columns:repeat(2,1fr)} .role-grid,.platform-steps{grid-template-columns:repeat(2,1fr)} .platform-cta{flex-direction:column;align-items:flex-start} }
+        @media (max-width:600px){ .platform-section{padding:5rem 0} .platform-grid,.role-grid,.platform-steps,.project-form{grid-template-columns:1fr} .platform-cta{padding:1.5rem} }
+
 </style>
 </head>
 <body>
@@ -2181,6 +2218,9 @@
                     <li class="nav-item"><a href="#about" class="nav-link" data-en="About" data-fa="درباره من">About</a></li>
                     <li class="nav-item"><a href="#skills" class="nav-link" data-en="Skills" data-fa="مهارت‌ها">Skills</a></li>
                     <li class="nav-item"><a href="#portfolio" class="nav-link" data-en="Portfolio" data-fa="نمونه‌کارها">Portfolio</a></li>
+                    <li class="nav-item"><a href="#articles" class="nav-link" data-en="Articles" data-fa="مقاله‌ها">Articles</a></li>
+                    <li class="nav-item"><a href="#experts" class="nav-link" data-en="Experts" data-fa="کارشناسان">Experts</a></li>
+                    <li class="nav-item"><a href="#projects" class="nav-link" data-en="Projects" data-fa="پروژه‌ها">Projects</a></li>
                     <li class="nav-item"><a href="#contact" class="nav-link" data-en="Contact" data-fa="تماس">Contact</a></li>
                 </ul>
             </nav>
@@ -2501,6 +2541,94 @@
             </div>
         </section>
 
+
+        <!-- AXVORQ Platform: Media, Experts and Collaboration -->
+        <section class="platform-section" id="platform">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <span class="section-subtitle">AXVORQ PLATFORM</span>
+                    <h2 class="section-title" data-en="A media platform for experts" data-fa="رسانه‌ای برای ایده‌ها و متخصص‌ها">A media platform for experts</h2>
+                    <div class="section-title-line"></div>
+                </div>
+                <div class="platform-grid">
+                    <article class="platform-card reveal-up"><div class="platform-card-icon"><i class="fa-solid fa-newspaper"></i></div><h3 data-en="Expert articles" data-fa="مقاله‌های تخصصی">Expert articles</h3><p data-en="Read practical analysis, tutorials and ideas with a clear author profile at the end of every article." data-fa="تحلیل‌ها، آموزش‌ها و ایده‌های کاربردی را بخوانید؛ با نام و پروفایل مشخص نویسنده در پایان هر مقاله.">Read practical analysis, tutorials and ideas with a clear author profile at the end of every article.</p><span class="tag">AI</span><span class="tag">Web</span><span class="tag">UI/UX</span></article>
+                    <article class="platform-card reveal-up"><div class="platform-card-icon"><i class="fa-solid fa-user-tie"></i></div><h3 data-en="Find an expert" data-fa="پیدا کردن کارشناس">Find an expert</h3><p data-en="Discover specialists by skill, field, language and availability, then review their work and writing history." data-fa="کارشناس‌ها را بر اساس مهارت، حوزه، زبان و وضعیت همکاری پیدا کنید و رزومه و سابقه مقاله‌نویسی آن‌ها را ببینید.">Discover specialists by skill, field, language and availability, then review their work and writing history.</p><span class="tag">Profiles</span><span class="tag">Portfolio</span></article>
+                    <article class="platform-card reveal-up"><div class="platform-card-icon"><i class="fa-solid fa-briefcase"></i></div><h3 data-en="Post a project" data-fa="ثبت پروژه">Post a project</h3><p data-en="Describe your need, receive relevant profiles and continue the conversation through AXVORQ or Telegram." data-fa="نیاز خود را ثبت کنید، پروفایل‌های مرتبط را ببینید و گفت‌وگو را از طریق AXVORQ یا تلگرام ادامه دهید.">Describe your need, receive relevant profiles and continue the conversation through AXVORQ or Telegram.</p><span class="tag">Freelance</span><span class="tag">Brief</span></article>
+                </div>
+            </div>
+        </section>
+
+        <section class="platform-section" id="articles">
+            <div class="container">
+                <div class="section-header reveal-up"><span class="section-subtitle" data-en="Editorial" data-fa="مجله AXVORQ">Editorial</span><h2 class="section-title" data-en="Ideas worth reading" data-fa="ایده‌هایی که ارزش خواندن دارند">Ideas worth reading</h2><div class="section-title-line"></div></div>
+                <div class="platform-toolbar"><input id="article-search" class="platform-search" type="search" placeholder="جست‌وجو در مقاله‌ها..." data-fa-placeholder="جست‌وجو در مقاله‌ها..." data-en-placeholder="Search articles..." aria-label="Search articles" /></div>
+                <div class="platform-grid" id="article-grid">
+                    <article class="platform-card article-item reveal-up" data-search="هوش مصنوعی آینده وب فناوری"><div class="platform-card-icon"><i class="fa-solid fa-microchip"></i></div><h3 data-fa="هوش مصنوعی چگونه تجربه وب را تغییر می‌دهد؟" data-en="How AI is changing the web experience">How AI is changing the web experience</h3><p data-fa="نگاهی کاربردی به فرصت‌ها و محدودیت‌های استفاده از هوش مصنوعی در طراحی و توسعه وب." data-en="A practical look at opportunities and limits of AI in web design and development.">A practical look at opportunities and limits of AI in web design and development.</p><div class="expert-meta"><span data-fa="نویسنده: AXVORQ" data-en="By: AXVORQ">By: AXVORQ</span><span>6 min</span></div></article>
+                    <article class="platform-card article-item reveal-up" data-search="فرانت اند جاوااسکریپت معماری وب"><div class="platform-card-icon"><i class="fa-solid fa-code"></i></div><h3 data-fa="معماری تمیز برای پروژه‌های فرانت‌اند" data-en="Clean architecture for frontend projects">Clean architecture for frontend projects</h3><p data-fa="اصول ساده‌ای برای ساخت رابط‌های سریع، قابل نگهداری و آماده رشد." data-en="Simple principles for fast, maintainable and scalable interfaces.">Simple principles for fast, maintainable and scalable interfaces.</p><div class="expert-meta"><span data-fa="نویسنده: کارشناس مهمان" data-en="By: Guest expert">By: Guest expert</span><span>8 min</span></div></article>
+                    <article class="platform-card article-item reveal-up" data-search="رزومه فریلنسری برند شخصی"><div class="platform-card-icon"><i class="fa-solid fa-pen-nib"></i></div><h3 data-fa="رزومه فریلنسری که اعتماد می‌سازد" data-en="A freelance profile that builds trust">A freelance profile that builds trust</h3><p data-fa="چطور تجربه، نمونه‌کار و مقاله را در یک صفحه حرفه‌ای به هم وصل کنیم." data-en="How to connect experience, work samples and writing in one professional profile.">How to connect experience, work samples and writing in one professional profile.</p><div class="expert-meta"><span data-fa="نویسنده: تیم AXVORQ" data-en="By: AXVORQ team">By: AXVORQ team</span><span>5 min</span></div></article>
+                </div>
+            </div>
+        </section>
+
+        <section class="platform-section" id="experts">
+            <div class="container">
+                <div class="section-header reveal-up"><span class="section-subtitle" data-en="Experts" data-fa="کارشناسان">Experts</span><h2 class="section-title" data-en="Meet the people behind the ideas" data-fa="آدم‌های پشت ایده‌ها را بشناسید">Meet the people behind the ideas</h2><div class="section-title-line"></div></div>
+                <div class="platform-grid">
+                    <article class="platform-card expert-card reveal-up"><div class="expert-avatar">AM</div><h3>ابوالفضل مرادی</h3><p data-fa="توسعه‌دهنده فرانت‌اند و طراح رابط کاربری؛ بنیان‌گذار AXVORQ." data-en="Frontend developer and UI/UX designer; founder of AXVORQ.">Frontend developer and UI/UX designer; founder of AXVORQ.</p><div class="expert-meta"><span class="expert-rating">● فعال</span><span>HTML · CSS · JS · React</span></div></article>
+                    <article class="platform-card expert-card reveal-up"><div class="expert-avatar">UX</div><h3 data-fa="کارشناس محصول" data-en="Product expert">Product expert</h3><p data-fa="تحلیل تجربه کاربری، طراحی محصول و تبدیل مسئله به مسیر اجرایی." data-en="User experience, product design and turning problems into execution paths.">User experience, product design and turning problems into execution paths.</p><div class="expert-meta"><span class="expert-rating">● قابل همکاری</span><span>Product · UX</span></div></article>
+                    <article class="platform-card expert-card reveal-up"><div class="expert-avatar">AI</div><h3 data-fa="نویسنده فناوری" data-en="Technology writer">Technology writer</h3><p data-fa="تولید محتوای دقیق و قابل فهم درباره فناوری، ابزارها و روندهای جدید." data-en="Clear, useful writing about technology, tools and emerging trends.">Clear, useful writing about technology, tools and emerging trends.</p><div class="expert-meta"><span class="expert-rating">● نویسنده</span><span>AI · Research</span></div></article>
+                </div>
+            </div>
+        </section>
+
+        <section class="platform-section" id="dashboard">
+            <div class="container">
+                <div class="section-header reveal-up"><span class="section-subtitle" data-en="For experts" data-fa="برای کارشناسان">For experts</span><h2 class="section-title" data-en="Your profile, always in progress" data-fa="رزومه‌ای که همیشه زنده می‌ماند">Your profile, always in progress</h2><div class="section-title-line"></div></div>
+                <div class="platform-grid">
+                    <article class="platform-card reveal-up"><div class="platform-card-icon"><i class="fa-solid fa-id-card"></i></div><h3 data-fa="پروفایل حرفه‌ای" data-en="Professional profile">Professional profile</h3><p data-fa="مهارت‌ها، سوابق، نمونه‌کارها و خدمات خود را یک‌جا نمایش دهید." data-en="Showcase skills, experience, work samples and services in one place.">Showcase skills, experience, work samples and services in one place.</p></article>
+                    <article class="platform-card reveal-up"><div class="platform-card-icon"><i class="fa-solid fa-chart-line"></i></div><h3 data-fa="آمار و بازخورد" data-en="Insights and feedback">Insights and feedback</h3><p data-fa="بازدید پروفایل و مقاله‌ها را ببینید و اعتبار حرفه‌ای خود را رشد دهید." data-en="Track profile and article views and grow your professional credibility.">Track profile and article views and grow your professional credibility.</p></article>
+                    <article class="platform-card reveal-up"><div class="platform-card-icon"><i class="fa-solid fa-inbox"></i></div><h3 data-fa="پیشنهادهای همکاری" data-en="Work offers">Work offers</h3><p data-fa="پروژه‌های مرتبط را در پنل خود ببینید و برای فرصت‌های مناسب پاسخ بفرستید." data-en="See relevant projects in your dashboard and respond to the right opportunities.">See relevant projects in your dashboard and respond to the right opportunities.</p></article>
+                </div>
+            </div>
+        </section>
+
+        <section class="platform-section" id="projects">
+            <div class="container">
+                <div class="section-header reveal-up"><span class="section-subtitle" data-en="Collaboration" data-fa="همکاری">Collaboration</span><h2 class="section-title" data-en="Start with a clear brief" data-fa="همکاری را با یک درخواست روشن شروع کنید">Start with a clear brief</h2><div class="section-title-line"></div></div>
+                <div class="platform-steps">
+                    <div class="platform-step"><h3 data-fa="نیازتان را بنویسید" data-en="Share your need">Share your need</h3><p data-fa="حوزه، زمان، خروجی و سطح همکاری را مشخص کنید." data-en="Describe field, timing, output and collaboration scope.">Describe field, timing, output and collaboration scope.</p></div>
+                    <div class="platform-step"><h3 data-fa="کارشناس مناسب را پیدا کنید" data-en="Find the right expert">Find the right expert</h3><p data-fa="پروفایل‌ها، مهارت‌ها و نمونه‌کارها را مقایسه کنید." data-en="Compare profiles, skills and work samples.">Compare profiles, skills and work samples.</p></div>
+                    <div class="platform-step"><h3 data-fa="پیشنهاد دریافت کنید" data-en="Receive proposals">Receive proposals</h3><p data-fa="پیشنهادهای مرتبط را از متخصص‌ها دریافت کنید." data-en="Receive relevant proposals from specialists.">Receive relevant proposals from specialists.</p></div>
+                    <div class="platform-step"><h3 data-fa="گفت‌وگو را شروع کنید" data-en="Start the conversation">Start the conversation</h3><p data-fa="از پنل یا تلگرام رسمی AXVORQ ادامه دهید." data-en="Continue through the dashboard or official AXVORQ Telegram.">Continue through the dashboard or official AXVORQ Telegram.</p></div>
+                </div>
+                <form class="project-form reveal-up" id="project-form" style="margin-top:2rem">
+                    <input class="form-input" name="project-name" type="text" placeholder="نام شما" data-fa-placeholder="نام شما" data-en-placeholder="Your name" required />
+                    <input class="form-input" name="project-contact" type="text" placeholder="ایمیل یا شماره تماس" data-fa-placeholder="ایمیل یا شماره تماس" data-en-placeholder="Email or phone" required />
+                    <input class="form-input" name="project-topic" type="text" placeholder="حوزه پروژه" data-fa-placeholder="حوزه پروژه" data-en-placeholder="Project field" required />
+                    <input class="form-input" name="project-budget" type="text" placeholder="بودجه یا بازه تقریبی" data-fa-placeholder="بودجه یا بازه تقریبی" data-en-placeholder="Budget range" />
+                    <textarea class="form-input form-textarea" name="project-message" rows="5" placeholder="درخواست پروژه را کوتاه توضیح دهید..." data-fa-placeholder="درخواست پروژه را کوتاه توضیح دهید..." data-en-placeholder="Briefly describe your project..." required></textarea>
+                    <button class="btn btn-primary form-submit-btn" type="submit"><span data-fa="ثبت درخواست همکاری" data-en="Submit collaboration request">Submit collaboration request</span><i class="fa-solid fa-arrow-left"></i></button>
+                    <div class="form-feedback-message" id="project-feedback" aria-live="polite"></div>
+                </form>
+            </div>
+        </section>
+
+        <section class="platform-section" id="roles">
+            <div class="container">
+                <div class="section-header reveal-up"><span class="section-subtitle" data-en="Choose your path" data-fa="مسیر خود را انتخاب کنید">Choose your path</span><h2 class="section-title" data-en="One platform, four ways in" data-fa="یک پلتفرم، چهار مسیر ورود">One platform, four ways in</h2><div class="section-title-line"></div></div>
+                <div class="role-grid">
+                    <div class="role-card reveal-up"><i class="fa-solid fa-book-open"></i><h3 data-fa="خواننده" data-en="Reader">Reader</h3><p data-fa="مقاله بخوانید و موضوع‌های مورد علاقه‌تان را دنبال کنید." data-en="Read and follow the topics you care about.">Read and follow the topics you care about.</p></div>
+                    <div class="role-card reveal-up"><i class="fa-solid fa-user-pen"></i><h3 data-fa="نویسنده" data-en="Writer">Writer</h3><p data-fa="مقاله منتشر کنید و سابقه حرفه‌ای بسازید." data-en="Publish articles and build your professional record.">Publish articles and build your professional record.</p></div>
+                    <div class="role-card reveal-up"><i class="fa-solid fa-user-astronaut"></i><h3 data-fa="کارشناس" data-en="Expert">Expert</h3><p data-fa="پروفایل بسازید و برای پروژه‌های مرتبط دیده شوید." data-en="Build a profile and get discovered for relevant work.">Build a profile and get discovered for relevant work.</p></div>
+                    <div class="role-card reveal-up"><i class="fa-solid fa-building"></i><h3 data-fa="کارفرما" data-en="Client">Client</h3><p data-fa="متخصص مناسب را پیدا کنید و پروژه‌تان را شروع کنید." data-en="Find the right specialist and start your project.">Find the right specialist and start your project.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="platform-section" id="platform-cta">
+            <div class="container"><div class="platform-cta reveal-up"><div><h3 data-fa="آماده شروع هستید؟" data-en="Ready to start?">Ready to start?</h3><p data-fa="برای عضویت، همکاری یا گفت‌وگوی مستقیم با AXVORQ از تلگرام رسمی استفاده کنید." data-en="For membership, collaboration or a direct conversation, use the official AXVORQ Telegram.">For membership, collaboration or a direct conversation, use the official AXVORQ Telegram.</p></div><a class="btn btn-secondary" href="https://t.me/axvorq" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-telegram"></i><span data-fa="ارتباط در تلگرام" data-en="Open Telegram">Open Telegram</span></a></div></div>
+        </section>
+
         <!-- Contact Section -->
         <section class="contact section" id="contact">
             <div class="container">
@@ -2533,11 +2661,11 @@
                                 </div>
                             </a>
 
-                            <a href="https://t.me/CLS2009" target="_blank" rel="noopener noreferrer" class="info-item">
+                            <a href="https://t.me/axvorq" target="_blank" rel="noopener noreferrer" class="info-item">
                                 <div class="info-icon"><i class="fa-brands fa-telegram"></i></div>
                                 <div class="info-details">
                                     <span class="info-label">Telegram</span>
-                                    <span class="info-value">CLS2009</span>
+                                    <span class="info-value">axvorq</span>
                                 </div>
                             </a>
                         </div>
@@ -2606,7 +2734,7 @@
                 <a href="https://wa.me/ito.i" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
                     <i class="fa-brands fa-whatsapp"></i>
                 </a>
-                <a href="https://t.me/CLS2009" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+                <a href="https://t.me/axvorq" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
                     <i class="fa-brands fa-telegram"></i>
                 </a>
             </div>
@@ -3499,6 +3627,20 @@
         requestScrollRender();
         document.addEventListener('DOMContentLoaded', requestScrollRender, { once: true });
     })();
+    </script>
+
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function(){
+        const search = document.getElementById('article-search');
+        if (search) search.addEventListener('input', function(){
+          const q = this.value.trim().toLowerCase();
+          document.querySelectorAll('.article-item').forEach(function(card){ card.style.display = (!q || card.dataset.search.toLowerCase().includes(q) || card.textContent.toLowerCase().includes(q)) ? '' : 'none'; });
+        });
+        const projectForm = document.getElementById('project-form');
+        const feedback = document.getElementById('project-feedback');
+        if (projectForm && feedback) projectForm.addEventListener('submit', function(e){ e.preventDefault(); feedback.textContent = document.documentElement.lang.toLowerCase().startsWith('fa') ? 'درخواست شما در نسخه نمایشی ثبت شد؛ برای ادامه گفت‌وگو به تلگرام AXVORQ پیام دهید.' : 'Your request was captured in the demo. Continue the conversation on AXVORQ Telegram.'; feedback.classList.add('success'); projectForm.reset(); });
+      });
     </script>
 
 </body>
