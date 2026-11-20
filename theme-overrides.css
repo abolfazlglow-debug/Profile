@@ -1,0 +1,30 @@
+/* AXVORQ monochrome launch theme — accent colors restricted to sky blue and turquoise */
+:root{
+  --bg:#FFFFFF; --fg:#212121; --muted:#616161; --line:#E0E0E0; --border-soft:#E0E0E0;
+  --glass:rgba(255,255,255,.94); --glass-strong:#FFFFFF; --soft:#F5F5F5; --black:#000000;
+  --accent:#0EA5E9; --accent-hover:#14B8A6; --accent-soft:rgba(14,165,233,.12);
+  --success-bg:rgba(20,184,166,.12); --success-fg:#212121;
+  --warning-bg:#F5F5F5; --warning-fg:#616161;
+  --danger-bg:#E0E0E0; --danger-fg:#212121;
+  --shadow:0 12px 36px rgba(0,0,0,.06),inset 0 1px 0 rgba(255,255,255,.9);
+  --shadow-lg:0 22px 52px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.95);
+}
+body{background:linear-gradient(135deg,#FFFFFF 0%,#F5F5F5 45%,#FFFFFF 100%);color:var(--fg)}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(circle at 14% 8%,rgba(14,165,233,.05),transparent 34%),radial-gradient(circle at 85% 85%,rgba(20,184,166,.05),transparent 38%)}
+.section-dark{background:#000;color:#fff}.section-dark .muted{color:#E0E0E0}
+.site-sidebar,.top-auth-bar,.form-card,.article-card,.expert-card,.project-card,.stat,.hero-visual,.article-content,.expert-detail,.panel-table,.dash-box,.data-item,.empty-state{border-color:#E0E0E0;background:rgba(255,255,255,.94)}
+.site-sidebar{background:rgba(255,255,255,.94);border-color:#E0E0E0}
+.site-sidebar:hover,.site-sidebar:focus-within{background:#FFFFFF}
+.site-footer{background:#000;color:#fff}.footer-brand-row p{color:#E0E0E0}.footer-bottom{color:#9E9E9E}
+.btn-primary{background:#000;color:#fff;border-color:#000}.btn-primary:hover{background:#0EA5E9;border-color:#0EA5E9}
+.btn-secondary:hover,.lang-btn:hover,.sidebar-nav a.active,.pagination .page-btn:hover:not(:disabled){color:#0EA5E9;border-color:#0EA5E9}
+.sidebar-nav a.active{background:rgba(14,165,233,.1)}
+.admin-tabs button.active,.pagination .page-btn.active{background:#000;color:#fff;border-color:#000}
+.notice.danger{background:#F5F5F5;color:#212121;border-color:#9E9E9E}
+.panel-table th{background:#F5F5F5}.panel-table td select{border-color:#E0E0E0;background:#fff;color:#212121}
+.status-available{background:rgba(20,184,166,.12);color:#212121}.status-busy{background:#F5F5F5;color:#616161}
+.tag{background:#F5F5F5;border-color:#E0E0E0}.hero-card-badge,.breadcrumb,.hero-kicker,.section-subtitle{color:#0EA5E9}
+:focus-visible{outline-color:#0EA5E9}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.admin-toolbar{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0}.admin-toolbar .input{flex:1;min-width:220px}.admin-toolbar .select{min-width:170px}.admin-edit-form{margin:18px 0 24px}.report-grid{margin:20px 0}.admin-edit-form textarea{min-height:120px}
+.breadcrumb-nav{display:flex;align-items:center;gap:10px;padding-top:10px;color:#616161;font-size:.86rem}.breadcrumb-nav a:hover{color:#0EA5E9}.breadcrumb-current{color:#212121;font-weight:600}
